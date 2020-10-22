@@ -1,19 +1,25 @@
-import React, { useState } from 'react';
+import React from 'react';
 import SearchField from './searchField';
+import CityTitle from './cityTitle';
+import { connect } from 'react-redux';
+import { Dots } from 'react-preloaders';
 
-function AboutCity() {
-  const [city, setCity] = useState('');
-
-  function handleChange(newValue) {
-    setCity(newValue);
-  }
-
+const AboutCity = ({ state }) => {
+  console.log(state);
   return (
     <div>
-      <h1>{city}</h1>
-      <SearchField setNewCity={handleChange} />
+      {state.isDowloading && <Dots />}
+      <SearchField />
+      {state.data && <CityTitle />}
+      {state.error && <p>Такого города нет</p>}
     </div>
   );
-}
+};
 
-export default AboutCity;
+const mapStateToProps = function (state) {
+  return {
+    state: state,
+  };
+};
+
+export default connect(mapStateToProps)(AboutCity);

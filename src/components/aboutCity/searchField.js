@@ -1,39 +1,40 @@
 import React, { useState } from 'react';
 import { TextField, Button } from '@material-ui/core';
-import { createStore } from 'redux';
+import { connect } from 'react-redux';
+import { setSearchCity } from '../../store/actions.js';
 
-function SearchField() {
-  const [cityName, setCityName] = useState('firstName');
+const SearchField = ({ setSearchCity }) => {
+  let cityName = '';
 
-  function handleClick() {
-    // props.setNewCity(cityName);
+  function handleKeyPress(e) {
+    const { key } = e;
+    if (key === 'Enter') {
+      setSearchCity(cityName);
+    }
   }
-  console.log(cityName);
+
   return (
     <div>
-      <TextField onChange={(value) => setCityName(value.target.value)} />
-      <Button onClick={handleClick}>Find</Button>
+      <TextField
+        onChange={(value) => (cityName = value.target.value)}
+        onKeyPress={handleKeyPress}
+      />
+      <Button
+        onClick={() => {
+          setSearchCity(cityName);
+        }}
+      >
+        Find
+      </Button>
     </div>
   );
-}
-
-const reduser = (state = '', action) => {
-  switch (action.type) {
-    case 'SET_SEARCH_CITY':
-      return action.text;
-    case 'DROP_SEARCH_CITY':
-      return '';
-    default:
-      return state;
-  }
 };
-
-const store = createStore(reduser);
-store.subscribe(() => {
-  console.log(store.getState());
-});
-store.dispatch({ type: 'SET_SEARCH_CITY', text: 'Moscow' });
-store.dispatch({ type: 'DROP_SEARCH_CITY' });
-store.dispatch({ type: 'SET_SEARCH_CITY', text: 'LA' });
-
-export default SearchField;
+const mapStateToProps = () => {};
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setSearchCity: (text) => {
+      dispatch(setSearchCity(text));
+    },
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(SearchField);

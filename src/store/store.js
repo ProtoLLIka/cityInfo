@@ -1,21 +1,33 @@
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
+import logger from 'redux-logger';
+import thunk from 'redux-thunk';
+import { CITY_SEARCH_FINISHED } from './reducers/types';
 
-const reduser = (state = '', action) => {
-  switch (action.type) {
-    case 'SET_SEARCH_CITY':
-      return action.text;
-    case 'DROP_SEARCH_CITY':
-      return '';
-    default:
-      return state;
-  }
+const INITIAL_STATE_CITY = {
+  cityData: null,
+  isCityLoading: false,
+  isLoadingError: false,
 };
 
-const store = createStore(reduser);
-console.log(store.getState());
-store.dispatch({ type: 'SET_SEARCH_CITY', text: 'Moscow' });
-console.log(store.getState());
-store.dispatch({ type: 'DROP_SEARCH_CITY' });
-console.log(store.getState());
-store.dispatch({ type: 'SET_SEARCH_CITY', text: 'LA' });
-console.log(store.getState());
+const handlers = {
+  [CITY_SEARCH_STARTED]: (state, action) => {
+    return { ...state, ...action };
+  },
+  [CITY_SEARCH_FINISHED]: (state, action) => {
+    return { ...state, ...action };
+  },
+  [CITY_SEARCH_ERROR]: (state, action) => {
+    return { ...state, ...action };
+  },
+};
+
+const cityReducer = (state = INITIAL_STATE_CITY, action) => {
+  const handler = handlers[action.type];
+
+  if (handler) {
+    return handler(state, action);
+  }
+
+  return state;
+};
+export const searchStore = createStore(cityReducer, applyMiddleware(thunk, logger));
