@@ -1,9 +1,0 @@
-GET https://api.teleport.org/api/cities/?search=moscow
-// Поулчение geonameid города по названию
-###
-GET https://api.teleport.org/api/cities/geonameid:524901/
-///Поулчение доп инфы по geonameid города (страна, таймзона и т д) 
-
-###
-GET https://api.teleport.org/api/urban_areas/slug:moscow/scores/
-// Получение данных для графика о качестве жизни
