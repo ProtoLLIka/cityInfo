@@ -31,7 +31,7 @@ const handlers = {
     return { ...state, filterType: action.filterType };
   },
   [CITY_LIST_DOWLOADING_ERROR]: (state, action) => {
-    return { ...state };
+    return { ...state, isDowloading: false };
   },
 };
 

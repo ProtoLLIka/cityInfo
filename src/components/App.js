@@ -1,8 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import AllCities from './components/allCities/allCities';
-import Page404 from './components/general/pageNotFound';
-import MainPage from './components/mainPage/mainPage';
+import AllCities from './allCities/allCities';
+import Page404 from './general/pageNotFound';
+import MainPage from './mainPage/mainPage';
 
 function App() {
   // eslint-disable-next-line no-undef

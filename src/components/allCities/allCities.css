@@ -1,0 +1,15 @@
+.citiesList {
+    background-color: aquamarine;
+    font-family     : "Roboto";
+}
+
+.cityLabel {
+    padding-right: 15px;
+}
+
+.continentLabel {
+    display  : block;
+    width    : fit-content;
+    margin   : 0 auto;
+    font-size: 30px;
+}
