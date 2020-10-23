@@ -1,3 +1,4 @@
+import { ALL } from '../../../components/mainPage/map/continentTypes';
 import {
   CITY_LIST_ADD_CITIES,
   CITY_LIST_CHANGE_FILTER_TYPE,

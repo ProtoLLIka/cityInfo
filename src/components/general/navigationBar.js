@@ -2,10 +2,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import SearchField from './searchField';
 import './styles/navigationBar.css';
-import { generateCityList } from '../../store/reducers/cityList/actions';
+import { generateCityList, changeFilter } from '../../store/reducers/cityList/actions';
 import { connect } from 'react-redux';
+import { ALL } from '../mainPage/map/continentTypes';
 
-const NavigationBar = ({ generateCityList }) => {
+const NavigationBar = ({ generateCityList, changeFilter }) => {
   return (
     <div className="container">
       <span className="allCitiesBtn">
@@ -13,6 +14,7 @@ const NavigationBar = ({ generateCityList }) => {
           to="/all"
           className="link"
           onClick={() => {
+            changeFilter(ALL);
             generateCityList();
           }}
         >
@@ -30,6 +32,9 @@ const mapDispatchToProps = (dispatch) => {
   return {
     generateCityList: () => {
       dispatch(generateCityList());
+    },
+    changeFilter: (type) => {
+      dispatch(changeFilter(type));
     },
   };
 };

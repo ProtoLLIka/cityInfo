@@ -1,7 +1,10 @@
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, combineReducers } from 'redux';
 import logger from 'redux-logger';
 import thunk from 'redux-thunk';
 import { cityListReducer } from './reducers/cityList/cityListReducer';
+import { cityReducer } from './reducers/city/cityReducer';
 
-const store = createStore(cityListReducer, applyMiddleware(thunk, logger));
+const reducers = combineReducers(cityListReducer, cityReducer);
+const store = createStore(reducers, applyMiddleware(thunk, logger));
+
 export { store };
