@@ -6,7 +6,7 @@ const MainPage = () => {
   return (
     <div>
       <NavigationBar />
-      <img src={pic} className="map" alt="map"></img>
+      {/* <img src={pic} className="map" alt="map"></img> */}
     </div>
   );
 };
