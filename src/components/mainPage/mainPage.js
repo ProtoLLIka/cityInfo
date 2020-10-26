@@ -4,7 +4,7 @@ import './styles/mainPage.css';
 import Map from './map/map';
 const MainPage = () => {
   return (
-    <div>
+    <div style={{ backgroundColor: '#9bb3ba' }}>
       <NavigationBar />
       <Map />
       {/* <img src={pic} className="map" alt="map"></img> */}

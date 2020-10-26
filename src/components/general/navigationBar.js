@@ -21,7 +21,16 @@ const NavigationBar = ({ generateCityList, changeFilter }) => {
           All cities
         </Link>
       </span>
-      <p className="logo">LOGO HERE!</p>
+      <Link
+        to="/main"
+        className="link logo"
+        onClick={() => {
+          changeFilter(ALL);
+          generateCityList();
+        }}
+      >
+        LOGO HERE!
+      </Link>
       <SearchField />
     </div>
   );

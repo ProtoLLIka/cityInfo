@@ -1,24 +1,34 @@
 .cityPageContainer {
-    font-family: 'Roboto';
-    font-weight: 600;
-    color      : #393d44;
+  font-family: 'Roboto';
+  color: #393d44;
 }
 
 .titleImg {
-    background-size: 100%;
-    height         : 400px;
-    display        : block;
-    width          : 100%;
+  background-size: 100%;
+  height: 400px;
+  display: block;
+  width: 100%;
 }
-
+.yandexMap {
+  margin: 0 auto;
+  width: 400px;
+  text-align: center;
+}
 .cityName {
-    width           : fit-content;
-    padding         : 5px 10px 5px 10px;
-    font-size       : 40px;
-    background-color: white;
-    margin          : 0 auto;
-    position        : relative;
-    top             : -200px;
-    z-index         : 100;
-
+  width: fit-content;
+  padding: 5px 10px 5px 10px;
+  font-size: 40px;
+  background-color: white;
+  margin: 0 auto;
+  position: relative;
+  top: -200px;
+  z-index: 100;
+}
+.quality {
+  padding: 5px 0 5px 0;
+  font-size: 30px;
+}
+.summary {
+  width: 400px;
+  margin: 0 auto;
 }

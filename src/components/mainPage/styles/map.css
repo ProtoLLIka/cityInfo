@@ -1,13 +1,15 @@
 .continent {
   opacity: 0.5;
+  fill: white;
 }
 
 .continent:hover {
   opacity: 1;
+  fill: #4b8496;
 }
 
 .mapContainer {
-  width : 100%;
+  width: 100%;
   height: 1000px;
   margin: 0 auto;
 }
