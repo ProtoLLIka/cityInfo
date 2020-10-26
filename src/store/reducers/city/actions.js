@@ -5,6 +5,7 @@ import {
   CITY_DOWLOADING_ERROR,
 } from './types';
 import { searchCity } from './utils';
+
 const getCity = (cityName) => {
   return (dispatch) => {
     dispatch(searchStarted());
@@ -18,16 +19,20 @@ const getCity = (cityName) => {
       });
   };
 };
+
 const searchStarted = () => ({
   type: CITY_DOWLOADING_START,
 });
+
 const searchSeccessed = () => ({
   type: CITY_DOWLOADING_SUCCESSED,
 });
+
 const searchError = (err) => ({
   type: CITY_DOWLOADING_ERROR,
   error: err,
 });
+
 const selectCity = (city) => ({
   type: SELECT_CITY,
   city: city,

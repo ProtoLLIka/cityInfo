@@ -3,6 +3,9 @@ import NavigationBar from '../general/navigationBar';
 import { connect } from 'react-redux';
 import './allCities.css';
 import { ALL } from '../mainPage/map/continentTypes';
+import { Link } from 'react-router-dom';
+import { getCity } from '../../store/reducers/city/actions';
+
 const groupBy = (xs, key) => {
   return xs.reduce(function (rv, x) {
     (rv[x[key]] = rv[x[key]] || []).push(x);
@@ -25,7 +28,17 @@ const getCitiesLabels = (cities, filterType) => {
       </p>,
     ];
     continent[1].map((city) => {
-      element.push(<span className="cityLabel">{city.name}</span>);
+      element.push(
+        <Link
+          to="/about"
+          className="cityLink"
+          onClick={() => {
+            getCity(city.name);
+          }}
+        >
+          {city.name}
+        </Link>
+      );
       return '';
     });
     return element;
@@ -34,18 +47,21 @@ const getCitiesLabels = (cities, filterType) => {
 };
 
 const AllCities = ({ state }) => {
+  const cityList = state.cities;
+  const filterType = state.filterType;
   return (
     <div>
       {/* {state.isDowloading && <Lines />} */}
       <NavigationBar />
-      <div className="citiesList">{getCitiesLabels([...state.cities], state.filterType)}</div>
+      <div className="citiesList">{getCitiesLabels([...cityList], filterType)}</div>
     </div>
   );
 };
 
 const mapStateToProps = (state) => {
   return {
-    state: state,
+    state: state.cityListReducer,
   };
 };
+
 export default connect(mapStateToProps)(AllCities);

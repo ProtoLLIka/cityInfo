@@ -1,0 +1,24 @@
+.cityPageContainer {
+    font-family: 'Roboto';
+    font-weight: 600;
+    color      : #393d44;
+}
+
+.titleImg {
+    background-size: 100%;
+    height         : 400px;
+    display        : block;
+    width          : 100%;
+}
+
+.cityName {
+    width           : fit-content;
+    padding         : 5px 10px 5px 10px;
+    font-size       : 40px;
+    background-color: white;
+    margin          : 0 auto;
+    position        : relative;
+    top             : -200px;
+    z-index         : 100;
+
+}

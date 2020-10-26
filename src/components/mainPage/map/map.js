@@ -13,20 +13,20 @@ const Map = ({ changeFilter, generateCityList }) => {
     const continentName = continent.target.parentElement.id;
     changeFilter(continentName);
     generateCityList();
-    history.push('/all');
+    history.push('/all?color=blue');
   };
+  //mapContainer
   return (
-    <div className="mapContainer">
+    <div className="">
       <svg
+        className="map"
         version="1.1"
         id="Layer_1"
         xmlns="http://www.w3.org/2000/svg"
-        x="0px"
-        y="0px"
-        width="1600px"
-        height="1600px"
-        viewBox="0 300 1200 1200"
-        enable-background="new 0 0 1200 1200"
+        width="1000px"
+        height="1200px"
+        viewBox="0 300 1300 1300"
+        preserveAspectRatio="xMinYMin"
       >
         <g
           className="continent"
