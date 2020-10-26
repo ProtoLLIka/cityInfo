@@ -31,7 +31,7 @@ const getChartAndSummary = async (cityName) => {
 const getCitySlug = async (cityName) => {
   const { data } = await axios.get('https://api.teleport.org/api/urban_areas/');
   const ua_array = data._links['ua:item'];
-  const city = ua_array.filter((city) => city.name === cityName);
+  const city = ua_array.filter((city) => city.name.toLowerCase() === cityName.toLowerCase());
   const city_slug = city[0].href.slice(41).slice(0, -1);
   return city_slug;
 };

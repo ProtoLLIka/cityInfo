@@ -1,7 +1,9 @@
+import googleMapReact from 'google-map-react';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { searchCity } from '../../store/reducers/city/utils';
 import ChartBlock from './chartBlock';
+import { Map, YMaps } from 'react-yandex-maps';
 import './cityPage.css';
 
 const CityPage = (props) => {
@@ -15,6 +17,7 @@ const CityPage = (props) => {
     };
     getCity();
   }, []);
+
   if (currentCity) {
     const { city } = currentCity;
     const {
@@ -30,6 +33,12 @@ const CityPage = (props) => {
 
         <span dangerouslySetInnerHTML={{ __html: summary }}></span>
         <ChartBlock data={categoryChart} />
+
+        <YMaps>
+          <div>
+            <Map defaultState={{ center: [location.lat, location.lng], zoom: 9 }} />
+          </div>
+        </YMaps>
       </div>
     );
   }

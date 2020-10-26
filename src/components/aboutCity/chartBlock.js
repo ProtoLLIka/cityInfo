@@ -1,9 +1,13 @@
 import React from 'react';
+import { Bar } from 'react-chartjs-2';
 
-const ChartBlock = () => {
+const 
+
+const ChartBlock = (props) => {
+  const { data } = props;
+  console.log(data);
   return (
     <div>
-      <a></a>
     </div>
   );
 };
