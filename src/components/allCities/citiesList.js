@@ -3,25 +3,25 @@ import { Link } from 'react-router-dom';
 import './styles/citiesList.css';
 import { getCity } from '../../store/reducers/city/actions';
 
-const sliceArray = (myArray, sliceSize = Math.ceil(myArray.length / 3)) => {
-  const arrayLength = myArray.length;
+const sliceArray = (array, sliceSize = Math.ceil(array.length / 3)) => {
+  if (!array) return array;
+  const arrayLength = array.length;
   const tempArray = [];
   for (let index = 0; index < arrayLength; index += sliceSize) {
-    const myChunk = myArray.slice(index, index + sliceSize);
+    const myChunk = array.slice(index, index + sliceSize);
     tempArray.push(myChunk);
   }
-  return { continent: myArray[0].continent, arr: tempArray };
+  if (tempArray.length <= 0) return array;
+  return { continent: array[0].continent, arr: tempArray };
 };
 
 const generateList = (cities) => {
-  console.log(`generateList input`, cities);
   const result = [];
   cities.map((city, key) => {
     result.push(
       <Link
         to={`/about?city=${city.name}`}
         className="cityLink city"
-        target="_blank"
         key={key}
         onClick={() => {
           getCity(city.name);
@@ -31,12 +31,11 @@ const generateList = (cities) => {
       </Link>
     );
   });
-  console.log(`generateList output`, result);
   return result;
 };
 
 const generateListBlock = (array) => {
-  console.log(`generateListBlock input`, array);
+  if (!array) return;
   const result = [];
   array.map((element, key) => {
     const list = generateList(element);
@@ -46,21 +45,34 @@ const generateListBlock = (array) => {
       </div>
     );
   });
-  console.log(`generateListBlock output`, result);
   return result;
+};
+
+const filterCityName = (arr, filterName) => {
+  if (!filterName) return arr;
+  const cities = [...arr];
+  const filter = filterName.toLowerCase();
+  const res = [];
+  cities.map((element) => {
+    if (element.name.toLowerCase().includes(filter)) {
+      res.push(element);
+    }
+  });
+  return res;
 };
 
 const CitiesList = (props) => {
   const continent = props.continent;
   const cities = props.cities;
-  console.log('continent', continent);
-  console.log('cities', cities);
-  const separated = sliceArray(cities);
+  const filterName = props.filterName;
+
+  const filtered = filterCityName(cities, filterName);
+  const separated = sliceArray(filtered);
   const { arr } = separated;
   const listBlocks = generateListBlock(arr);
   return (
     <div className="listBlock">
-      <h1 className="continentName">{continent.toUpperCase()}</h1>
+      {listBlocks ? <h1 className="continentName">{continent.toUpperCase()}</h1> : ''}
       {continent ? listBlocks : <div></div>}
     </div>
   );

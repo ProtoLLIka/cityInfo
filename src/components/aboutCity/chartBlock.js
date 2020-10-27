@@ -1,16 +1,12 @@
 import React from 'react';
-import { Progress } from 'semantic-ui-react';
+import ChartLine from './chartLine';
 
 const ChartBlock = (props) => {
   const { data } = props;
-  console.log(data);
-  return (
-    <div>
-      <Progress percent={54} color="red" />
-      <Progress percent={54} color="red" />
-      <Progress percent={54} color="red" />
-    </div>
-  );
+  const linesArray = data.map((line) => {
+    return <ChartLine color={line.color} name={line.name} value={line.score_out_of_10} />;
+  });
+  return <div>{linesArray}</div>;
 };
 
 export default ChartBlock;

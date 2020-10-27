@@ -1,13 +1,10 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import NavigationBar from '../general/navigationBar';
 import { connect } from 'react-redux';
 import './styles/allCities.css';
 import { ALL } from '../mainPage/map/continentTypes';
-import { getCity } from '../../store/reducers/city/actions';
-import { changeFilter, generateCityList } from '../../store/reducers/cityList/actions';
+import { generateCityList } from '../../store/reducers/cityList/actions';
 import CitiesList from './citiesList';
-import { TextField } from '@material-ui/core';
-import SearchField from '../general/searchField';
 
 const groupBy = (xs, key) => {
   return xs.reduce(function (rv, x) {
@@ -21,40 +18,52 @@ const filterByContinent = (array, filter) => {
   return array.filter((element) => element[0] === filter);
 };
 
-const genreateLinkList = (array = [[], []]) => {
+const genreateLinkList = (array = [[], []], filterName) => {
   const components = [];
   array.map((element, key) => {
     const continent = element[0];
     const cities = element[1];
-    components.push(<CitiesList continent={continent} cities={cities} key={key} />);
+    components.push(
+      <CitiesList continent={continent} cities={cities} key={key} filterName={filterName} />
+    );
     return;
   });
   return components;
 };
 
-const getCitiesLabels = (cities, filterType) => {
+export const getCitiesLabels = (cities, filterContinent, filterName) => {
   const grouped = Object.entries(groupBy(cities, 'continent'));
-  const filtered = filterByContinent(grouped, filterType);
-  const citiesLabels = genreateLinkList(filtered);
+  const filtered = filterByContinent(grouped, filterContinent);
+  const citiesLabels = genreateLinkList(filtered, filterName);
   return citiesLabels;
 };
 
 const AllCities = ({ state, generateCityList }) => {
   const cityList = state.cities;
-  const filterType = state.filterType;
+  const filterContinent = state.filterType;
+  const [filterName, setFilterName] = useState('');
   useEffect(() => {
     const getList = async () => {
       generateCityList();
     };
     getList();
   }, []);
-
+  const labels = getCitiesLabels([...cityList], filterContinent, filterName);
   return (
     <div>
       {/* {state.isDowloading && <Lines />} */}
       <NavigationBar />
-      <SearchField />
-      <div className="citiesList">{getCitiesLabels([...cityList], filterType)}</div>
+      <div className="searchContainer">
+        <input
+          type="text"
+          placeholder="Search.."
+          className="search"
+          onChange={(event) => {
+            setFilterName(event.target.value);
+          }}
+        />
+      </div>
+      <div className="citiesList">{labels}</div>
     </div>
   );
 };
@@ -72,5 +81,5 @@ const mapDispatchToProps = (dispatch) => {
     },
   };
 };
-
+export { getCitiesLabels as getLabels };
 export default connect(mapStateToProps, mapDispatchToProps)(AllCities);

@@ -1,0 +1,34 @@
+.progress-bar {
+  height: 20px;
+  width: 400px;
+  border-radius: 5px;
+  background: #00000010;
+  float: left;
+  margin: 0px 10px 0px 0px;
+}
+.nameBlock {
+  width: 200px;
+  height: 30px;
+}
+.filler {
+  height: 100%;
+  border-radius: inherit;
+  transition: width 0.2s ease-in;
+}
+
+.lineName {
+  margin: 0;
+  float: left;
+  font-size: 15px;
+}
+
+.scoreLabel {
+  font-family: 'Roboto';
+  font-size: 15px;
+}
+
+.lineBlock {
+  width: 700px;
+  float: left;
+  margin-top: 10px;
+}

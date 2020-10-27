@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import SearchField from './searchField';
 import './styles/navigationBar.css';
 import { generateCityList, changeFilter } from '../../store/reducers/cityList/actions';
 import { connect } from 'react-redux';

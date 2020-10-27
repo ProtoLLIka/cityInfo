@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import { searchCity } from '../../store/reducers/city/utils';
 import ChartBlock from './chartBlock';
 import { Map, YMaps } from 'react-yandex-maps';
-import './cityPage.css';
+import './styles/cityPage.css';
 import NavigationBar from '../general/navigationBar';
 
 const CityPage = (props) => {
@@ -32,11 +32,12 @@ const CityPage = (props) => {
         <div className="cityName">
           <span>{name.toUpperCase()}</span>
         </div>
-        <div className="summary">
-          <span className="quality">QUALITY OF LIFE IN {name.toUpperCase()}</span>
+        <div className="summaryBlock">
+          <span className="blockTitle">QUALITY OF LIFE IN {name.toUpperCase()}</span>
           <span dangerouslySetInnerHTML={{ __html: summary }}></span>
         </div>
         <div className="yandexMap">
+          <span className="blockTitle">LOCATION</span>
           <YMaps>
             <Map
               defaultState={{ center: [location.lat, location.lng], zoom: 9 }}
@@ -45,7 +46,10 @@ const CityPage = (props) => {
             />
           </YMaps>
         </div>
-        <ChartBlock data={categoryChart} />
+        <div className="chartBlock">
+          <span className="blockTitle">LIFE QUALITY SCORE</span>
+          <ChartBlock data={categoryChart} />
+        </div>{' '}
       </div>
     );
   }

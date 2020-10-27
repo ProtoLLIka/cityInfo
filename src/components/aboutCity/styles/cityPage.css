@@ -9,11 +9,16 @@
   display: block;
   width: 100%;
 }
+
 .yandexMap {
   margin: 0 auto;
   width: 400px;
-  text-align: center;
 }
+
+.yandexMap > div {
+  margin-top: 10px;
+}
+
 .cityName {
   width: fit-content;
   padding: 5px 10px 5px 10px;
@@ -24,11 +29,20 @@
   top: -200px;
   z-index: 100;
 }
-.quality {
+
+.blockTitle {
   padding: 5px 0 5px 0;
   font-size: 30px;
+  text-align: left;
+  margin-bottom: 10px;
 }
-.summary {
+
+.summaryBlock {
   width: 400px;
-  margin: 0 auto;
+  margin: 0px auto 50px auto;
+}
+
+.chartBlock {
+  width: 400px;
+  margin: 20px auto 0px auto;
 }
