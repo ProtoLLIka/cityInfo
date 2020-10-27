@@ -1,12 +1,13 @@
 import React from 'react';
+
 import ChartLine from './chartLine';
 
-const ChartBlock = (props) => {
-  const { data } = props;
-  const linesArray = data.map((line) => {
-    return <ChartLine color={line.color} name={line.name} value={line.score_out_of_10} />;
-  });
-  return <div>{linesArray}</div>;
-};
+const ChartBlock = ({ data }) => (
+  <>
+    {data.map(({ score_out_of_10, ...restProps }) => (
+      <ChartLine {...restProps} value={score_out_of_10} />
+    ))}
+  </>
+);
 
 export default ChartBlock;

@@ -4,6 +4,7 @@ import {
   CITY_DOWLOADING_SUCCESSED,
   CITY_DOWLOADING_ERROR,
 } from './types';
+
 import { searchCity } from './utils';
 
 const getCity = (cityName) => {

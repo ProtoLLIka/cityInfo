@@ -22,25 +22,19 @@ const INITIAL_STATE_CITY = {
 };
 
 const handlers = {
-  [SELECT_CITY]: (state, action) => {
-    return { ...state, city: action.city };
-  },
-  [CITY_DOWLOADING_START]: (state, action) => {
-    return { ...state, isDowloading: true };
-  },
-  [CITY_DOWLOADING_SUCCESSED]: (state, action) => {
-    return { ...state, isDowloading: false };
-  },
-  [CITY_DOWLOADING_ERROR]: (state, action) => {
-    return { ...state, isDowloading: false };
-  },
+  [SELECT_CITY]: (state, action) => ({ ...state, city: action.city }),
+  [CITY_DOWLOADING_START]: (state, action) => ({ ...state, isDowloading: true }),
+  [CITY_DOWLOADING_SUCCESSED]: (state, action) => ({ ...state, isDowloading: false }),
+  [CITY_DOWLOADING_ERROR]: (state, action) => ({ ...state, isDowloading: false }),
 };
 
 const cityReducer = (state = INITIAL_STATE_CITY, action) => {
   const handler = handlers[action.type];
+
   if (handler) {
     return handler(state, action);
   }
+
   return state;
 };
 

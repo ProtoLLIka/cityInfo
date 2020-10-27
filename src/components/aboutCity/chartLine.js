@@ -1,9 +1,8 @@
 import React from 'react';
+
 import './styles/chartLine.css';
-const ChartLine = (props) => {
-  const value = props.value;
-  const color = props.color;
-  const name = props.name;
+
+const ChartLine = ({ value, color, name }) => {
   return (
     <div className="lineBlock">
       <div className="nameBlock">
@@ -16,4 +15,5 @@ const ChartLine = (props) => {
     </div>
   );
 };
+
 export default ChartLine;

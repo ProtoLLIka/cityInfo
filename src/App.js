@@ -1,13 +1,15 @@
 import React from 'react';
 import { Router, Route, Switch } from 'react-router-dom';
-import AllCities from './allCities/allCities';
-import Page404 from './general/pageNotFound';
-import MainPage from './mainPage/mainPage';
-import history from './history';
-import CityPage from './aboutCity/cityPage';
+
+import AllCities from './components/allCities';
+import Page404 from './pages/pageNotFound';
+import MainPage from './components/MainPage/MainPage';
+import history from './utils/history';
+import CityPage from './components/aboutCity/cityPage';
+
 function App() {
   // eslint-disable-next-line no-undef
-  document.body.style.margin = '0px';
+  document.body.style.margin = '0px'; ///normalize CSS
 
   return (
     <div className="App">

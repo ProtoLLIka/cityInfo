@@ -1,14 +1,16 @@
 import React from 'react';
-import NavigationBar from '../general/navigationBar';
-import './styles/mainPage.css';
-import Map from './map/map';
-import { getLabels } from '../allCities/allCities';
 import { connect } from 'react-redux';
-import { ALL } from './map/continentTypes';
 
-const MainPage = ({ state }) => {
-  const cityList = state.cities;
-  const filterType = state.filterType === ALL ? '' : state.filterType;
+import NavigationBar from '../General/navigationBar';
+import Map from './Map/Map';
+import { getLabels } from '../allCities/allCities';
+import { ALL } from './Map/continentTypes';
+
+import './styles/mainPage.css';
+
+const MainPage = ({ state: { cities, filterType } }) => {
+  const cityList = cities;
+  const filterType = filterType === ALL ? '' : filterType;
   return (
     <div style={{ backgroundColor: '#9bb3ba' }}>
       <NavigationBar />

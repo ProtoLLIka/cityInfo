@@ -7,40 +7,27 @@ import {
 } from './types';
 
 const INITIAL_STATE_CITY_LIST = {
-  cities: [
-    {
-      name: '',
-      continent: '',
-    },
-  ],
+  cities: [],
   filterType: 'all',
   isDowloading: false,
 };
 
 const handlers = {
-  [CITY_LIST_DOWLOADING_START]: (state, action) => {
-    return { ...state, isDowloading: true };
-  },
-  [CITY_LIST_DOWLOADING_SUCCESSED]: (state, action) => {
-    return { ...state, isDowloading: false };
-  },
-  [CITY_LIST_ADD_CITIES]: (state, action) => {
-    return { ...state, cities: action.cities };
-  },
-  [CITY_LIST_CHANGE_FILTER_TYPE]: (state, action) => {
-    return { ...state, filterType: action.filterType };
-  },
-  [CITY_LIST_DOWLOADING_ERROR]: (state, action) => {
-    return { ...state, isDowloading: false };
-  },
+  [CITY_LIST_DOWLOADING_START]: (state) => ({ ...state, isDowloading: true }),
+  [CITY_LIST_DOWLOADING_SUCCESSED]: (state) => ({ ...state, isDowloading: false }),
+  [CITY_LIST_ADD_CITIES]: (state, { cities }) => ({ ...state, cities }),
+  [CITY_LIST_CHANGE_FILTER_TYPE]: (state, action) => ({ state, filterType: action.filterType }),
+  [CITY_LIST_DOWLOADING_ERROR]: (state) => ({ ...state, isDowloading: false }),
 };
 
-const cityListReducer = (state = INITIAL_STATE_CITY_LIST, action) => {
+const cityList = (state = INITIAL_STATE_CITY_LIST, action) => {
   const handler = handlers[action.type];
+
   if (handler) {
     return handler(state, action);
   }
+
   return state;
 };
 
-export { cityListReducer };
+export { cityList };

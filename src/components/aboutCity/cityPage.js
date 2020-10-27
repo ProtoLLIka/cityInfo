@@ -1,11 +1,11 @@
-import googleMapReact from 'google-map-react';
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Map, YMaps } from 'react-yandex-maps';
+
 import { searchCity } from '../../store/reducers/city/utils';
 import ChartBlock from './chartBlock';
-import { Map, YMaps } from 'react-yandex-maps';
+import NavigationBar from '../General/navigationBar';
+
 import './styles/cityPage.css';
-import NavigationBar from '../general/navigationBar';
 
 const CityPage = (props) => {
   const cityName = new URLSearchParams(props.location.search).get('city');
