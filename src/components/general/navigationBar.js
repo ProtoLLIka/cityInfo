@@ -5,6 +5,7 @@ import './styles/navigationBar.css';
 import { generateCityList, changeFilter } from '../../store/reducers/cityList/actions';
 import { connect } from 'react-redux';
 import { ALL } from '../mainPage/map/continentTypes';
+import { TextField } from '@material-ui/core';
 
 const NavigationBar = ({ generateCityList, changeFilter }) => {
   return (
@@ -31,7 +32,7 @@ const NavigationBar = ({ generateCityList, changeFilter }) => {
       >
         LOGO HERE!
       </Link>
-      <SearchField />
+      <TextField />
     </div>
   );
 };

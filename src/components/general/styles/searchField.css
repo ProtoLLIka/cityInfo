@@ -1,0 +1,20 @@
+.search {
+    background-color: white;
+    width           : 400px;
+    height          : 40px;
+    padding-left    : 10px;
+    font-size       : 20px;
+    border          : 2px solid #cbd2d4;
+    margin          : 20px auto 0px auto;
+
+}
+
+.search:focus {
+    border : 2px solid #4d727e;
+    outline: none;
+}
+
+.searchContainer {
+    width : 400px;
+    margin: 0 auto;
+}

@@ -1,11 +1,13 @@
 import React, { useEffect } from 'react';
 import NavigationBar from '../general/navigationBar';
 import { connect } from 'react-redux';
-import './allCities.css';
+import './styles/allCities.css';
 import { ALL } from '../mainPage/map/continentTypes';
-import { Link } from 'react-router-dom';
 import { getCity } from '../../store/reducers/city/actions';
 import { changeFilter, generateCityList } from '../../store/reducers/cityList/actions';
+import CitiesList from './citiesList';
+import { TextField } from '@material-ui/core';
+import SearchField from '../general/searchField';
 
 const groupBy = (xs, key) => {
   return xs.reduce(function (rv, x) {
@@ -19,42 +21,15 @@ const filterByContinent = (array, filter) => {
   return array.filter((element) => element[0] === filter);
 };
 
-const genreateLinkList = (array) => {
-  const citiesLabels = array.map((continent, key) => {
-    const element = [
-      <td>
-        <p key={key}>
-          <span className="continentLabel">{continent[0]}</span>
-        </p>
-      </td>,
-    ];
-    continent[1].map((city, key) => {
-      element.push(
-        <td>
-          <Link
-            to={`/about?city=${city.name}`}
-            className="cityLink"
-            target="_blank"
-            key={key + 1000}
-            onClick={() => {
-              getCity(city.name);
-            }}
-          >
-            {city.name}
-          </Link>
-        </td>
-      );
-      return null;
-    });
-    const [a, ...others] = element;
-    return (
-      <div>
-        <tr>{a}</tr>
-        <tr>{others}</tr>
-      </div>
-    );
+const genreateLinkList = (array = [[], []]) => {
+  const components = [];
+  array.map((element, key) => {
+    const continent = element[0];
+    const cities = element[1];
+    components.push(<CitiesList continent={continent} cities={cities} key={key} />);
+    return;
   });
-  return citiesLabels;
+  return components;
 };
 
 const getCitiesLabels = (cities, filterType) => {
@@ -78,9 +53,8 @@ const AllCities = ({ state, generateCityList }) => {
     <div>
       {/* {state.isDowloading && <Lines />} */}
       <NavigationBar />
-      <div className="citiesList">
-        <table>{getCitiesLabels([...cityList], filterType)}</table>
-      </div>
+      <SearchField />
+      <div className="citiesList">{getCitiesLabels([...cityList], filterType)}</div>
     </div>
   );
 };

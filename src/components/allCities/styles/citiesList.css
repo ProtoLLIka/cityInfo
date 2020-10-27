@@ -1,0 +1,27 @@
+.list {
+    float: left;
+    width: 300px;
+}
+
+.city {
+    float       : left;
+    width       : 300px;
+    padding-top : 4px;
+    padding-left: 120px;
+}
+
+.continentName {
+    width         : 100%;
+    margin        : 0 auto;
+    text-align    : center;
+    padding-bottom: 20px;
+    padding-top   : 20px;
+}
+
+.listBlock {
+    width         : 900px;
+    float         : left;
+    height        : fit-content;
+    padding-bottom: 20px;
+    margin        : 0 auto;
+}

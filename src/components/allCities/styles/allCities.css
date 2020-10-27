@@ -1,0 +1,37 @@
+.citiesList {
+  background-color: #ffffff;
+  font-family     : 'Roboto';
+  width           : 900px;
+  margin          : 0 auto;
+}
+
+.cityLabel {
+  padding-left : 20px;
+  padding-right: 15px;
+}
+
+.continentLabel {
+  display     : block;
+  width       : fit-content;
+  padding-left: 20px;
+  font-size   : 30px;
+}
+
+.cityContinent {
+  display        : flex;
+  padding-top    : 20px;
+  flex-direction : column;
+  justify-content: space-between;
+  align-items    : stretch;
+  height         : 100px;
+}
+
+.cityLink {
+  text-decoration: none;
+  color          : black;
+}
+
+.column {
+  width : 300px;
+  margin: 0 auto;
+}
