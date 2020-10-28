@@ -1,13 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { func } from 'prop-types';
 
-import { TextField } from '@material-ui/core';
-
-import { generateCityList, changeFilter } from '../../store/reducers/cityList/actions';
 import { ALL } from '../mainPage/map/continentTypes';
 
 import style from './styles/navigationBar.css';
-import Connector from './connector';
 
 const NavigationBar = ({ generateCityList, changeFilter }) => (
   <div className={style.container}>
@@ -33,8 +30,17 @@ const NavigationBar = ({ generateCityList, changeFilter }) => (
     >
       LOGO HERE!
     </Link>
-    <TextField />
   </div>
 );
 
-export default Connector(NavigationBar);
+NavigationBar.propTypes = {
+  generateCityList: func,
+  changeFilter: func,
+};
+
+NavigationBar.defaultProps = {
+  generateCityList: () => {},
+  changeFilter: () => {},
+};
+
+export default NavigationBar;

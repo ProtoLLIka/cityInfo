@@ -7,20 +7,6 @@ import {
 
 import { searchCity } from './utils';
 
-const getCity = (cityName) => {
-  return (dispatch) => {
-    dispatch(searchStarted());
-    searchCity(cityName)
-      .then((res) => {
-        dispatch(searchSeccessed());
-        dispatch(selectCity(res));
-      })
-      .catch((err) => {
-        dispatch(searchError(err));
-      });
-  };
-};
-
 const searchStarted = () => ({
   type: CITY_DOWLOADING_START,
 });
@@ -36,7 +22,19 @@ const searchError = (err) => ({
 
 const selectCity = (city) => ({
   type: SELECT_CITY,
-  city: city,
+  city,
 });
 
-export { getCity };
+const getCity = (cityName) => (dispatch) => {
+  dispatch(searchStarted());
+  searchCity(cityName)
+    .then((res) => {
+      dispatch(searchSeccessed());
+      dispatch(selectCity(res));
+    })
+    .catch((err) => {
+      dispatch(searchError(err));
+    });
+};
+
+export default getCity;
