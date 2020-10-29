@@ -1,6 +1,6 @@
 import View from './view';
 import Connect from './connector';
 
-const AllCitiesPage = Connect(View);
+const AllCities = Connect(View);
 
-export default AllCitiesPage;
+export default AllCities;

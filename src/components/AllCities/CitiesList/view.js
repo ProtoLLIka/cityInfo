@@ -1,7 +1,9 @@
+/* eslint-disable react/no-array-index-key */
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { string, arrayOf, any } from 'prop-types';
 
-import { getCity } from '../../../store/reducers/city/actions';
+import getCity from 'store/reducers/city/actions';
 
 import './style.css';
 
@@ -20,12 +22,13 @@ const generateList = (cities) => {
         {city.name}
       </Link>,
     );
+    return '';
   });
   return result;
 };
 
 const generateListBlock = (array) => {
-  if (!array) return;
+  if (!array) return null;
   const result = array.map((element, key) => {
     const list = generateList(element);
     return (
@@ -34,6 +37,7 @@ const generateListBlock = (array) => {
       </div>
     );
   });
+
   return result;
 };
 
@@ -41,22 +45,34 @@ const filterCityName = (arr, filterName) => {
   if (!filterName) return arr;
   const cities = [...arr];
   const filter = filterName.toLowerCase();
-  const res = [];
-  cities.map((element) => {
+  const res = cities.map((element) => {
     if (element.name.toLowerCase().includes(filter)) {
-      res.push(element);
+      return element;
     }
+    return null;
   });
   return res;
 };
 
 const CitiesList = ({ continent, cities, filterName }) => {
   const filtered = filterCityName(cities, filterName);
-  const separated = sliceArray(filtered);
-  const { arr } = separated;
+  // const separated = sliceArray(filtered);
+  const { arr } = filtered;
   const listBlocks = generateListBlock(arr);
 
   return <div className="listBlock">{continent ? listBlocks : null}</div>;
+};
+
+CitiesList.propTypes = {
+  continent: string,
+  cities: arrayOf(any),
+  filterName: string,
+};
+
+CitiesList.defaultProps = {
+  continent: '',
+  cities: '',
+  filterName: '',
 };
 
 export default CitiesList;

@@ -1,16 +1,16 @@
+/* eslint-disable no-tabs */
 import React from 'react';
+import { func } from 'prop-types';
 
-import { connect } from 'react-redux';
-import { changeFilter, generateCityList } from '../../../store/reducers/cityList/actions';
 import {
   ASIA, NORTH_AMERICA, SOUTH_AMERICA, OCEANIA, EUROPE, AFRICA,
 } from './continentTypes';
 
-import '../style.css';
+import './style.css';
 
 const Map = ({ changeFilter, generateCityList }) => {
   const clickHandler = (continent) => {
-    changeFilter(continentName);
+    changeFilter(continent);
     generateCityList();
     window.scrollTo({
       top: 800,
@@ -31,10 +31,9 @@ const Map = ({ changeFilter, generateCityList }) => {
     >
       <g
         className="continent"
-        onClick={(continent) => {
-          clickHandler(continent);
+        onClick={() => {
+          clickHandler(ASIA);
         }}
-        id={ASIA}
       >
         <path
           d="M1145.97,437.996c-5.124-1.505-3.313-1.505-5.124-2.704c-1.801-1.209-1.801,3.906-2.702,4.214
@@ -283,10 +282,9 @@ const Map = ({ changeFilter, generateCityList }) => {
       </g>
       <g
         className="continent"
-        onClick={(continent) => {
-          clickHandler(continent);
+        onClick={() => {
+          clickHandler(NORTH_AMERICA);
         }}
-        id={NORTH_AMERICA}
       >
         <path
           d="M347.164,375.669c0,0,1.811,2.104,3.91,2.104c2.099,0,3.901,3.607,3.901,3.607s3.918,2.704,6.034,1.811
@@ -634,10 +632,9 @@ const Map = ({ changeFilter, generateCityList }) => {
       </g>
       <g
         className="continent"
-        onClick={(continent) => {
-          clickHandler(continent);
+        onClick={() => {
+          clickHandler(SOUTH_AMERICA);
         }}
-        id={SOUTH_AMERICA}
       >
         <path
           d="M323.606,653.817c0,0,4.007,4.007,3.617,8.018c-0.421,4.016,2.391,6.424-0.421,8.832
@@ -665,10 +662,9 @@ const Map = ({ changeFilter, generateCityList }) => {
       </g>
       <g
         className="continent"
-        onClick={(continent) => {
-          clickHandler(continent);
+        onClick={() => {
+          clickHandler(OCEANIA);
         }}
-        id={OCEANIA}
       >
         <path
           d="M912.805,763.311c0,0,1.993-2.391,0.395-4.401c-1.608-2.008-0.804-3.217,0.4-6.429
@@ -825,10 +821,9 @@ const Map = ({ changeFilter, generateCityList }) => {
       </g>
       <g
         className="continent"
-        onClick={(continent) => {
-          clickHandler(continent);
+        onClick={() => {
+          clickHandler(AFRICA);
         }}
-        id={AFRICA}
       >
         <path
           d="M721.074,644.995c-1.204-0.802-2.798-0.802-5.615,1.197c-2.798,2.006-7.614,1.206-10.021,0.802
@@ -866,13 +861,14 @@ const Map = ({ changeFilter, generateCityList }) => {
   );
 };
 
-const mapStateToProps = () => {};
-const mapDispatchToProps = (dispatch) => ({
-  changeFilter: (type) => {
-    dispatch(changeFilter(type));
-  },
-  generateCityList: () => {
-    dispatch(generateCityList());
-  },
-});
-export default connect(mapStateToProps, mapDispatchToProps)(Map);
+Map.propTypes = {
+  changeFilter: func,
+  generateCityList: func,
+};
+
+Map.defaultProps = {
+  changeFilter: () => {},
+  generateCityList: () => {},
+};
+
+export default Map;

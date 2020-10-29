@@ -15,6 +15,13 @@ module.exports = {
     ecmaVersion: 2018,
     sourceType: 'module',
   },
+  settings: {
+    'import/resolver': {
+      node: {
+        paths: ['src'],
+      },
+    },
+  },
   plugins: ['react'],
   rules: {
     'react/jsx-props-no-spreading': 'off',

@@ -28,8 +28,11 @@ const getCitiesByContinent = async ({ continentId, name: continentName }) => {
 
 const getAllCities = async () => {
   const continents = await getContinents();
+  console.log('continents', continents);
   const continentsCitiesReq = continents.map(async (continent) => getCitiesByContinent(continent));
+  console.log('continentsCitiesReq', await Promise.all(continentsCitiesReq));
   const cities = await Promise.all(continentsCitiesReq);
+  console.log('cities', cities);
   return cities;
 };
 

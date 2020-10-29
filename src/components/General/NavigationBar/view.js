@@ -2,12 +2,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { func } from 'prop-types';
 
-import { ALL } from '../mainPage/map/continentTypes';
+import { ALL } from 'consts/consts';
 
-import style from './styles/navigationBar.css';
+import './style.css';
 
 const NavigationBar = ({ generateCityList, changeFilter }) => (
-  <div className={style.container}>
+  <div className="container">
     <span className="allCitiesBtn">
       <Link
         to="/all"
@@ -30,6 +30,7 @@ const NavigationBar = ({ generateCityList, changeFilter }) => (
     >
       LOGO HERE!
     </Link>
+    <input />
   </div>
 );
 

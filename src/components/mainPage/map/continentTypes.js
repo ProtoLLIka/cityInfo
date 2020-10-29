@@ -6,4 +6,6 @@ const EUROPE = 'Europe';
 const AFRICA = 'Africa';
 const ALL = 'all';
 
-export { ASIA, NORTH_AMERICA, SOUTH_AMERICA, OCEANIA, EUROPE, AFRICA, ALL };
+export {
+  ASIA, NORTH_AMERICA, SOUTH_AMERICA, OCEANIA, EUROPE, AFRICA, ALL,
+};

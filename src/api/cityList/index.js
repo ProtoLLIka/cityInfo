@@ -1,3 +1,3 @@
-import { getContinents, getCitiesByContinent, getAllCities } from './utils.js';
+import { getContinents, getCitiesByContinent, getAllCities } from './utils';
 
 export { getContinents, getCitiesByContinent, getAllCities };

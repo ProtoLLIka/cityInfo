@@ -1,11 +1,11 @@
+import searchCity from 'api/city/utils';
+
 import {
   SELECT_CITY,
   CITY_DOWLOADING_START,
   CITY_DOWLOADING_SUCCESSED,
   CITY_DOWLOADING_ERROR,
 } from './types';
-
-import { searchCity } from './utils';
 
 const searchStarted = () => ({
   type: CITY_DOWLOADING_START,

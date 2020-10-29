@@ -1,7 +1,7 @@
-const getCities = (state) => state.cityListReducer.list;
-const getCityListState = (state) => state.cityListReducer;
-const getFilterType = (state) => state.cityListReducer.filterType;
-const getLoadingStatus = (state) => state.cityListReducer.isLoading;
+const getCities = (state) => state.cityList.cities;
+const getCityListState = (state) => state.cityList;
+const getFilterType = (state) => state.cityList.filterType;
+const getLoadingStatus = (state) => state.cityList.isLoading;
 
 export {
   getCities, getCityListState, getFilterType, getLoadingStatus,

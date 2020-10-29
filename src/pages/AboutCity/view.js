@@ -1,10 +1,11 @@
+/* eslint-disable react/no-danger */
 import React, { useEffect, useState } from 'react';
 import { Map, YMaps } from 'react-yandex-maps';
 import { string } from 'prop-types';
 
-import { searchCity } from '../../store/reducers/city/utils';
-import ChartBlock from './chartBlock';
-import NavigationBar from '../General/NavigationBar/index';
+// import { searchCity } from '../../store/reducers/city/utils';
+import ChartBlock from 'components/AboutCity/ChartBlock/index';
+import NavigationBar from 'components/General/NavigationBar/index';
 
 import './style.css';
 
@@ -14,7 +15,7 @@ const AboutCity = ({ search }) => {
 
   useEffect(() => {
     const getCity = async () => {
-      const city = await searchCity(cityName);
+      const city = cityName; // await searchCity(cityName);
       setCity(city);
     };
     getCity();

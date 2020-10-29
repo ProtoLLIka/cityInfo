@@ -111,4 +111,4 @@ const searchCity = async (cityName) => {
   };
 };
 
-export { searchCity };
+export default searchCity;
