@@ -2,6 +2,7 @@
 /* eslint-disable react/no-array-index-key */
 import React, { useEffect, useState } from 'react';
 import { arrayOf, any, func } from 'prop-types';
+import Sticky from 'react-sticky-el';
 
 import NavigationBar from 'components/General/NavigationBar/index';
 import ContinentCitiesList from 'components/General/ContinentCitiesList';
@@ -35,16 +36,18 @@ const AllCities = ({ cities, generateCityList }) => {
   return (
     <>
       <NavigationBar />
-      <div className={styles.searchContainer}>
-        <input
-          type="text"
-          placeholder="Search.."
-          className={styles.search}
-          onChange={(event) => {
-            setNameFilter(event.target.value);
-          }}
-        />
-      </div>
+      <Sticky>
+        <div className={styles.searchContainer}>
+          <input
+            type="text"
+            placeholder="Search.."
+            className={styles.search}
+            onChange={(event) => {
+              setNameFilter(event.target.value);
+            }}
+          />
+        </div>
+      </Sticky>
       <div className={styles.citiesList}>{listBlocks}</div>
     </>
   );

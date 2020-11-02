@@ -12,6 +12,11 @@ import YandexMap from 'components/AboutCity/YandexMap/index';
 import styles from './style.css';
 
 const AboutCity = ({ city, isLoading }) => {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth',
+  });
+
   if (city) {
     const {
       titleImg, categoryChart, location, name, summary,
