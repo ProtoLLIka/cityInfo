@@ -1,0 +1,14 @@
+.chartBlock {
+  width: 400px;
+  height: 100%;
+  height: fit-content;
+  box-shadow: 0 0 5px #00000030;
+  margin: 20px auto 0px auto;
+}
+
+.blockTitle {
+  padding: 5px 0 5px 0;
+  font-size: 30px;
+  text-align: left;
+  margin-bottom: 10px;
+}

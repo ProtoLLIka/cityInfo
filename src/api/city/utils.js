@@ -19,9 +19,9 @@ const getChartAndSummary = async (cityName) => {
     `${process.env.REACT_APP_URBAN_AREAS}${encodeURI(citySlug)}/scores/`,
   );
 
-  const { chart, summary } = data;
+  const { categories, summary } = data;
 
-  return { chart, summary };
+  return { chart: categories, summary };
 };
 
 const getTitleImg = async (cityName) => {
@@ -50,7 +50,7 @@ const getBasicInfo = async (geonameId) => {
     },
   } = await axios.get(`${process.env.REACT_APP_CITIES}${geonameId}/`);
 
-  const result = {
+  const basicInfo = {
     name,
     location: {
       lat: latitude,
@@ -59,7 +59,7 @@ const getBasicInfo = async (geonameId) => {
     population,
   };
 
-  return result;
+  return basicInfo;
 };
 
 const getCityGeoname = async (cityName) => {

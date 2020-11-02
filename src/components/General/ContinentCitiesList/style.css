@@ -1,31 +1,31 @@
 .cititesBlock {
-    width           : 1000px;
-    height          : fit-content;
-    display         : flex;
-    flex-direction  : column;
-    background-color: #00000000;
+  width: 1000px;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  background-color: #00000000;
 }
 
-.cititesBlock>h1 {
-    width     : 1000px;
-    height    : fit-content;
-    text-align: center;
-    float     : left;
+.cititesBlock > h1 {
+  width: 1000px;
+  height: fit-content;
+  text-align: center;
+  float: left;
 }
 
 .cititesList {
-    min-height    : fit-content;
-    max-height    : 500px;
-    text-align    : center;
-    display       : flex;
-    flex-direction: column;
-    flex-wrap     : wrap;
+  min-height: fit-content;
+  max-height: 550px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
 }
 
 .link {
-    font-size      : 20px;
-    padding        : 10px 10px 0 0px;
-    text-decoration: none;
-    color          : black;
-    flex           : 0 0 0px;
+  font-size: 20px;
+  padding: 10px 10px 0 0px;
+  text-decoration: none;
+  color: black;
+  flex: 0 0 0px;
 }

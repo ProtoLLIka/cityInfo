@@ -13,17 +13,15 @@ const clickHandler = (generateCityList, changeFilter) => {
 
 const NavigationBar = ({ generateCityList, changeFilter }) => (
   <div className={styles.container}>
-    <span className={styles.allCitiesBtn}>
-      <Link
-        to="/all"
-        className={styles.link}
-        onClick={() => {
-          clickHandler(generateCityList, changeFilter);
-        }}
-      >
-        All cities
-      </Link>
-    </span>
+    <Link
+      to="/all"
+      className={`${styles.link} ${styles.allCitiesBtn}`}
+      onClick={() => {
+        clickHandler(generateCityList, changeFilter);
+      }}
+    >
+      All cities
+    </Link>
     <Link
       to="/"
       className={`${styles.link} ${styles.logo}`}
@@ -33,7 +31,7 @@ const NavigationBar = ({ generateCityList, changeFilter }) => (
     >
       LOGO HERE!
     </Link>
-    <input />
+    <input className={styles.searchField} />
   </div>
 );
 

@@ -1,5 +1,7 @@
-import React from 'react';
-import { string, arrayOf, any } from 'prop-types';
+import React, { useEffect } from 'react';
+import {
+  string, arrayOf, any, func,
+} from 'prop-types';
 
 import Map from 'components/MainPage/Map/index';
 import NavigationBar from 'components/General/NavigationBar/index';
@@ -7,15 +9,15 @@ import ContinentCitiesList from 'components/General/ContinentCitiesList/index';
 
 import styles from './style.css';
 
-const MainPage = ({ allCities, continentName }) => {
+const MainPage = ({ allCities, continentName, generateCityList }) => {
   const citiesOnContinent = allCities
     .filter((cities) => cities[0].continent === continentName)
     .flat(1);
 
+  useEffect(() => generateCityList(), []);
   return (
     <div className={styles.mainPageContainer}>
       <NavigationBar />
-      <h1 className={styles.greetingBlock}>Choose continent:</h1>
       <Map />
       <div className={styles.citiesBlock}>
         <ContinentCitiesList
@@ -31,11 +33,13 @@ const MainPage = ({ allCities, continentName }) => {
 MainPage.propTypes = {
   allCities: arrayOf(any),
   continentName: string,
+  generateCityList: func,
 };
 
 MainPage.defaultProps = {
   allCities: [],
   continentName: '',
+  generateCityList: () => {},
 };
 
 export default MainPage;

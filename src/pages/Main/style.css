@@ -3,15 +3,9 @@
   height: 50%;
 }
 
-.greetingBlock {
-  font-family: 'Roboto', sans-serif;
-  width: 100%;
-  text-align: center;
-  margin: 10px auto 0px auto;
-}
-
 .mainPageContainer {
-  background-color: #9bb3ba;
+  background-color: #ffffff;
+  font-family: 'Roboto';
 }
 
 .citiesBlock {

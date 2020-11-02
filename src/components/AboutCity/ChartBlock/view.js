@@ -2,21 +2,23 @@ import React from 'react';
 import { arrayOf, any } from 'prop-types';
 
 import ChartLine from 'components/AboutCity/ChartLine/index';
+import styles from './style.css';
 
-const ChartBlock = ({ data }) => (
-  <>
-    {data.map(({ scoreOutOfTen, ...restProps }) => (
+const ChartBlock = ({ chartData }) => (
+  <div className={styles.chartBlock}>
+    <span className={styles.blockTitle}>LIFE QUALITY SCORE</span>
+    {chartData.map(({ score_out_of_10: scoreOutOfTen, ...restProps }) => (
       <ChartLine {...restProps} value={scoreOutOfTen} />
     ))}
-  </>
+  </div>
 );
 
 ChartBlock.propTypes = {
-  data: arrayOf(any),
+  chartData: arrayOf(any),
 };
 
 ChartBlock.defaultProps = {
-  data: [],
+  chartData: [],
 };
 
 export default ChartBlock;
