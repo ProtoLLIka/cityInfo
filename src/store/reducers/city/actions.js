@@ -1,5 +1,4 @@
 import searchCity from 'api/city/utils';
-
 import {
   SELECT_CITY,
   CITY_DOWLOADING_START,
@@ -9,14 +8,17 @@ import {
 
 const searchStarted = () => ({
   type: CITY_DOWLOADING_START,
+  isLoading: true,
 });
 
 const searchSeccessed = () => ({
   type: CITY_DOWLOADING_SUCCESSED,
+  isLoading: false,
 });
 
 const searchError = (err) => ({
   type: CITY_DOWLOADING_ERROR,
+  isLoading: false,
   error: err,
 });
 
@@ -26,12 +28,12 @@ const selectCity = (city) => ({
 });
 
 const getCity = (cityName) => (dispatch) => {
-  console.log('as', cityName);
   dispatch(searchStarted());
+
   searchCity(cityName)
-    .then((res) => {
+    .then(({ city }) => {
       dispatch(searchSeccessed());
-      dispatch(selectCity(res));
+      dispatch(selectCity(city));
     })
     .catch((err) => {
       dispatch(searchError(err));

@@ -25,6 +25,7 @@ module.exports = {
   plugins: ['react'],
   rules: {
     'react/jsx-props-no-spreading': 'off',
+    'linebreak-style': 0,
     'react/jsx-filename-extension': [
       1,
       {

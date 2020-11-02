@@ -1,13 +1,11 @@
-/* eslint-disable no-unused-vars */
 /* eslint-disable no-underscore-dangle */
 import axios from 'axios';
 
-import getCitySlugFromHref from '../../helpers/getCitySlugFromHref';
-import getGeonameIdFromHref from '../../helpers/getGeonameIdFromHref';
+import getCitySlugFromHref from 'helpers/getCitySlugFromHref';
+import getGeonameIdFromHref from 'helpers/getGeonameIdFromHref';
 
 const getCitySlug = async (cityName) => {
   const { data } = await axios.get(process.env.REACT_APP_URBAN_AREAS);
-  console.log(data);
   const urbanAreasLinks = data._links['ua:item'];
   const city = urbanAreasLinks.find(({ name }) => name.toLowerCase() === cityName.toLowerCase());
   const citySlug = getCitySlugFromHref(city.href);
@@ -17,15 +15,11 @@ const getCitySlug = async (cityName) => {
 
 const getChartAndSummary = async (cityName) => {
   const citySlug = await getCitySlug(cityName);
-  const { data, error } = await axios.get(
-    `${process.env.REACT_APP_URBAN_AREAS}${encodeURI(citySlug)}/scores/`, // проверить та ли env переменная
+  const { data } = await axios.get(
+    `${process.env.REACT_APP_URBAN_AREAS}${encodeURI(citySlug)}/scores/`,
   );
 
-  if (error) {
-    return {};
-  }
-
-  const { summary, chart } = data;
+  const { chart, summary } = data;
 
   return { chart, summary };
 };
@@ -34,18 +28,15 @@ const getTitleImg = async (cityName) => {
   const citySlug = await getCitySlug(cityName);
   const {
     data: {
-      photos: [photo],
+      photos: [
+        {
+          image: { web },
+        },
+      ],
     },
-    error,
   } = await axios.get(`${process.env.REACT_APP_URBAN_AREAS}${encodeURI(citySlug)}/images/`);
 
-  if (error) {
-    return {};
-  }
-
-  const titleImg = photo.image.web;
-
-  return titleImg;
+  return web;
 };
 
 const getBasicInfo = async (geonameId) => {
@@ -57,12 +48,7 @@ const getBasicInfo = async (geonameId) => {
         latlon: { latitude, longitude },
       },
     },
-    error,
   } = await axios.get(`${process.env.REACT_APP_CITIES}${geonameId}/`);
-
-  if (error) {
-    return {};
-  }
 
   const result = {
     name,
@@ -77,14 +63,7 @@ const getBasicInfo = async (geonameId) => {
 };
 
 const getCityGeoname = async (cityName) => {
-  const { data, error } = await axios.get(
-    `${process.env.REACT_APP_CITIES}?search=${encodeURI(cityName)}`,
-  );
-
-  if (error) {
-    return {};
-  }
-
+  const { data } = await axios.get(`${process.env.REACT_APP_CITIES}?search=${encodeURI(cityName)}`);
   const searchResults = data._embedded['city:search-results'];
   const linkFirstOfResults = searchResults[0]._links['city:item'].href;
   const geonameId = getGeonameIdFromHref(linkFirstOfResults);
@@ -95,7 +74,7 @@ const getCityGeoname = async (cityName) => {
 const searchCity = async (cityName) => {
   const geonameId = await getCityGeoname(cityName);
   const { name, location, population } = await getBasicInfo(geonameId);
-  const titileImg = await getTitleImg(name);
+  const titleImg = await getTitleImg(name);
   const { summary, chart } = await getChartAndSummary(name);
 
   return {
@@ -103,7 +82,7 @@ const searchCity = async (cityName) => {
       name,
       summary,
       location,
-      titileImg,
+      titleImg,
       population,
       id: geonameId,
       categoryChart: chart,

@@ -1,36 +1,24 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/no-danger */
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Map, YMaps } from 'react-yandex-maps';
-import { string } from 'prop-types';
+import { bool, object } from 'prop-types';
+import { Lines } from 'react-preloaders';
+import { Redirect } from 'react-router';
 
-// import { searchCity } from '../../store/reducers/city/utils';
 import ChartBlock from 'components/AboutCity/ChartBlock/index';
 import NavigationBar from 'components/General/NavigationBar/index';
 
 import './style.css';
 
-const AboutCity = ({ search }) => {
-  const cityName = new URLSearchParams(search).get('city');
-  const [currentCity, setCity] = useState(null);
-
-  useEffect(() => {
-    const getCity = async () => {
-      const city = cityName; // await searchCity(cityName);
-      setCity(city);
-    };
-    getCity();
-  }, []);
-
-  if (currentCity) {
+const AboutCity = ({ city, isLoading }) => {
+  if (city) {
     const {
-      city: {
-        titleImg, categoryChart, location, name, summary,
-      },
-    } = currentCity;
-    const state = { width: '100%', height: '300px' };
+      titleImg, categoryChart, location, name, summary,
+    } = city;
+
     return (
       <div className="cityPageContainer">
-        {/* <img src={titleImg} className="titleImg" alt="Title Image"></img> */}
         <NavigationBar />
         <div className="titleImg" style={{ backgroundImage: `url(${titleImg})` }} />
         <div className="cityName">
@@ -48,8 +36,8 @@ const AboutCity = ({ search }) => {
           <YMaps>
             <Map
               defaultState={{ center: [location.lat, location.lng], zoom: 9 }}
-              width={state.width}
-              height={state.height}
+              width="100%"
+              height="300px"
             />
           </YMaps>
         </div>
@@ -57,19 +45,25 @@ const AboutCity = ({ search }) => {
           <span className="blockTitle">LIFE QUALITY SCORE</span>
           <ChartBlock data={categoryChart} />
         </div>
-        {' '}
       </div>
     );
   }
-  return <div />;
+  return (
+    <div className="cityPageContainer">
+      <NavigationBar />
+    </div>
+  );
 };
 
 AboutCity.propTypes = {
-  search: string,
+  // eslint-disable-next-line react/forbid-prop-types
+  city: object,
+  isLoading: bool,
 };
 
 AboutCity.defaultProps = {
-  search: '',
+  city: {},
+  isLoading: false,
 };
 
 export default AboutCity;

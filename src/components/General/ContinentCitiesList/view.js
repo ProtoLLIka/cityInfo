@@ -1,39 +1,36 @@
-/* eslint-disable no-unused-vars */
 import React from 'react';
-import { any, arrayOf, string } from 'prop-types';
+import {
+  any, arrayOf, func, string,
+} from 'prop-types';
 import { Link } from 'react-router-dom';
 
-import getCity from 'store/reducers/city/actions';
-
 import './style.css';
-import history from 'utils/history';
 
-const clickHandler = (cityName) => {
-  console.log(cityName);
-  getCity(cityName);
-};
-
-const generateCitiesLinks = (cities, nameFilter) => {
+const generateCitiesLinks = (cities, nameFilter, getCity) => {
   const filteredCitiesByName = cities.filter((city) => {
     const nameFilterLowerCase = nameFilter.toLowerCase();
     const cityNameLowerCase = city.name.toLowerCase();
     const isNameContains = cityNameLowerCase.includes(nameFilterLowerCase);
+
     return isNameContains;
   });
 
   const citiesLinks = filteredCitiesByName.map(({ name }, index) => (
     // eslint-disable-next-line react/no-array-index-key
-    <Link to="/all" key={index} className="link" onClick={() => clickHandler(name)}>
+    <Link to="/about" key={index} className="link" onClick={() => getCity(name)}>
       {name}
     </Link>
   ));
+
   return citiesLinks;
 };
 
-const ContinentCitiesList = ({ cities, continentName, nameFilter }) => {
-  const citiesLinks = generateCitiesLinks(cities, nameFilter);
+const ContinentCitiesList = ({
+  cities, continentName, nameFilter, getCity,
+}) => {
+  const citiesLinks = generateCitiesLinks(cities, nameFilter, getCity);
   const label = citiesLinks.length >= 1 ? <h1>{continentName}</h1> : null;
-  history.push('/about');
+
   return (
     <div className="cititesBlock">
       {label}
@@ -46,12 +43,14 @@ ContinentCitiesList.propTypes = {
   continentName: string,
   cities: arrayOf(any),
   nameFilter: string,
+  getCity: func,
 };
 
 ContinentCitiesList.defaultProps = {
   continentName: '',
   cities: [],
   nameFilter: '',
+  getCity: () => {},
 };
 
 export default ContinentCitiesList;

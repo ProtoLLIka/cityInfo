@@ -4,8 +4,6 @@ import React, { useEffect, useState } from 'react';
 import { arrayOf, any, func } from 'prop-types';
 
 import NavigationBar from 'components/General/NavigationBar/index';
-import { ALL } from 'consts/consts';
-// import { generateCityList } from 'store/reducers/cityList/reducer';
 
 import './style.css';
 import ContinentCitiesList from 'components/General/ContinentCitiesList';
@@ -21,24 +19,21 @@ const generateLinksBlocks = (cities, nameFilter) => {
         nameFilter={nameFilter}
       />
     );
+
     return block;
   });
+
   return citiesBlocks;
 };
 
 const AllCities = ({ cities, generateCityList }) => {
-  useEffect(() => {
-    const getCityList = async () => {
-      generateCityList();
-    };
-    getCityList();
-  }, []);
+  useEffect(() => generateCityList(), []);
 
   const [nameFilter, setNameFilter] = useState('');
+
   const listBlocks = generateLinksBlocks(cities, nameFilter);
   return (
     <>
-      {/* {state.isLoading && <Lines />} */}
       <NavigationBar />
       <div className="searchContainer">
         <input

@@ -1,3 +1,4 @@
+import { getAllCities } from 'api/cityList';
 import {
   CITY_LIST_ADD_CITIES,
   CITY_LIST_CHANGE_FILTER_TYPE,
@@ -5,7 +6,6 @@ import {
   CITY_LIST_LOADING_START,
   CITY_LIST_LOADING_SUCCESSED,
 } from './types';
-import { getAllCities } from '../../../api/cityList';
 
 const changeFilter = (type) => ({
   type: CITY_LIST_CHANGE_FILTER_TYPE,
@@ -32,6 +32,7 @@ const setCities = (cities) => ({
 
 const generateCityList = () => (dispatch) => {
   dispatch(loadingStarted());
+
   getAllCities()
     .then((res) => {
       dispatch(loadingSeccessful());

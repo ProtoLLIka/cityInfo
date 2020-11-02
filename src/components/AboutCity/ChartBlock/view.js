@@ -1,7 +1,6 @@
 import React from 'react';
 import { arrayOf, any } from 'prop-types';
 
-// eslint-disable-next-line import/no-unresolved
 import ChartLine from 'components/AboutCity/ChartLine/index';
 
 const ChartBlock = ({ data }) => (

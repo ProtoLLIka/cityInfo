@@ -6,6 +6,11 @@ import { ALL } from 'consts/consts';
 
 import './style.css';
 
+const clickHandler = (generateCityList, changeFilter) => {
+  changeFilter(ALL);
+  generateCityList();
+};
+
 const NavigationBar = ({ generateCityList, changeFilter }) => (
   <div className="container">
     <span className="allCitiesBtn">
@@ -13,8 +18,7 @@ const NavigationBar = ({ generateCityList, changeFilter }) => (
         to="/all"
         className="link"
         onClick={() => {
-          changeFilter(ALL);
-          generateCityList();
+          clickHandler(generateCityList, changeFilter);
         }}
       >
         All cities
@@ -24,8 +28,7 @@ const NavigationBar = ({ generateCityList, changeFilter }) => (
       to="/main"
       className="link logo"
       onClick={() => {
-        changeFilter(ALL);
-        generateCityList();
+        clickHandler(generateCityList, changeFilter);
       }}
     >
       LOGO HERE!

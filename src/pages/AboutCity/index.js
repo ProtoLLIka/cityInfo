@@ -1,5 +1,6 @@
 import View from './view';
+import Connector from './connect';
 
-const CityPage = View;
+const AboutCity = Connector(View);
 
-export default CityPage;
+export default AboutCity;

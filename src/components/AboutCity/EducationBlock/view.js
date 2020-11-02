@@ -1,7 +1,7 @@
 import React from 'react';
 
 const EducationBlock = () => (
-  <div>
+  <>
     <span className="educationTitle">EDUCATION</span>
     <div className="highSchools">
       <span>HIGH SCHOOLS</span>
@@ -10,7 +10,7 @@ const EducationBlock = () => (
     </div>
     <div className="ibSchools" />
     <div className="university" />
-  </div>
+  </>
 );
 
 export default EducationBlock;
