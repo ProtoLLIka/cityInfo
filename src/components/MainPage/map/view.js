@@ -6,7 +6,7 @@ import {
   ASIA, NORTH_AMERICA, SOUTH_AMERICA, OCEANIA, EUROPE, AFRICA,
 } from 'consts/consts';
 
-import './style.css';
+import styles from './style.css';
 
 const Map = ({ changeFilter, generateCityList }) => {
   const clickHandler = (continent) => {
@@ -20,17 +20,15 @@ const Map = ({ changeFilter, generateCityList }) => {
 
   return (
     <svg
-      className="map"
+      className={styles.map}
       version="1.1"
       id="Layer_1"
       xmlns="http://www.w3.org/2000/svg"
-      width="1000px"
-      height="1200px"
       viewBox="-45 320 1300 1300"
       preserveAspectRatio="xMinYMin"
     >
       <g
-        className="continent"
+        className={styles.continent}
         onClick={() => {
           clickHandler(ASIA);
         }}
@@ -281,7 +279,7 @@ const Map = ({ changeFilter, generateCityList }) => {
         />
       </g>
       <g
-        className="continent"
+        className={styles.continent}
         onClick={() => {
           clickHandler(NORTH_AMERICA);
         }}
@@ -631,7 +629,7 @@ const Map = ({ changeFilter, generateCityList }) => {
         />
       </g>
       <g
-        className="continent"
+        className={styles.continent}
         onClick={() => {
           clickHandler(SOUTH_AMERICA);
         }}
@@ -661,7 +659,7 @@ const Map = ({ changeFilter, generateCityList }) => {
         />
       </g>
       <g
-        className="continent"
+        className={styles.continent}
         onClick={() => {
           clickHandler(OCEANIA);
         }}
@@ -712,7 +710,7 @@ const Map = ({ changeFilter, generateCityList }) => {
         />
       </g>
       <g
-        className="continent"
+        className={styles.continent}
         onClick={() => {
           clickHandler(EUROPE);
         }}
@@ -820,7 +818,7 @@ const Map = ({ changeFilter, generateCityList }) => {
         />
       </g>
       <g
-        className="continent"
+        className={styles.continent}
         onClick={() => {
           clickHandler(AFRICA);
         }}

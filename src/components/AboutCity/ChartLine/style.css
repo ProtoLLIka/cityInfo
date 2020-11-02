@@ -1,4 +1,4 @@
-.progress-bar {
+.progressBar {
   height: 20px;
   width: 400px;
   border-radius: 5px;
@@ -10,6 +10,7 @@
   width: 200px;
   height: 30px;
 }
+
 .filler {
   height: 100%;
   border-radius: inherit;

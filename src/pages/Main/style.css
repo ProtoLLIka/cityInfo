@@ -1,17 +1,21 @@
 .map {
-  width : 100%;
+  width: 100%;
   height: 50%;
 }
 
 .greetingBlock {
   font-family: 'Roboto', sans-serif;
-  width      : 100%;
-  text-align : center;
-  margin     : 10px auto 0px auto;
+  width: 100%;
+  text-align: center;
+  margin: 10px auto 0px auto;
+}
+
+.mainPageContainer {
+  background-color: #9bb3ba;
 }
 
 .citiesBlock {
   position: absolute;
-  top     : 950px;
-  left    : 420px;
+  top: 950px;
+  left: 420px;
 }

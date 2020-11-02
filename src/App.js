@@ -14,7 +14,7 @@ const App = () => (
     <Provider store={store}>
       <Router history={history}>
         <Switch>
-          <Route path="/main" component={MainPage} />
+          <Route path="/" component={MainPage} />
           <Route path="/about" component={CityPage} />
           <Route path="/all" component={AllCities} />
           <Route path="*" component={Page404} />

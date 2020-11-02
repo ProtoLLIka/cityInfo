@@ -4,9 +4,9 @@ import React, { useEffect, useState } from 'react';
 import { arrayOf, any, func } from 'prop-types';
 
 import NavigationBar from 'components/General/NavigationBar/index';
-
-import './style.css';
 import ContinentCitiesList from 'components/General/ContinentCitiesList';
+
+import styles from './style.css';
 
 const generateLinksBlocks = (cities, nameFilter) => {
   const citiesBlocks = cities.map((cititesOnContinent, index) => {
@@ -35,17 +35,17 @@ const AllCities = ({ cities, generateCityList }) => {
   return (
     <>
       <NavigationBar />
-      <div className="searchContainer">
+      <div className={styles.searchContainer}>
         <input
           type="text"
           placeholder="Search.."
-          className="search"
+          className={styles.search}
           onChange={(event) => {
             setNameFilter(event.target.value);
           }}
         />
       </div>
-      <div className="citiesList">{listBlocks}</div>
+      <div className={styles.citiesList}>{listBlocks}</div>
     </>
   );
 };

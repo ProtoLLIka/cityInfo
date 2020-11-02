@@ -1,17 +1,17 @@
 import React from 'react';
 import { number, string } from 'prop-types';
 
-import './style.css';
+import styles from './style.css';
 
 const ChartLine = ({ value, color, name }) => (
-  <div className="lineBlock">
-    <div className="nameBlock">
-      <h1 className="lineName">{name}</h1>
+  <div className={styles.lineBlock}>
+    <div className={styles.nameBlock}>
+      <h1 className={styles.lineName}>{name}</h1>
     </div>
-    <div className="progress-bar">
-      <div className="filler" style={{ width: `${value * 10}%`, background: `${color}` }} />
+    <div className={styles.progressBar}>
+      <div className={styles.filler} style={{ width: `${value * 10}%`, background: `${color}` }} />
     </div>
-    <span className="scoreLabel">{`${Math.floor(value)}/10`}</span>
+    <span className={styles.scoreLabel}>{`${Math.floor(value)}/10`}</span>
   </div>
 );
 

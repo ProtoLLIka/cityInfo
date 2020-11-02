@@ -4,7 +4,7 @@ import { func } from 'prop-types';
 
 import { ALL } from 'consts/consts';
 
-import './style.css';
+import styles from './style.css';
 
 const clickHandler = (generateCityList, changeFilter) => {
   changeFilter(ALL);
@@ -12,11 +12,11 @@ const clickHandler = (generateCityList, changeFilter) => {
 };
 
 const NavigationBar = ({ generateCityList, changeFilter }) => (
-  <div className="container">
-    <span className="allCitiesBtn">
+  <div className={styles.container}>
+    <span className={styles.allCitiesBtn}>
       <Link
         to="/all"
-        className="link"
+        className={styles.link}
         onClick={() => {
           clickHandler(generateCityList, changeFilter);
         }}
@@ -25,8 +25,8 @@ const NavigationBar = ({ generateCityList, changeFilter }) => (
       </Link>
     </span>
     <Link
-      to="/main"
-      className="link logo"
+      to="/"
+      className={`${styles.link} ${styles.logo}`}
       onClick={() => {
         clickHandler(generateCityList, changeFilter);
       }}

@@ -1,10 +1,10 @@
 import React from 'react';
 
-import './style.css';
+import styles from './style.css';
 
 const SearchField = () => (
-  <div className="searchContainer">
-    <input type="text" placeholder="Search.." className="search" />
+  <div className={styles.searchContainer}>
+    <input className={styles.search} type="text" placeholder="Search.." />
   </div>
 );
 

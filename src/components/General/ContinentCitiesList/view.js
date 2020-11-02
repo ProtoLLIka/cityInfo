@@ -4,7 +4,7 @@ import {
 } from 'prop-types';
 import { Link } from 'react-router-dom';
 
-import './style.css';
+import styles from './style.css';
 
 const generateCitiesLinks = (cities, nameFilter, getCity) => {
   const filteredCitiesByName = cities.filter((city) => {
@@ -17,7 +17,7 @@ const generateCitiesLinks = (cities, nameFilter, getCity) => {
 
   const citiesLinks = filteredCitiesByName.map(({ name }, index) => (
     // eslint-disable-next-line react/no-array-index-key
-    <Link to="/about" key={index} className="link" onClick={() => getCity(name)}>
+    <Link to="/about" key={index} className={styles.link} onClick={() => getCity(name)}>
       {name}
     </Link>
   ));
@@ -32,9 +32,9 @@ const ContinentCitiesList = ({
   const label = citiesLinks.length >= 1 ? <h1>{continentName}</h1> : null;
 
   return (
-    <div className="cititesBlock">
+    <div className={styles.cititesBlock}>
       {label}
-      <div className="cititesList">{citiesLinks}</div>
+      <div className={styles.cititesList}>{citiesLinks}</div>
     </div>
   );
 };

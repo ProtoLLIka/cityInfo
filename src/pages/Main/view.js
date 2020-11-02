@@ -5,7 +5,7 @@ import Map from 'components/MainPage/Map/index';
 import NavigationBar from 'components/General/NavigationBar/index';
 import ContinentCitiesList from 'components/General/ContinentCitiesList/index';
 
-import './style.css';
+import styles from './style.css';
 
 const MainPage = ({ allCities, continentName }) => {
   const citiesOnContinent = allCities
@@ -13,11 +13,11 @@ const MainPage = ({ allCities, continentName }) => {
     .flat(1);
 
   return (
-    <div style={{ backgroundColor: '#9bb3ba' }}>
+    <div className={styles.mainPageContainer}>
       <NavigationBar />
-      <h1 className="greetingBlock">Choose continent:</h1>
+      <h1 className={styles.greetingBlock}>Choose continent:</h1>
       <Map />
-      <div className="citiesBlock">
+      <div className={styles.citiesBlock}>
         <ContinentCitiesList
           cities={citiesOnContinent}
           continentName={continentName}
