@@ -11,7 +11,7 @@ const searchStarted = () => ({
   isLoading: true,
 });
 
-const searchSeccessed = () => ({
+const searchSuccessed = () => ({
   type: CITY_DOWLOADING_SUCCESSED,
   isLoading: false,
 });
@@ -32,7 +32,7 @@ const getCity = (cityName) => (dispatch) => {
 
   searchCity(cityName)
     .then(({ city }) => {
-      dispatch(searchSeccessed());
+      dispatch(searchSuccessed());
       dispatch(selectCity(city));
     })
     .catch((err) => {

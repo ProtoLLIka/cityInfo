@@ -16,7 +16,7 @@ const loadingStarted = () => ({
   type: CITY_LIST_LOADING_START,
 });
 
-const loadingSeccessful = () => ({
+const loadingSuccessful = () => ({
   type: CITY_LIST_LOADING_SUCCESSED,
 });
 
@@ -35,7 +35,7 @@ const generateCityList = () => (dispatch) => {
 
   getAllCities()
     .then((res) => {
-      dispatch(loadingSeccessful());
+      dispatch(loadingSuccessful());
       dispatch(setCities(res));
     })
     .catch((err) => {

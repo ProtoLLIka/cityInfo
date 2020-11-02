@@ -8,7 +8,7 @@ import NavigationBar from 'components/General/NavigationBar/index';
 import TitleOfCity from 'components/AboutCity/TitleOfCity/index';
 import Summary from 'components/AboutCity/Summary/index';
 import YandexMap from 'components/AboutCity/YandexMap/index';
-
+import { Lines } from 'react-preloaders';
 import styles from './style.css';
 
 const AboutCity = ({ city, isLoading }) => {
@@ -16,13 +16,13 @@ const AboutCity = ({ city, isLoading }) => {
     top: 0,
     behavior: 'smooth',
   });
-
   if (city) {
     const {
       titleImg, categoryChart, location, name, summary,
     } = city;
     return (
       <div className={styles.cityPageContainer}>
+        {/* {isLoading && <Lines />} */}
         <NavigationBar />
         <TitleOfCity name={name} titleImg={titleImg} />
         <Summary name={name} summary={summary} />

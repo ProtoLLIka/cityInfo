@@ -2,10 +2,10 @@
 /* eslint-disable react/no-array-index-key */
 import React, { useEffect, useState } from 'react';
 import { arrayOf, any, func } from 'prop-types';
-import Sticky from 'react-sticky-el';
 
 import NavigationBar from 'components/General/NavigationBar/index';
 import ContinentCitiesList from 'components/General/ContinentCitiesList';
+import Sticky from 'react-sticky-el';
 
 import styles from './style.css';
 

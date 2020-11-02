@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { func } from 'prop-types';
 
+import DropdownList from 'components/General/DropdownList/index';
 import { ALL } from 'consts/consts';
 
 import styles from './style.css';
@@ -32,6 +33,7 @@ const NavigationBar = ({ generateCityList, changeFilter }) => (
       LOGO HERE!
     </Link>
     <input className={styles.searchField} />
+    <DropdownList />
   </div>
 );
 
