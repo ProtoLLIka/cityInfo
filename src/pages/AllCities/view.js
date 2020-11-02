@@ -1,44 +1,32 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/no-array-index-key */
 import React, { useEffect, useState } from 'react';
-import {
-  string, arrayOf, any, func,
-} from 'prop-types';
+import { arrayOf, any, func } from 'prop-types';
 
 import NavigationBar from 'components/General/NavigationBar/index';
 import { ALL } from 'consts/consts';
 // import { generateCityList } from 'store/reducers/cityList/reducer';
-import CitiesList from 'components/AllCities/CitiesList/index';
 
 import './style.css';
+import ContinentCitiesList from 'components/General/ContinentCitiesList';
 
-const groupBy = (xs, key) => xs.reduce((rv, x) => {
-  const o = rv;
-  (o[x[key]] = o[x[key]] || []).push(x);
-  return o;
-}, Object.create(null));
-
-const filterByContinent = (cities, continentName) => {
-  if (continentName === ALL) {
-    return cities;
-  }
-
-  const continentCities = cities.find(({ name }) => name === continentName);
-
-  return continentCities;
+const generateLinksBlocks = (cities, nameFilter) => {
+  const citiesBlocks = cities.map((cititesOnContinent, index) => {
+    const continentName = cititesOnContinent[0].continent;
+    const block = (
+      <ContinentCitiesList
+        cities={cititesOnContinent}
+        continentName={continentName}
+        key={index}
+        nameFilter={nameFilter}
+      />
+    );
+    return block;
+  });
+  return citiesBlocks;
 };
 
-export const getContinent = (citiesArray, continentName) => {
-  const continents = Object.entries(groupBy(citiesArray, 'continent')).map(([name, cities]) => ({
-    name,
-    cities,
-  }));
-  const continent = filterByContinent(continents, continentName);
-
-  return continent;
-};
-
-const AllCities = ({ cities, filterType, generateCityList }) => {
-  const [filterName, setFilterName] = useState('');
-
+const AllCities = ({ cities, generateCityList }) => {
   useEffect(() => {
     const getCityList = async () => {
       generateCityList();
@@ -46,11 +34,11 @@ const AllCities = ({ cities, filterType, generateCityList }) => {
     getCityList();
   }, []);
 
-  const continent = getContinent([...cities], filterType, filterName);
-  console.log(continent);
+  const [nameFilter, setNameFilter] = useState('');
+  const listBlocks = generateLinksBlocks(cities, nameFilter);
   return (
     <>
-      {/* {state.isDowloading && <Lines />} */}
+      {/* {state.isLoading && <Lines />} */}
       <NavigationBar />
       <div className="searchContainer">
         <input
@@ -58,26 +46,22 @@ const AllCities = ({ cities, filterType, generateCityList }) => {
           placeholder="Search.."
           className="search"
           onChange={(event) => {
-            setFilterName(event.target.value);
+            setNameFilter(event.target.value);
           }}
         />
       </div>
-      <div className="citiesList">
-        <CitiesList continent={continent} cities={continent.cities} />
-      </div>
+      <div className="citiesList">{listBlocks}</div>
     </>
   );
 };
 
 AllCities.propTypes = {
   cities: arrayOf(any),
-  filterType: string,
   generateCityList: func,
 };
 
 AllCities.defaultProps = {
   cities: [],
-  filterType: '',
   generateCityList: () => {},
 };
 

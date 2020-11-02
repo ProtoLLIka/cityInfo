@@ -6,11 +6,13 @@ import getContinentIdFromHref from '../../helpers/getContinentIdFromHref';
 const getContinents = async () => {
   const res = await axios.get(process.env.REACT_APP_CONTINENTS);
   const continentsLinks = res.data._links['continent:items'];
-  const continents = continentsLinks.map(({ href, name }) => ({
+  const continentsWithAntarctica = continentsLinks.map(({ href, name }) => ({
     continentId: getContinentIdFromHref(href),
     name,
   }));
-
+  const continents = continentsWithAntarctica.filter(
+    (continent) => continent.name !== 'Antarctica',
+  );
   return continents;
 };
 
@@ -28,11 +30,8 @@ const getCitiesByContinent = async ({ continentId, name: continentName }) => {
 
 const getAllCities = async () => {
   const continents = await getContinents();
-  console.log('continents', continents);
   const continentsCitiesReq = continents.map(async (continent) => getCitiesByContinent(continent));
-  console.log('continentsCitiesReq', await Promise.all(continentsCitiesReq));
   const cities = await Promise.all(continentsCitiesReq);
-  console.log('cities', cities);
   return cities;
 };
 

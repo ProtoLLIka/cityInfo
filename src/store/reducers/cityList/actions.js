@@ -1,9 +1,9 @@
 import {
   CITY_LIST_ADD_CITIES,
   CITY_LIST_CHANGE_FILTER_TYPE,
-  CITY_LIST_DOWLOADING_START,
   CITY_LIST_LOADING_ERROR,
-  CITY_LIST_DOWLOADING_SUCCESSED,
+  CITY_LIST_LOADING_START,
+  CITY_LIST_LOADING_SUCCESSED,
 } from './types';
 import { getAllCities } from '../../../api/cityList';
 
@@ -12,15 +12,15 @@ const changeFilter = (type) => ({
   filterType: type,
 });
 
-const generateStarted = () => ({
-  type: CITY_LIST_DOWLOADING_START,
+const loadingStarted = () => ({
+  type: CITY_LIST_LOADING_START,
 });
 
-const generateSeccessed = () => ({
-  type: CITY_LIST_DOWLOADING_SUCCESSED,
+const loadingSeccessful = () => ({
+  type: CITY_LIST_LOADING_SUCCESSED,
 });
 
-const generateError = (error) => ({
+const loadingError = (error) => ({
   type: CITY_LIST_LOADING_ERROR,
   error,
 });
@@ -31,14 +31,14 @@ const setCities = (cities) => ({
 });
 
 const generateCityList = () => (dispatch) => {
-  dispatch(generateStarted());
+  dispatch(loadingStarted());
   getAllCities()
     .then((res) => {
-      dispatch(generateSeccessed());
+      dispatch(loadingSeccessful());
       dispatch(setCities(res));
     })
     .catch((err) => {
-      dispatch(generateError(err));
+      dispatch(loadingError(err));
     });
 };
 

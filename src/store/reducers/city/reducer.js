@@ -18,14 +18,14 @@ const INITIAL_STATE_CITY = {
     categoryChart: [],
     summary: '',
   },
-  isDowloading: false,
+  isLoading: false,
 };
 
 const handlers = {
   [SELECT_CITY]: (state, action) => ({ ...state, city: action.city }),
-  [CITY_DOWLOADING_START]: (state) => ({ ...state, isDowloading: true }),
-  [CITY_DOWLOADING_SUCCESSED]: (state) => ({ ...state, isDowloading: false }),
-  [CITY_DOWLOADING_ERROR]: (state) => ({ ...state, isDowloading: false }),
+  [CITY_DOWLOADING_START]: (state) => ({ ...state, isLoading: true }),
+  [CITY_DOWLOADING_SUCCESSED]: (state) => ({ ...state, isLoading: false }),
+  [CITY_DOWLOADING_ERROR]: (state) => ({ ...state, isLoading: false }),
 };
 
 const city = (state = INITIAL_STATE_CITY, action) => {

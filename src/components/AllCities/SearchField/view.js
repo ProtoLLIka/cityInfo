@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './styles/searchField.css';
+import './style.css';
 
 const SearchField = () => (
   <div className="searchContainer">

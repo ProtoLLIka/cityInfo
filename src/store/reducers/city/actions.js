@@ -26,6 +26,7 @@ const selectCity = (city) => ({
 });
 
 const getCity = (cityName) => (dispatch) => {
+  console.log('as', cityName);
   dispatch(searchStarted());
   searchCity(cityName)
     .then((res) => {

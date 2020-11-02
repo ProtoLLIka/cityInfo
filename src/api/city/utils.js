@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-underscore-dangle */
 import axios from 'axios';
 
@@ -6,10 +7,9 @@ import getGeonameIdFromHref from '../../helpers/getGeonameIdFromHref';
 
 const getCitySlug = async (cityName) => {
   const { data } = await axios.get(process.env.REACT_APP_URBAN_AREAS);
+  console.log(data);
   const urbanAreasLinks = data._links['ua:item'];
-  const city = urbanAreasLinks.find(
-    ({ name }) => city.name.toLowerCase() === cityName.toLowerCase(),
-  );
+  const city = urbanAreasLinks.find(({ name }) => name.toLowerCase() === cityName.toLowerCase());
   const citySlug = getCitySlugFromHref(city.href);
 
   return citySlug;
@@ -27,7 +27,7 @@ const getChartAndSummary = async (cityName) => {
 
   const { summary, chart } = data;
 
-  return { chart: charData, summary };
+  return { chart, summary };
 };
 
 const getTitleImg = async (cityName) => {
