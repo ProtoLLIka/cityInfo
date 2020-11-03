@@ -1,0 +1,15 @@
+.preloaderContainer {
+  height: 4000px;
+  width: 100%;
+  position: absolute;
+  top: 0px;
+  z-index: 11;
+  background-color: #fdfdfde0;
+}
+
+.preloader {
+  width: 100px;
+  height: 100px;
+  margin: 350px auto 0 auto;
+  display: block;
+}

@@ -1,0 +1,50 @@
+.dropdownList {
+  width: 205px;
+  height: 300px;
+  overflow-y: scroll;
+  background-color: white;
+  border: 1px solid #00000080;
+  border-radius: 5px;
+  overflow-x: hidden;
+}
+.searchField {
+  width: 200px;
+  height: 30px;
+  margin: 15px 15px 0 0;
+  font-size: 20px;
+  background-color: #111;
+  border-top-style: hidden;
+  border-right-style: hidden;
+  border-left-style: hidden;
+  border-bottom-style: groove;
+}
+
+.searchField:focus {
+  outline: none;
+  background-color: white;
+}
+
+.dropdownList > ul {
+  list-style-type: none;
+  padding: 0 0 0 0px;
+  margin-top: 5px;
+}
+
+.listElement {
+  padding: 0 0 0 5px;
+}
+
+.listElement:hover {
+  background-color: #bbbbbb;
+}
+
+.noCityElement {
+  text-align: center;
+}
+
+.link {
+  font-size: 15px;
+  text-decoration: none;
+  color: #000000;
+  flex: 0 0 0px;
+}

@@ -1,3 +1,4 @@
+/* eslint-disable react/no-array-index-key */
 import React from 'react';
 import { arrayOf, any } from 'prop-types';
 
@@ -7,8 +8,8 @@ import styles from './style.css';
 const ChartBlock = ({ chartData }) => (
   <div className={styles.chartBlock}>
     <span className={styles.blockTitle}>LIFE QUALITY SCORE</span>
-    {chartData.map(({ score_out_of_10: scoreOutOfTen, ...restProps }) => (
-      <ChartLine {...restProps} value={scoreOutOfTen} />
+    {chartData.map(({ score_out_of_10: scoreOutOfTen, ...restProps }, index) => (
+      <ChartLine {...restProps} value={scoreOutOfTen} key={index} />
     ))}
   </div>
 );

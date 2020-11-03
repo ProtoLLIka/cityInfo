@@ -2,6 +2,7 @@
   width: 400px;
   margin: 0px auto 20px auto;
   padding: 20px;
+  background-color: #0bcf6b;
   box-shadow: 0 0 5px #00000030;
 }
 
@@ -10,4 +11,5 @@
   font-size: 30px;
   text-align: left;
   margin-bottom: 10px;
+  color: white;
 }

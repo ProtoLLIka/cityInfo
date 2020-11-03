@@ -9,7 +9,7 @@ import {
 import styles from './style.css';
 
 const Map = ({ changeFilter, generateCityList }) => {
-  const clickHandler = (continent) => {
+  const handleClick = (continent) => {
     changeFilter(continent);
     generateCityList();
     window.scrollTo({
@@ -30,7 +30,7 @@ const Map = ({ changeFilter, generateCityList }) => {
       <g
         className={styles.continent}
         onClick={() => {
-          clickHandler(ASIA);
+          handleClick(ASIA);
         }}
       >
         <path
@@ -281,7 +281,7 @@ const Map = ({ changeFilter, generateCityList }) => {
       <g
         className={styles.continent}
         onClick={() => {
-          clickHandler(NORTH_AMERICA);
+          handleClick(NORTH_AMERICA);
         }}
       >
         <path
@@ -631,7 +631,7 @@ const Map = ({ changeFilter, generateCityList }) => {
       <g
         className={styles.continent}
         onClick={() => {
-          clickHandler(SOUTH_AMERICA);
+          handleClick(SOUTH_AMERICA);
         }}
       >
         <path
@@ -661,7 +661,7 @@ const Map = ({ changeFilter, generateCityList }) => {
       <g
         className={styles.continent}
         onClick={() => {
-          clickHandler(OCEANIA);
+          handleClick(OCEANIA);
         }}
       >
         <path
@@ -712,7 +712,7 @@ const Map = ({ changeFilter, generateCityList }) => {
       <g
         className={styles.continent}
         onClick={() => {
-          clickHandler(EUROPE);
+          handleClick(EUROPE);
         }}
       >
         <path
@@ -820,7 +820,7 @@ const Map = ({ changeFilter, generateCityList }) => {
       <g
         className={styles.continent}
         onClick={() => {
-          clickHandler(AFRICA);
+          handleClick(AFRICA);
         }}
       >
         <path

@@ -29,14 +29,15 @@ const ContinentCitiesList = ({
   cities, continentName, nameFilter, getCity,
 }) => {
   const citiesLinks = generateCitiesLinks(cities, nameFilter, getCity);
-  const label = citiesLinks.length >= 1 ? <h1>{continentName}</h1> : null;
-
-  return (
+  const block = (
     <div className={styles.cititesBlock}>
-      {label}
+      <h1>{continentName}</h1>
       <div className={styles.cititesList}>{citiesLinks}</div>
     </div>
   );
+  const element = citiesLinks.length > 0 ? block : null;
+
+  return element;
 };
 
 ContinentCitiesList.propTypes = {

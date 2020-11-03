@@ -1,0 +1,19 @@
+.appContainer {
+  background-color: #0bcf6b;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #ffffff;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(53, 53, 53);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #111;
+}

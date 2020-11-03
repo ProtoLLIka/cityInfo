@@ -2,12 +2,13 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { func } from 'prop-types';
 
-import DropdownList from 'components/General/DropdownList/index';
+import NavSearchField from 'components/General/NavSearchField/index';
 import { ALL } from 'consts/consts';
+import logo from 'assets/logo.png';
 
 import styles from './style.css';
 
-const clickHandler = (generateCityList, changeFilter) => {
+const handleClick = (generateCityList, changeFilter) => {
   changeFilter(ALL);
   generateCityList();
 };
@@ -18,7 +19,7 @@ const NavigationBar = ({ generateCityList, changeFilter }) => (
       to="/all"
       className={`${styles.link} ${styles.allCitiesBtn}`}
       onClick={() => {
-        clickHandler(generateCityList, changeFilter);
+        handleClick(generateCityList, changeFilter);
       }}
     >
       All cities
@@ -27,13 +28,12 @@ const NavigationBar = ({ generateCityList, changeFilter }) => (
       to="/"
       className={`${styles.link} ${styles.logo}`}
       onClick={() => {
-        clickHandler(generateCityList, changeFilter);
+        handleClick(generateCityList, changeFilter);
       }}
     >
-      LOGO HERE!
+      <img className={styles.logo} src={logo} alt="MEDIASOFT" />
     </Link>
-    <input className={styles.searchField} />
-    <DropdownList />
+    <NavSearchField />
   </div>
 );
 

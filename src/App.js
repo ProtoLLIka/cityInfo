@@ -8,8 +8,10 @@ import MainPage from 'pages/Main/index';
 import CityPage from 'pages/AboutCity/index';
 import store from 'store/index';
 
+import styles from './App.css';
+
 const App = () => (
-  <>
+  <div className={styles.appContainer}>
     <Provider store={store}>
       <Router>
         <Switch>
@@ -20,7 +22,7 @@ const App = () => (
         </Switch>
       </Router>
     </Provider>
-  </>
+  </div>
 );
 
 export default App;

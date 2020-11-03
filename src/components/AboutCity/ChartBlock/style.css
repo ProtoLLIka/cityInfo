@@ -1,14 +1,16 @@
 .chartBlock {
   width: 400px;
-  height: 100%;
-  height: fit-content;
+  height: 1060px;
+  background-color: #0bcf6b;
   box-shadow: 0 0 5px #00000030;
+  padding: 20px;
   margin: 20px auto 0px auto;
 }
 
 .blockTitle {
   padding: 5px 0 5px 0;
   font-size: 30px;
+  color: white;
   text-align: left;
   margin-bottom: 10px;
 }
