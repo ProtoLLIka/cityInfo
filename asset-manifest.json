@@ -1,0 +1,30 @@
+{
+  "files": {
+    "main.js": "/cityInfo/static/js/main.a61d65fe.chunk.js",
+    "main.js.map": "/cityInfo/static/js/main.a61d65fe.chunk.js.map",
+    "runtime-main.js": "/cityInfo/static/js/runtime-main.098a7657.js",
+    "runtime-main.js.map": "/cityInfo/static/js/runtime-main.098a7657.js.map",
+    "static/js/2.f336d02f.chunk.js": "/cityInfo/static/js/2.f336d02f.chunk.js",
+    "static/js/2.f336d02f.chunk.js.map": "/cityInfo/static/js/2.f336d02f.chunk.js.map",
+    "index.html": "/cityInfo/index.html",
+    "precache-manifest.54a07f6f85796baa2293018ada87ecc8.js": "/cityInfo/precache-manifest.54a07f6f85796baa2293018ada87ecc8.js",
+    "service-worker.js": "/cityInfo/service-worker.js",
+    "static/js/2.f336d02f.chunk.js.LICENSE.txt": "/cityInfo/static/js/2.f336d02f.chunk.js.LICENSE.txt",
+    "static/media/artGalary.jpg": "/cityInfo/static/media/artGalary.c229caf7.jpg",
+    "static/media/cinema.jpg": "/cityInfo/static/media/cinema.24715a8e.jpg",
+    "static/media/comedyClub.jpg": "/cityInfo/static/media/comedyClub.e25a4a6e.jpg",
+    "static/media/concertVenue.jpg": "/cityInfo/static/media/concertVenue.9f7a336a.jpg",
+    "static/media/fire.svg": "/cityInfo/static/media/fire.236d8ac7.svg",
+    "static/media/historicalSite.jpg": "/cityInfo/static/media/historicalSite.2b680f81.jpg",
+    "static/media/logo.png": "/cityInfo/static/media/logo.82161d97.png",
+    "static/media/museum.jpg": "/cityInfo/static/media/museum.502662d5.jpg",
+    "static/media/radiation.svg": "/cityInfo/static/media/radiation.91933c8f.svg",
+    "static/media/snowflake.svg": "/cityInfo/static/media/snowflake.a7d60549.svg",
+    "static/media/sun.svg": "/cityInfo/static/media/sun.52611464.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.098a7657.js",
+    "static/js/2.f336d02f.chunk.js",
+    "static/js/main.a61d65fe.chunk.js"
+  ]
+}
