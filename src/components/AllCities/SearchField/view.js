@@ -4,7 +4,7 @@ import styles from './style.css';
 
 const SearchField = () => (
   <div className={styles.searchContainer}>
-    <input className={styles.search} type="text" placeholder="Search.." />
+    <input className={styles.search} type="text" placeholder="Search..." />
   </div>
 );
 

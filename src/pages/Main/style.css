@@ -5,10 +5,13 @@
 
 .mainPageContainer {
   font-family: 'Roboto';
+  height: 2000px;
 }
 
 .citiesBlock {
-  position: absolute;
+  /* position: absolute;
   top: 950px;
-  left: 420px;
+  left: 420px; */
+  width: auto;
+  margin: 0 auto;
 }

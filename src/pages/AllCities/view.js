@@ -34,13 +34,13 @@ const AllCities = ({ cities, generateCityList }) => {
 
   const listBlocks = generateLinksBlocks(cities, nameFilter);
   return (
-    <>
+    <div className={styles.allCitiesPage}>
       <NavigationBar />
       <Sticky>
         <div className={styles.searchContainer}>
           <input
             type="text"
-            placeholder="Search.."
+            placeholder="Search..."
             className={styles.search}
             onChange={(event) => {
               setNameFilter(event.target.value);
@@ -49,7 +49,7 @@ const AllCities = ({ cities, generateCityList }) => {
         </div>
       </Sticky>
       <div className={styles.citiesList}>{listBlocks}</div>
-    </>
+    </div>
   );
 };
 

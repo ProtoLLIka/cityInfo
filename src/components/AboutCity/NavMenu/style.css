@@ -1,0 +1,14 @@
+.navMenu {
+  position: absolute;
+  left: calc(100% / 2 + 240px);
+  width: fit-content;
+  height: fit-content;
+}
+
+.navMenu > a {
+  text-decoration: none;
+  display: block;
+  font-size: 20px;
+  margin: 10px 0 10px 0;
+  color: #0bcf6b;
+}
