@@ -13,7 +13,7 @@ import styles from './App.css';
 const App = () => (
   <div className={styles.appContainer}>
     <Provider store={store}>
-      <Router>
+      <Router basename="/cityInfo">
         <Switch>
           <Route exact path="/" component={MainPage} />
           <Route path="/about" component={CityPage} />

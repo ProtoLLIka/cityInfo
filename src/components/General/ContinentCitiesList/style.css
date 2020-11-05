@@ -5,11 +5,11 @@
   padding-bottom: 10px;
   display: flex;
   flex-direction: column;
-  background-color: #0bcf6b;
+  background-color: #00000000;
 }
 
 .cititesBlock > h1 {
-  color: white;
+  color: #0bcf6b;
   padding: 10px;
   width: fit-content;
   height: fit-content;
@@ -33,7 +33,7 @@
   font-weight: bold;
   padding: 10px 10px 0 0px;
   text-decoration: none;
-  color: black;
+  color: #fffdfd;
   flex-basis: 30px;
   overflow: hidden;
 }

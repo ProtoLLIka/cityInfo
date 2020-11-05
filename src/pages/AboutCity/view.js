@@ -45,13 +45,30 @@ const AboutCity = ({ city, isLoading }) => {
           <NavMenu />
         </Sticky>
 
-        <Summary name={name} summary={summary} />
-        <YandexMap location={location} />
-        <CultureBlock culture={culture} />
-        <ClimateBlock climate={climate} />
-        <ChartBlock chartData={categoryChart} />
-        <HousingBlock housing={housing} />
-        <CostOfLivingBlock costOfLiving={costOfLiving} />
+        <div id="quality">
+          <Summary name={name} summary={summary} />
+        </div>
+        <div id="location">
+          <YandexMap location={location} />
+        </div>
+        <div id="culture">
+          <CultureBlock culture={culture} />
+        </div>
+        <div id="climate">
+          <ClimateBlock climate={climate} />
+        </div>
+
+        <div id="lifeQuality">
+          <ChartBlock chartData={categoryChart} />
+        </div>
+
+        <div id="housing">
+          <HousingBlock housing={housing} />
+        </div>
+
+        <div id="costOfLiving">
+          <CostOfLivingBlock costOfLiving={costOfLiving} />
+        </div>
       </div>
     );
   }
