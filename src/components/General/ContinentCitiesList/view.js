@@ -8,14 +8,6 @@ import {
 import styles from './style.css';
 
 const generateCitiesLinks = (cities, nameFilter, getCity) => {
-  const filteredCitiesByName = cities.filter((city) => {
-    const nameFilterLowerCase = nameFilter.toLowerCase();
-    const cityNameLowerCase = city.name.toLowerCase();
-    const isNameContains = cityNameLowerCase.includes(nameFilterLowerCase);
-
-    return isNameContains;
-  });
-
   const citiesLinks = filteredCitiesByName.map(({ name }, index) => (
     <Link to="/about" key={index} className={styles.link} onClick={() => getCity(name)}>
       {name}
@@ -28,6 +20,17 @@ const generateCitiesLinks = (cities, nameFilter, getCity) => {
 const ContinentCitiesList = ({
   cities, continentName, nameFilter, getCity,
 }) => {
+  const filteredCitiesByName = cities.filter((city) => {
+    const nameFilterLowerCase = nameFilter.toLowerCase();
+    const cityNameLowerCase = city.name.toLowerCase();
+    const isNameContains = cityNameLowerCase.includes(nameFilterLowerCase);
+
+    return isNameContains;
+  });
+
+  if (filteredCitiesByName.length === 0) {
+    return null;
+  }
   const citiesLinks = generateCitiesLinks(cities, nameFilter, getCity);
   const block = (
     <div className={styles.cititesBlock}>

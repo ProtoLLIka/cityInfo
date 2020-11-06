@@ -8,7 +8,12 @@ const YandexMap = ({ location: { lat, lng } }) => (
   <div className={styles.yandexMap}>
     <span className={styles.blockTitle}>LOCATION</span>
     <YMaps>
-      <Map defaultState={{ center: [lat, lng], zoom: 9 }} width="100%" height="300px" />
+      <Map
+        key={`${lat}${lng}`}
+        defaultState={{ center: [lat, lng], zoom: 9 }}
+        width="100%"
+        height="300px"
+      />
     </YMaps>
   </div>
 );

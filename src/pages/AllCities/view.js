@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 /* eslint-disable react/no-array-index-key */
 import React, { useEffect, useState } from 'react';
 import { arrayOf, any, func } from 'prop-types';
@@ -9,9 +8,10 @@ import ContinentCitiesList from 'components/General/ContinentCitiesList';
 
 import styles from './style.css';
 
+// TODO
 const generateLinksBlocks = (cities, nameFilter) => {
   const citiesBlocks = cities.map((cititesOnContinent, index) => {
-    const continentName = cititesOnContinent[0].continent;
+    const [firstCity] = cititesOnContinent;
     const cityBlock = (
       <ContinentCitiesList
         cities={cititesOnContinent}

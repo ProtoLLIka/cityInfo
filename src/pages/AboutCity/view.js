@@ -60,11 +60,13 @@ const AboutCity = ({ city, isLoading }) => {
   const setElementsOnDisplay = () => {
     const elementsIdOfDisplay = allAnchors.filter((id) => isElementOnDisplay(id));
 
+    // TODO
     if (JSON.stringify(activeElements) !== JSON.stringify(elementsIdOfDisplay)) {
       setActiveElements(elementsIdOfDisplay);
     }
   };
 
+  // TODO
   useEffect(() => {
     window.addEventListener('scroll', setElementsOnDisplay);
     setElementsOnDisplay();
@@ -73,57 +75,57 @@ const AboutCity = ({ city, isLoading }) => {
     };
   });
 
-  if (city) {
-    const {
-      titleImg, categoryChart, location, name, summary, details,
-    } = city;
-    const { data: climate } = details.find(({ id }) => id === CLIMATE);
-    const { data: culture } = details.find(({ id }) => id === CULTURE);
-    const { data: housing } = details.find(({ id }) => id === HOUSING);
-    const { data: costOfLiving } = details.find(({ id }) => id === COST_OF_LIVING);
-
+  // TODO
+  if (!city) {
     return (
       <div className={styles.cityPageContainer}>
         <NavigationBar />
-        {isLoading && <Preloader />}
-        <TitleOfCity name={name} titleImg={titleImg} />
-
-        <NavMenu activeElements={activeElements} />
-
-        <div id={qualityAnchor}>
-          <Summary name={name} summary={summary} />
-        </div>
-
-        <div id={locationAnchor}>
-          <YandexMap location={location} />
-        </div>
-
-        <div id={cultureAnchor}>
-          <CultureBlock culture={culture} />
-        </div>
-
-        <div id={climateAnchor}>
-          <ClimateBlock climate={climate} />
-        </div>
-
-        <div id={lifeQualityAnchor}>
-          <ChartBlock chartData={categoryChart} />
-        </div>
-
-        <div id={housingAnchor}>
-          <HousingBlock housing={housing} />
-        </div>
-
-        <div id={costOfLivingAnchor}>
-          <CostOfLivingBlock costOfLiving={costOfLiving} />
-        </div>
       </div>
     );
   }
+  const {
+    titleImg, categoryChart, location, name, summary, details,
+  } = city;
+  const { data: climate } = details.climate;
+  const { data: culture } = details.find(({ id }) => id === CULTURE);
+  const { data: housing } = details.find(({ id }) => id === HOUSING);
+  const { data: costOfLiving } = details.find(({ id }) => id === COST_OF_LIVING);
 
   return (
     <div className={styles.cityPageContainer}>
       <NavigationBar />
+      {isLoading && <Preloader />}
+      <TitleOfCity name={name} titleImg={titleImg} />
+
+      <NavMenu activeElements={activeElements} />
+
+      <div id={qualityAnchor}>
+        <Summary name={name} summary={summary} />
+      </div>
+
+      <div id={locationAnchor}>
+        <YandexMap location={location} />
+      </div>
+
+      <div id={cultureAnchor}>
+        <CultureBlock culture={culture} />
+      </div>
+
+      <div id={climateAnchor}>
+        <ClimateBlock climate={climate} />
+      </div>
+
+      <div id={lifeQualityAnchor}>
+        <ChartBlock chartData={categoryChart} />
+      </div>
+
+      <div id={housingAnchor}>
+        <HousingBlock housing={housing} />
+      </div>
+
+      <div id={costOfLivingAnchor}>
+        <CostOfLivingBlock costOfLiving={costOfLiving} />
+      </div>
     </div>
   );
 };

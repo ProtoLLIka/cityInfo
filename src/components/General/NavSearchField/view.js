@@ -1,5 +1,3 @@
-/* eslint-disable no-param-reassign */
-/* eslint-disable no-unused-vars */
 /* eslint-disable react/no-array-index-key */
 import { any, arrayOf, func } from 'prop-types';
 import React, { useState } from 'react';
@@ -48,10 +46,10 @@ const NavSearchField = ({ cities, getCity }) => {
         onFocus={(event) => {
           event.target.placeholder = '';
         }}
+        value={searchText}
         onBlur={(event) => {
           setTimeout(() => {
             event.target.placeholder = 'Search...';
-            event.target.value = '';
             setSearchText('');
           }, 500);
         }}

@@ -13,30 +13,28 @@ const handleClick = (generateCityList, changeFilter) => {
   generateCityList();
 };
 
-const NavigationBar = ({ generateCityList, changeFilter }) => (
-  <div className={styles.container}>
+const NavigationBar = ({ generateCityList, changeFilter }) => {
+  const handleLinkClick = () => {
+    handleClick(generateCityList, changeFilter);
+  }
+  return <div className={styles.container}>
     <Link
       to="/all"
       className={`${styles.link} ${styles.allCitiesBtn}`}
-      onClick={() => {
-        handleClick(generateCityList, changeFilter);
-      }}
+      onClick={handleLinkClick}
     >
       All cities
     </Link>
-
     <Link
       to="/"
       className={`${styles.link} ${styles.logo}`}
-      onClick={() => {
-        handleClick(generateCityList, changeFilter);
-      }}
+      onClick={handleLinkClick}
     >
       <img className={styles.logo} src={logo} alt="MEDIASOFT" />
     </Link>
     <NavSearchField />
   </div>
-);
+)};
 
 NavigationBar.propTypes = {
   generateCityList: func,

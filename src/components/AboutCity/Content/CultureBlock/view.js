@@ -12,8 +12,9 @@ import museum from 'assets/cultureBlock/museum.jpg';
 
 import styles from './style.css';
 
+const images = [artGalary, cinema, comedyClub, concertVenue, historicalSite, museum];
+
 const CultureBlock = ({ culture }) => {
-  const images = [artGalary, cinema, comedyClub, concertVenue, historicalSite, museum];
   const cultureList = culture.map(({ label: culurePlaceLabel, count: culurePlacecount }, index) => (
     <div className={styles.culturePlace} key={index}>
       <div className={styles.cultureLabel}>

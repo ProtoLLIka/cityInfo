@@ -4,15 +4,7 @@ import AnchorLink from 'react-anchor-link-smooth-scroll';
 import Sticky from 'react-sticky-el';
 import { arrayOf, string } from 'prop-types';
 
-import {
-  qualityAnchor,
-  locationAnchor,
-  cultureAnchor,
-  climateAnchor,
-  lifeQualityAnchor,
-  housingAnchor,
-  costOfLivingAnchor,
-} from 'consts/anchorsNames';
+import { allAnchors } from 'consts/anchorsNames';
 
 import styles from './style.css';
 
@@ -27,17 +19,7 @@ const setActivityStyle = (anchorName, activeElements) => {
 };
 
 const generateLinks = (activeElements) => {
-  const anchors = [
-    qualityAnchor,
-    locationAnchor,
-    cultureAnchor,
-    climateAnchor,
-    lifeQualityAnchor,
-    housingAnchor,
-    costOfLivingAnchor,
-  ];
-
-  const linksArray = anchors.map((anchor, index) => (
+  const linksArray = allAnchors.map((anchor, index) => (
     <AnchorLink href={`#${anchor}`} key={index}>
       <span className={setActivityStyle(anchor, activeElements)}>{anchor.toUpperCase()}</span>
     </AnchorLink>

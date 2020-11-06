@@ -6,6 +6,7 @@ import {
   COST_OF_LIVING, HOUSING, CULTURE, CLIMATE,
 } from 'consts/categoryNames';
 
+// TODO
 const getCitySlug = async (cityName) => {
   const { data } = await axios.get(process.env.REACT_APP_URBAN_AREAS).catch((err) => err);
 
@@ -17,9 +18,13 @@ const getCitySlug = async (cityName) => {
 };
 
 const getCityGeoname = async (cityName) => {
-  const { data } = await axios
-    .get(`${process.env.REACT_APP_CITIES}?search=${encodeURI(cityName)}`)
-    .catch((err) => err);
+  try {
+    const { data } = await axios.get(
+      `${process.env.REACT_APP_CITIES}?search=${encodeURI(cityName)}`,
+    );
+  } catch (error) {
+    throw new Error('Unable to get city geoname');
+  }
 
   const searchResults = data._embedded['city:search-results'];
   const linkFirstOfResults = searchResults[0]._links['city:item'].href;
@@ -113,6 +118,16 @@ const getCulture = (categories) => {
   }));
   const houseCostList = houseCostListWithTeleScore.filter(({ count }) => count);
 
+  const res = culture.reduce((prev, cultureItem) => {
+    const { int_value: count, label } = cultureItem;
+
+    if (count) {
+      return [...prev, { count, label }];
+    }
+
+    return prev;
+  }, []);
+
   return {
     id: CULTURE,
     data: houseCostList,
@@ -123,8 +138,8 @@ const getWeather = (categories) => {
   const { data } = categories.find(({ id }) => id === CLIMATE);
   const climateParams = data.map((climateParam) => {
     const param = climateParam;
-    delete param.id;
-    delete param.type;
+    // delete param.id;
+    // delete param.type;
     const paramValue = param.float_value ? param.float_value : param.string_value;
     return { label: param.label, value: paramValue };
   });
@@ -147,7 +162,12 @@ const getCityDetails = async (citySlug) => {
   const culture = getCulture(categories);
   const weather = getWeather(categories);
 
-  return [costOfLiving, housing, culture, weather];
+  return {
+    costOfLiving,
+    housing,
+    culture,
+    weather,
+  };
 };
 
 const searchCity = async (cityName) => {

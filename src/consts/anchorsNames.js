@@ -1,4 +1,5 @@
 const qualityAnchor = 'quality';
+// TODO
 const locationAnchor = 'location';
 const cultureAnchor = 'culture';
 const climateAnchor = 'climate';
