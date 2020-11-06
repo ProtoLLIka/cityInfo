@@ -1,8 +1,7 @@
 /* eslint-disable no-underscore-dangle */
 import axios from 'axios';
 
-import getInfoFromHref from 'helpers/getInfoFromHref';
-
+import getParamFromHref from 'helpers/getParamFromHref';
 import {
   COST_OF_LIVING, HOUSING, CULTURE, CLIMATE,
 } from 'consts/categoryNames';
@@ -12,7 +11,7 @@ const getCitySlug = async (cityName) => {
 
   const urbanAreasLinks = data._links['ua:item'];
   const city = urbanAreasLinks.find(({ name }) => name.toLowerCase() === cityName.toLowerCase());
-  const citySlug = getInfoFromHref(city.href, 'slug');
+  const citySlug = getParamFromHref(city.href, 'slug');
 
   return citySlug;
 };
@@ -24,7 +23,7 @@ const getCityGeoname = async (cityName) => {
 
   const searchResults = data._embedded['city:search-results'];
   const linkFirstOfResults = searchResults[0]._links['city:item'].href;
-  const geonameId = getInfoFromHref(linkFirstOfResults, 'geonameid');
+  const geonameId = getParamFromHref(linkFirstOfResults, 'geonameid');
 
   return geonameId;
 };

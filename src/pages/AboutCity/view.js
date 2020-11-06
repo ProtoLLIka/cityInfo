@@ -1,25 +1,25 @@
 /* eslint-disable react/forbid-prop-types */
-import React from 'react';
-import Sticky from 'react-sticky-el';
+import React, { useEffect, useState } from 'react';
 import { bool, object } from 'prop-types';
 
-import NavMenu from 'components/AboutCity/NavMenu/view';
-import Summary from 'components/AboutCity/Content/Summary/';
-import Preloader from 'components/General/Preloader/';
-import YandexMap from 'components/AboutCity/Content/YandexMap/';
-import ChartBlock from 'components/AboutCity/Content/ChartBlock/';
-import TitleOfCity from 'components/AboutCity/TitleOfCity/';
-import CultureBlock from 'components/AboutCity/Content/CultureBlock/';
-import ClimateBlock from 'components/AboutCity/Content/ClimateBlock/';
-import HousingBlock from 'components/AboutCity/Content/HousingBlock/';
-import NavigationBar from 'components/General/NavigationBar/';
-import CostOfLivingBlock from 'components/AboutCity/Content/CostOfLivingBlock/';
+import NavMenu from 'components/AboutCity/NavMenu';
+import Summary from 'components/AboutCity/Content/Summary';
+import Preloader from 'components/General/Preloader';
+import YandexMap from 'components/AboutCity/Content/YandexMap';
+import ChartBlock from 'components/AboutCity/Content/ChartBlock';
+import TitleOfCity from 'components/AboutCity/TitleOfCity';
+import CultureBlock from 'components/AboutCity/Content/CultureBlock';
+import ClimateBlock from 'components/AboutCity/Content/ClimateBlock';
+import HousingBlock from 'components/AboutCity/Content/HousingBlock';
+import NavigationBar from 'components/General/NavigationBar';
+import CostOfLivingBlock from 'components/AboutCity/Content/CostOfLivingBlock';
 
 import {
   COST_OF_LIVING, HOUSING, CULTURE, CLIMATE,
 } from 'consts/categoryNames';
 
 import {
+  allAnchors,
   qualityAnchor,
   locationAnchor,
   cultureAnchor,
@@ -31,10 +31,46 @@ import {
 
 import styles from './style.css';
 
+const isElementOnDisplay = (elementId) => {
+  const element = document.getElementById(elementId);
+
+  if (!element) {
+    return null;
+  }
+
+  const windowHeight = window.innerHeight;
+  const { top: elementTopPosition } = element.getBoundingClientRect();
+  const onDisplay = elementTopPosition >= 0 && elementTopPosition < windowHeight;
+
+  return onDisplay;
+};
+
 const AboutCity = ({ city, isLoading }) => {
-  window.scrollTo({
-    top: 0,
-    behavior: 'smooth',
+  const [activeElements, setActiveElements] = useState([]);
+  const [currentCity, setCurrentCity] = useState([]);
+
+  if (city !== currentCity) {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+    setCurrentCity(city);
+  }
+
+  const setElementsOnDisplay = () => {
+    const elementsIdOfDisplay = allAnchors.filter((id) => isElementOnDisplay(id));
+
+    if (JSON.stringify(activeElements) !== JSON.stringify(elementsIdOfDisplay)) {
+      setActiveElements(elementsIdOfDisplay);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', setElementsOnDisplay);
+    setElementsOnDisplay();
+    return () => {
+      window.removeEventListener('scroll', setElementsOnDisplay);
+    };
   });
 
   if (city) {
@@ -52,9 +88,7 @@ const AboutCity = ({ city, isLoading }) => {
         {isLoading && <Preloader />}
         <TitleOfCity name={name} titleImg={titleImg} />
 
-        <Sticky>
-          <NavMenu />
-        </Sticky>
+        <NavMenu activeElements={activeElements} />
 
         <div id={qualityAnchor}>
           <Summary name={name} summary={summary} />

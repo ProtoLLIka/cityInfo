@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { arrayOf, any, func } from 'prop-types';
 import Sticky from 'react-sticky-el';
 
-import NavigationBar from 'components/General/NavigationBar/';
+import NavigationBar from 'components/General/NavigationBar';
 import ContinentCitiesList from 'components/General/ContinentCitiesList';
 
 import styles from './style.css';

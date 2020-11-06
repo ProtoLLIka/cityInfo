@@ -3,9 +3,9 @@ import {
   string, arrayOf, any, func,
 } from 'prop-types';
 
-import Map from 'components/MainPage/Map/';
-import NavigationBar from 'components/General/NavigationBar/';
-import ContinentCitiesList from 'components/General/ContinentCitiesList/';
+import Map from 'components/MainPage/Map';
+import NavigationBar from 'components/General/NavigationBar';
+import ContinentCitiesList from 'components/General/ContinentCitiesList';
 
 import styles from './style.css';
 

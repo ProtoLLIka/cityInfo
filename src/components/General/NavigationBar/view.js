@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { func } from 'prop-types';
 
-import NavSearchField from 'components/General/NavSearchField/';
+import NavSearchField from 'components/General/NavSearchField';
 import { ALL } from 'consts/continentNames';
 import logo from 'assets/logo.png';
 

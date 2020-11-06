@@ -2,7 +2,7 @@
 import React from 'react';
 import { arrayOf, object } from 'prop-types';
 
-import ClimateInfo from 'components/AboutCity/Content/ClimateBlock/ClimateInfo/';
+import ClimateInfo from 'components/AboutCity/Content/ClimateBlock/ClimateInfo';
 import sun from 'assets/sun.svg';
 import snowflake from 'assets/snowflake.svg';
 import radiation from 'assets/radiation.svg';

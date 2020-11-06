@@ -2,7 +2,7 @@
 import React from 'react';
 import { arrayOf, any } from 'prop-types';
 
-import ChartLine from 'components/AboutCity/Content/ChartBlock/ChartLine/';
+import ChartLine from 'components/AboutCity/Content/ChartBlock/ChartLine';
 import styles from './style.css';
 
 const ChartBlock = ({ chartData }) => {

@@ -1,14 +1,14 @@
 /* eslint-disable no-underscore-dangle */
 import axios from 'axios';
 
-import getInfoFromHref from 'helpers/getInfoFromHref';
+import getParamFromHref from 'helpers/getParamFromHref';
 
 const getContinents = async () => {
   const { data } = await axios.get(`${process.env.REACT_APP_CONTINENTS}`).catch((err) => err);
 
   const continentsLinks = data._links['continent:items'];
   const continentsWithAntarctica = continentsLinks.map(({ href, name }) => ({
-    continentId: getInfoFromHref(href, 'geonames'),
+    continentId: getParamFromHref(href, 'geonames'),
     name,
   }));
   const continents = continentsWithAntarctica.filter(({ name }) => name !== 'Antarctica');
