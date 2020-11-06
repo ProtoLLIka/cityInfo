@@ -1,8 +1,9 @@
+/* eslint-disable react/no-array-index-key */
 import React from 'react';
+import { Link } from 'react-router-dom';
 import {
   any, arrayOf, func, string,
 } from 'prop-types';
-import { Link } from 'react-router-dom';
 
 import styles from './style.css';
 
@@ -16,7 +17,6 @@ const generateCitiesLinks = (cities, nameFilter, getCity) => {
   });
 
   const citiesLinks = filteredCitiesByName.map(({ name }, index) => (
-    // eslint-disable-next-line react/no-array-index-key
     <Link to="/about" key={index} className={styles.link} onClick={() => getCity(name)}>
       {name}
     </Link>

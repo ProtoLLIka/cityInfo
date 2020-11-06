@@ -1,7 +1,4 @@
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable react/prop-types */
-/* eslint-disable no-unused-vars */
+/* eslint-disable react/no-array-index-key */
 import React from 'react';
 import { arrayOf, object } from 'prop-types';
 import Slider from '@farbenmeer/react-spring-slider';
@@ -17,13 +14,14 @@ import styles from './style.css';
 
 const CultureBlock = ({ culture }) => {
   const images = [artGalary, cinema, comedyClub, concertVenue, historicalSite, museum];
-  const cultureList = culture.map((culturePlace, index) => (
-    <div className={styles.culturePlace}>
+  const cultureList = culture.map(({ label: culurePlaceLabel, count: culurePlacecount }, index) => (
+    <div className={styles.culturePlace} key={index}>
       <div className={styles.cultureLabel}>
-        <sapn>{culturePlace.label}</sapn>
+        <span>{culurePlaceLabel}</span>
       </div>
+
       <div style={{ backgroundImage: `url(${images[index]})` }} className={styles.cultureImg}>
-        <sapn className={styles.cultureCount}>{culturePlace.count}</sapn>
+        <span className={styles.cultureCount}>{culurePlacecount}</span>
       </div>
     </div>
   ));

@@ -1,3 +1,5 @@
+import { ALL } from 'consts/continentNames';
+
 import {
   CITY_LIST_LOADING_START,
   CITY_LIST_LOADING_SUCCESSED,
@@ -8,7 +10,7 @@ import {
 
 const INITIAL_STATE_CITY_LIST = {
   cities: [],
-  filterType: 'all',
+  filterType: ALL,
   isLoading: false,
 };
 

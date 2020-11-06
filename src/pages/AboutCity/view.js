@@ -1,22 +1,33 @@
+/* eslint-disable react/forbid-prop-types */
 import React from 'react';
 import Sticky from 'react-sticky-el';
 import { bool, object } from 'prop-types';
 
 import NavMenu from 'components/AboutCity/NavMenu/view';
-import Summary from 'components/AboutCity/Content/Summary/index';
-import Preloader from 'components/General/Preloader/index';
-import YandexMap from 'components/AboutCity/Content/YandexMap/index';
-import ChartBlock from 'components/AboutCity/Content/ChartBlock/index';
-import TitleOfCity from 'components/AboutCity/TitleOfCity/index';
-import CultureBlock from 'components/AboutCity/Content/CultureBlock/index';
-import ClimateBlock from 'components/AboutCity/Content/ClimateBlock/index';
-import HousingBlock from 'components/AboutCity/Content/HousingBlock/index';
-import NavigationBar from 'components/General/NavigationBar/index';
-import CostOfLivingBlock from 'components/AboutCity/Content/CostOfLivingBlock/index';
+import Summary from 'components/AboutCity/Content/Summary/';
+import Preloader from 'components/General/Preloader/';
+import YandexMap from 'components/AboutCity/Content/YandexMap/';
+import ChartBlock from 'components/AboutCity/Content/ChartBlock/';
+import TitleOfCity from 'components/AboutCity/TitleOfCity/';
+import CultureBlock from 'components/AboutCity/Content/CultureBlock/';
+import ClimateBlock from 'components/AboutCity/Content/ClimateBlock/';
+import HousingBlock from 'components/AboutCity/Content/HousingBlock/';
+import NavigationBar from 'components/General/NavigationBar/';
+import CostOfLivingBlock from 'components/AboutCity/Content/CostOfLivingBlock/';
 
 import {
   COST_OF_LIVING, HOUSING, CULTURE, CLIMATE,
-} from 'consts/consts';
+} from 'consts/categoryNames';
+
+import {
+  qualityAnchor,
+  locationAnchor,
+  cultureAnchor,
+  climateAnchor,
+  lifeQualityAnchor,
+  housingAnchor,
+  costOfLivingAnchor,
+} from 'consts/anchorsNames';
 
 import styles from './style.css';
 
@@ -45,28 +56,31 @@ const AboutCity = ({ city, isLoading }) => {
           <NavMenu />
         </Sticky>
 
-        <div id="quality">
+        <div id={qualityAnchor}>
           <Summary name={name} summary={summary} />
         </div>
-        <div id="location">
+
+        <div id={locationAnchor}>
           <YandexMap location={location} />
         </div>
-        <div id="culture">
+
+        <div id={cultureAnchor}>
           <CultureBlock culture={culture} />
         </div>
-        <div id="climate">
+
+        <div id={climateAnchor}>
           <ClimateBlock climate={climate} />
         </div>
 
-        <div id="lifeQuality">
+        <div id={lifeQualityAnchor}>
           <ChartBlock chartData={categoryChart} />
         </div>
 
-        <div id="housing">
+        <div id={housingAnchor}>
           <HousingBlock housing={housing} />
         </div>
 
-        <div id="costOfLiving">
+        <div id={costOfLivingAnchor}>
           <CostOfLivingBlock costOfLiving={costOfLiving} />
         </div>
       </div>
@@ -81,7 +95,6 @@ const AboutCity = ({ city, isLoading }) => {
 };
 
 AboutCity.propTypes = {
-  // eslint-disable-next-line react/forbid-prop-types
   city: object,
   isLoading: bool,
 };

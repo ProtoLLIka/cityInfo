@@ -2,11 +2,11 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Provider } from 'react-redux';
 
-import AllCities from 'pages/AllCities/index';
-import Page404 from 'pages/NotFound/index';
-import MainPage from 'pages/Main/index';
-import CityPage from 'pages/AboutCity/index';
-import store from 'store/index';
+import AllCities from 'pages/AllCities/';
+import Page404 from 'pages/NotFound/';
+import MainPage from 'pages/Main/';
+import CityPage from 'pages/AboutCity/';
+import store from 'store/';
 
 import styles from './App.css';
 

@@ -1,9 +1,8 @@
 /* eslint-disable no-unused-vars */
-/* eslint-disable react/forbid-prop-types */
 import React from 'react';
 import { arrayOf, object } from 'prop-types';
 
-import ClimateInfo from 'components/AboutCity/Content/ClimateBlock/ClimateInfo/index';
+import ClimateInfo from 'components/AboutCity/Content/ClimateBlock/ClimateInfo/';
 import sun from 'assets/sun.svg';
 import snowflake from 'assets/snowflake.svg';
 import radiation from 'assets/radiation.svg';
@@ -22,10 +21,10 @@ const ClimateBlock = ({ climate }) => {
   return (
     <div className={styles.climateContainer}>
       <span className={styles.blockTitle}>CLIMATE</span>
-      <ClimateInfo label={dayLength.label} value={dayLength.value} icon={sun} />
-      <ClimateInfo label={solarRad.label} value={solarRad.value} icon={radiation} />
-      <ClimateInfo label={highTemp.label} value={highTemp.value} icon={fire} />
-      <ClimateInfo label={lowTemp.label} value={lowTemp.value} icon={snowflake} />
+      <ClimateInfo label={dayLength.label} value={dayLength.value.toString()} icon={sun} />
+      <ClimateInfo label={solarRad.label} value={solarRad.value.toString()} icon={radiation} />
+      <ClimateInfo label={highTemp.label} value={highTemp.value.toString()} icon={fire} />
+      <ClimateInfo label={lowTemp.label} value={lowTemp.value.toString()} icon={snowflake} />
       <h1 className={styles.infoName}>{weatherType.label}</h1>
       <span>{weatherType.value}</span>
     </div>

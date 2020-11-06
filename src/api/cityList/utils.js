@@ -1,14 +1,14 @@
 /* eslint-disable no-underscore-dangle */
 import axios from 'axios';
 
-import getContinentIdFromHref from 'helpers/getContinentIdFromHref';
+import getInfoFromHref from 'helpers/getInfoFromHref';
 
 const getContinents = async () => {
-  const { data } = await axios.get(`${process.env.REACT_APP_CONTINENTS}`);
+  const { data } = await axios.get(`${process.env.REACT_APP_CONTINENTS}`).catch((err) => err);
 
   const continentsLinks = data._links['continent:items'];
   const continentsWithAntarctica = continentsLinks.map(({ href, name }) => ({
-    continentId: getContinentIdFromHref(href),
+    continentId: getInfoFromHref(href, 'geonames'),
     name,
   }));
   const continents = continentsWithAntarctica.filter(({ name }) => name !== 'Antarctica');
@@ -17,9 +17,9 @@ const getContinents = async () => {
 };
 
 const getCitiesByContinent = async ({ continentId, name: continentName }) => {
-  const { data } = await axios.get(
-    `${process.env.REACT_APP_CONTINENTS}${encodeURI(continentId)}/urban_areas/`,
-  );
+  const { data } = await axios
+    .get(`${process.env.REACT_APP_CONTINENTS}${encodeURI(continentId)}/urban_areas/`)
+    .catch((err) => err);
 
   const cities = data._links['ua:items'].map(({ name }) => ({
     name,

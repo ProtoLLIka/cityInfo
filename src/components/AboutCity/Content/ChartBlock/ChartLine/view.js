@@ -23,8 +23,8 @@ ChartLine.propTypes = {
 
 ChartLine.defaultProps = {
   value: 0,
-  color: 'red',
-  name: 'barName',
+  color: '',
+  name: '',
 };
 
 export default ChartLine;

@@ -2,8 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { func } from 'prop-types';
 
-import NavSearchField from 'components/General/NavSearchField/index';
-import { ALL } from 'consts/consts';
+import NavSearchField from 'components/General/NavSearchField/';
+import { ALL } from 'consts/continentNames';
 import logo from 'assets/logo.png';
 
 import styles from './style.css';
@@ -24,6 +24,7 @@ const NavigationBar = ({ generateCityList, changeFilter }) => (
     >
       All cities
     </Link>
+
     <Link
       to="/"
       className={`${styles.link} ${styles.logo}`}

@@ -1,6 +1,6 @@
 import React from 'react';
-import Sticky from 'react-sticky-el';
 import AnchorLink from 'react-anchor-link-smooth-scroll';
+import Sticky from 'react-sticky-el';
 
 import styles from './style.css';
 

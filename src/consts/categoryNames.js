@@ -1,13 +1,3 @@
-/** Continent Names */
-const ASIA = 'Asia';
-const NORTH_AMERICA = 'North America';
-const SOUTH_AMERICA = 'South America';
-const OCEANIA = 'Oceania';
-const EUROPE = 'Europe';
-const AFRICA = 'Africa';
-const ALL = 'all';
-
-/** Category Names */
 const BUSINESS_FREEDOM = 'BUSINESS-FREEDOM';
 const CITY_SIZE = 'CITY-SIZE';
 const CLIMATE = 'CLIMATE';
@@ -19,13 +9,6 @@ const HEALTHCARE = 'HEALTHCARE';
 const HOUSING = 'HOUSING';
 
 export {
-  ASIA,
-  NORTH_AMERICA,
-  SOUTH_AMERICA,
-  OCEANIA,
-  EUROPE,
-  AFRICA,
-  ALL,
   BUSINESS_FREEDOM,
   CITY_SIZE,
   CLIMATE,

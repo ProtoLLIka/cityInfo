@@ -4,7 +4,7 @@ import { func } from 'prop-types';
 
 import {
   ASIA, NORTH_AMERICA, SOUTH_AMERICA, OCEANIA, EUROPE, AFRICA,
-} from 'consts/consts';
+} from 'consts/continentNames';
 
 import styles from './style.css';
 

@@ -1,4 +1,5 @@
 import searchCity from 'api/city/utils';
+
 import {
   SELECT_CITY,
   CITY_DOWLOADING_START,

@@ -1,26 +1,30 @@
 /* eslint-disable no-underscore-dangle */
 import axios from 'axios';
 
-import getCitySlugFromHref from 'helpers/getCitySlugFromHref';
-import getGeonameIdFromHref from 'helpers/getGeonameIdFromHref';
+import getInfoFromHref from 'helpers/getInfoFromHref';
+
 import {
   COST_OF_LIVING, HOUSING, CULTURE, CLIMATE,
-} from 'consts/consts';
+} from 'consts/categoryNames';
 
 const getCitySlug = async (cityName) => {
-  const { data } = await axios.get(process.env.REACT_APP_URBAN_AREAS);
+  const { data } = await axios.get(process.env.REACT_APP_URBAN_AREAS).catch((err) => err);
+
   const urbanAreasLinks = data._links['ua:item'];
   const city = urbanAreasLinks.find(({ name }) => name.toLowerCase() === cityName.toLowerCase());
-  const citySlug = getCitySlugFromHref(city.href);
+  const citySlug = getInfoFromHref(city.href, 'slug');
 
   return citySlug;
 };
 
 const getCityGeoname = async (cityName) => {
-  const { data } = await axios.get(`${process.env.REACT_APP_CITIES}?search=${encodeURI(cityName)}`);
+  const { data } = await axios
+    .get(`${process.env.REACT_APP_CITIES}?search=${encodeURI(cityName)}`)
+    .catch((err) => err);
+
   const searchResults = data._embedded['city:search-results'];
   const linkFirstOfResults = searchResults[0]._links['city:item'].href;
-  const geonameId = getGeonameIdFromHref(linkFirstOfResults);
+  const geonameId = getInfoFromHref(linkFirstOfResults, 'geonameid');
 
   return geonameId;
 };
@@ -34,7 +38,7 @@ const getBasicInfo = async (geonameId) => {
         latlon: { latitude, longitude },
       },
     },
-  } = await axios.get(`${process.env.REACT_APP_CITIES}${geonameId}/`);
+  } = await axios.get(`${process.env.REACT_APP_CITIES}${geonameId}/`).catch((err) => err);
 
   const basicInfo = {
     name,
@@ -57,15 +61,17 @@ const getTitleImg = async (citySlug) => {
         },
       ],
     },
-  } = await axios.get(`${process.env.REACT_APP_URBAN_AREAS}${encodeURI(citySlug)}/images/`);
+  } = await axios
+    .get(`${process.env.REACT_APP_URBAN_AREAS}${encodeURI(citySlug)}/images/`)
+    .catch((err) => err);
 
   return web;
 };
 
 const getChartAndSummary = async (citySlug) => {
-  const { data } = await axios.get(
-    `${process.env.REACT_APP_URBAN_AREAS}${encodeURI(citySlug)}/scores/`,
-  );
+  const { data } = await axios
+    .get(`${process.env.REACT_APP_URBAN_AREAS}${encodeURI(citySlug)}/scores/`)
+    .catch((err) => err);
 
   const { categories, summary } = data;
 
@@ -73,8 +79,8 @@ const getChartAndSummary = async (citySlug) => {
 };
 
 const getCostOfLiving = (categories) => {
-  const { data: costOfLiving } = categories.find(({ id }) => id === COST_OF_LIVING);
-  const goodsListWithApiTitle = costOfLiving.map(({ currency_dollar_value: value, label }) => ({
+  const { data } = categories.find(({ id }) => id === COST_OF_LIVING);
+  const goodsListWithApiTitle = data.map(({ currency_dollar_value: value, label }) => ({
     value,
     label,
   }));
@@ -87,8 +93,8 @@ const getCostOfLiving = (categories) => {
 };
 
 const getHousing = (categories) => {
-  const { data: housing } = categories.find(({ id }) => id === HOUSING);
-  const houseCostListWithTeleScore = housing.map(({ currency_dollar_value: value, label }) => ({
+  const { data } = categories.find(({ id }) => id === HOUSING);
+  const houseCostListWithTeleScore = data.map(({ currency_dollar_value: value, label }) => ({
     value,
     label,
   }));
@@ -115,8 +121,8 @@ const getCulture = (categories) => {
 };
 
 const getWeather = (categories) => {
-  const { data: climate } = categories.find(({ id }) => id === CLIMATE);
-  const climateParams = climate.map((climateParam) => {
+  const { data } = categories.find(({ id }) => id === CLIMATE);
+  const climateParams = data.map((climateParam) => {
     const param = climateParam;
     delete param.id;
     delete param.type;
@@ -133,7 +139,10 @@ const getWeather = (categories) => {
 const getCityDetails = async (citySlug) => {
   const {
     data: { categories },
-  } = await axios.get(`${process.env.REACT_APP_URBAN_AREAS}${encodeURI(citySlug)}/details/`);
+  } = await axios
+    .get(`${process.env.REACT_APP_URBAN_AREAS}${encodeURI(citySlug)}/details/`)
+    .catch((err) => err);
+
   const costOfLiving = getCostOfLiving(categories);
   const housing = getHousing(categories);
   const culture = getCulture(categories);

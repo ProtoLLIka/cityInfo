@@ -1,15 +1,15 @@
 /* eslint-disable react/forbid-prop-types */ /* eslint-disable no-unused-vars */
 
 import React from 'react';
-import { arrayOf, object } from 'prop-types';
 import { Bar } from 'react-chartjs-2';
+import { arrayOf, object } from 'prop-types';
 
 import styles from './style.css';
 
 const HousingBlock = ({ housing }) => {
   const labels = housing.map(({ label }) => label).reverse();
   const data = housing.map(({ value }) => value).reverse();
-  const dataForChart = {
+  const chartData = {
     labels,
     datasets: [
       {
@@ -23,39 +23,26 @@ const HousingBlock = ({ housing }) => {
     ],
   };
 
+  const chartOptions = {
+    responsive: true,
+    maintainAspectRatio: false,
+    legend: { display: false },
+    scales: { yAxes: [{ ticks: { display: false } }] },
+    tooltips: {
+      backgroundColor: '#ffffff',
+      titleFontColor: '#000000',
+      bodyFontColor: '#000000',
+      displayColors: true,
+      borderColor: '#000000',
+      cornerRadius: 3,
+    },
+  };
+
   return (
     <div className={styles.housingBlock}>
       <h1 className={styles.blockTitle}>HOUSING</h1>
       <span className={styles.underTitleText}>(in dollars)</span>
-      <Bar
-        data={dataForChart}
-        width={20}
-        height={50}
-        options={{
-          responsive: true,
-          maintainAspectRatio: false,
-          legend: {
-            display: false,
-          },
-          scales: {
-            yAxes: [
-              {
-                ticks: {
-                  display: false,
-                },
-              },
-            ],
-          },
-          tooltips: {
-            backgroundColor: 'rgb(255, 255, 255)',
-            titleFontColor: 'rgb(0, 0, 0)',
-            bodyFontColor: 'rgb(0, 0, 0)',
-            displayColors: true,
-            borderColor: 'rgb(0, 0, 0)',
-            cornerRadius: 3,
-          },
-        }}
-      />
+      <Bar data={chartData} options={chartOptions} width={20} height={50} />
     </div>
   );
 };
