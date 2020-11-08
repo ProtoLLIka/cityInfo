@@ -1,29 +1,28 @@
-const qualityAnchor = 'quality';
-// TODO
-const locationAnchor = 'location';
-const cultureAnchor = 'culture';
-const climateAnchor = 'climate';
-const lifeQualityAnchor = 'life Quality';
-const housingAnchor = 'housing';
-const costOfLivingAnchor = 'cost Of Living';
+const QUALITY_ANCHOR = 'quality';
+const LOCATION_ANCHOR = 'location';
+const CULTURE_ANCHOR = 'culture';
+const CLIMATE_ANCHOR = 'climate';
+const LIFE_QUALITY_ANCHOR = 'life Quality';
+const HOUSING_ANCHOR = 'housing';
+const COST_OF_LIVING_ANCHOR = 'cost Of Living';
 
-const allAnchors = [
-  qualityAnchor,
-  locationAnchor,
-  cultureAnchor,
-  climateAnchor,
-  lifeQualityAnchor,
-  housingAnchor,
-  costOfLivingAnchor,
+const ALL_ANCHORS = [
+  QUALITY_ANCHOR,
+  LOCATION_ANCHOR,
+  CULTURE_ANCHOR,
+  CLIMATE_ANCHOR,
+  LIFE_QUALITY_ANCHOR,
+  HOUSING_ANCHOR,
+  COST_OF_LIVING_ANCHOR,
 ];
 
 export {
-  allAnchors,
-  qualityAnchor,
-  locationAnchor,
-  cultureAnchor,
-  climateAnchor,
-  lifeQualityAnchor,
-  housingAnchor,
-  costOfLivingAnchor,
+  ALL_ANCHORS,
+  QUALITY_ANCHOR,
+  LOCATION_ANCHOR,
+  CULTURE_ANCHOR,
+  CLIMATE_ANCHOR,
+  LIFE_QUALITY_ANCHOR,
+  HOUSING_ANCHOR,
+  COST_OF_LIVING_ANCHOR,
 };

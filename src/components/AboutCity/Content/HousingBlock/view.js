@@ -4,6 +4,8 @@ import React from 'react';
 import { Bar } from 'react-chartjs-2';
 import { arrayOf, object } from 'prop-types';
 
+import { housingAnchor } from 'consts/anchorsNames';
+
 import styles from './style.css';
 
 const chartData = {
@@ -47,7 +49,7 @@ const HousingBlock = ({ housing }) => {
   );
 
   return (
-    <div className={styles.housingBlock}>
+    <div className={styles.housingBlock} id={housingAnchor}>
       <h1 className={styles.blockTitle}>HOUSING</h1>
       <span className={styles.underTitleText}>(in dollars)</span>
       <Bar data={chartData} options={chartOptions} width={20} height={50} />

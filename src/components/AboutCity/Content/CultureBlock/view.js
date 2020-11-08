@@ -10,6 +10,8 @@ import concertVenue from 'assets/cultureBlock/concertVenue.jpg';
 import historicalSite from 'assets/cultureBlock/historicalSite.jpg';
 import museum from 'assets/cultureBlock/museum.jpg';
 
+import { cultureAnchor } from 'consts/anchorsNames';
+
 import styles from './style.css';
 
 const images = [artGalary, cinema, comedyClub, concertVenue, historicalSite, museum];
@@ -28,7 +30,7 @@ const CultureBlock = ({ culture }) => {
   ));
 
   return (
-    <div className={styles.cultureContainer}>
+    <div className={styles.cultureContainer} id={cultureAnchor}>
       <h1 className={styles.blockTitle}>CULTURE</h1>
       <Slider auto="3000">{cultureList}</Slider>
     </div>

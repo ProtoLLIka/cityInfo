@@ -1,5 +1,3 @@
 import View from './view';
 
-const YandexMap = View;
-
-export default YandexMap;
+export default View;

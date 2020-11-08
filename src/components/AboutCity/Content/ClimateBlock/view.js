@@ -8,6 +8,8 @@ import snowflake from 'assets/snowflake.svg';
 import radiation from 'assets/radiation.svg';
 import fire from 'assets/fire.svg';
 
+import { climateAnchor } from 'consts/anchorsNames';
+
 import styles from './style.css';
 
 const labels = {
@@ -29,7 +31,7 @@ const ClimateBlock = ({ climate }) => {
   );
 
   return (
-    <div className={styles.climateContainer}>
+    <div className={styles.climateContainer} id={climateAnchor}>
       <span className={styles.blockTitle}>CLIMATE</span>
       <ClimateInfo
         label={data.dayLength.label}

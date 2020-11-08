@@ -4,7 +4,6 @@ import {
 } from 'prop-types';
 
 import Map from 'components/MainPage/Map';
-import NavigationBar from 'components/General/NavigationBar';
 import ContinentCitiesList from 'components/General/ContinentCitiesList';
 
 import styles from './style.css';
@@ -17,7 +16,6 @@ const MainPage = ({ allCities, continentName, generateCityList }) => {
   useEffect(() => generateCityList(), []);
   return (
     <div className={styles.mainPageContainer}>
-      <NavigationBar />
       <Map />
       <div className={styles.citiesBlock}>
         <ContinentCitiesList

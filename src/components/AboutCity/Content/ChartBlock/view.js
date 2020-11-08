@@ -3,6 +3,8 @@ import React from 'react';
 import { arrayOf, any } from 'prop-types';
 
 import ChartLine from 'components/AboutCity/Content/ChartLine';
+import { lifeQualityAnchor } from 'consts/anchorsNames';
+
 import styles from './style.css';
 
 const ChartBlock = ({ chartData }) => {
@@ -11,7 +13,7 @@ const ChartBlock = ({ chartData }) => {
   ));
 
   return (
-    <div className={styles.chartBlock}>
+    <div className={styles.chartBlock} id={lifeQualityAnchor}>
       <span className={styles.blockTitle}>LIFE QUALITY SCORE</span>
       {linesArray}
     </div>

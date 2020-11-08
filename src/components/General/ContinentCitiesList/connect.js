@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 
 import getCity from 'store/reducers/city/actions';
+import View from './view';
 
 const mapDispatchToProps = (dispatch) => ({
   getCity: (name) => {
@@ -8,6 +9,6 @@ const mapDispatchToProps = (dispatch) => ({
   },
 });
 
-const Connector = (Component) => connect(null, mapDispatchToProps)(Component);
+const ConnectedView = connect(null, mapDispatchToProps)(View);
 
-export default Connector;
+export default ConnectedView;

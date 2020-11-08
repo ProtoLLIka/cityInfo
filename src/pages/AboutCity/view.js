@@ -11,23 +11,14 @@ import TitleOfCity from 'components/AboutCity/TitleOfCity';
 import CultureBlock from 'components/AboutCity/Content/CultureBlock';
 import ClimateBlock from 'components/AboutCity/Content/ClimateBlock';
 import HousingBlock from 'components/AboutCity/Content/HousingBlock';
-import NavigationBar from 'components/General/NavigationBar';
 import CostOfLivingBlock from 'components/AboutCity/Content/CostOfLivingBlock';
+import isArraysEquals from 'helpers/isArraysEquals';
 
 import {
-  COST_OF_LIVING, HOUSING, CULTURE, CLIMATE,
+  COST_OF_LIVING, HOUSING, CULTURE,
 } from 'consts/categoryNames';
 
-import {
-  allAnchors,
-  qualityAnchor,
-  locationAnchor,
-  cultureAnchor,
-  climateAnchor,
-  lifeQualityAnchor,
-  housingAnchor,
-  costOfLivingAnchor,
-} from 'consts/anchorsNames';
+import { ALL_ANCHORS } from 'consts/anchorsNames';
 
 import styles from './style.css';
 
@@ -58,15 +49,14 @@ const AboutCity = ({ city, isLoading }) => {
   }
 
   const setElementsOnDisplay = () => {
-    const elementsIdOfDisplay = allAnchors.filter((id) => isElementOnDisplay(id));
+    const elementsIdOfDisplay = ALL_ANCHORS.filter((id) => isElementOnDisplay(id));
 
-    // TODO
-    if (JSON.stringify(activeElements) !== JSON.stringify(elementsIdOfDisplay)) {
+    if (isArraysEquals(activeElements, elementsIdOfDisplay)) {
       setActiveElements(elementsIdOfDisplay);
     }
   };
 
-  // TODO
+  // TODO observer
   useEffect(() => {
     window.addEventListener('scroll', setElementsOnDisplay);
     setElementsOnDisplay();
@@ -75,14 +65,10 @@ const AboutCity = ({ city, isLoading }) => {
     };
   });
 
-  // TODO
   if (!city) {
-    return (
-      <div className={styles.cityPageContainer}>
-        <NavigationBar />
-      </div>
-    );
+    return <div className={styles.cityPageContainer} />;
   }
+
   const {
     titleImg, categoryChart, location, name, summary, details,
   } = city;
@@ -93,39 +79,16 @@ const AboutCity = ({ city, isLoading }) => {
 
   return (
     <div className={styles.cityPageContainer}>
-      <NavigationBar />
-      {isLoading && <Preloader />}
+      <Preloader isLoading={isLoading} />
       <TitleOfCity name={name} titleImg={titleImg} />
-
       <NavMenu activeElements={activeElements} />
-
-      <div id={qualityAnchor}>
-        <Summary name={name} summary={summary} />
-      </div>
-
-      <div id={locationAnchor}>
-        <YandexMap location={location} />
-      </div>
-
-      <div id={cultureAnchor}>
-        <CultureBlock culture={culture} />
-      </div>
-
-      <div id={climateAnchor}>
-        <ClimateBlock climate={climate} />
-      </div>
-
-      <div id={lifeQualityAnchor}>
-        <ChartBlock chartData={categoryChart} />
-      </div>
-
-      <div id={housingAnchor}>
-        <HousingBlock housing={housing} />
-      </div>
-
-      <div id={costOfLivingAnchor}>
-        <CostOfLivingBlock costOfLiving={costOfLiving} />
-      </div>
+      <Summary name={name} summary={summary} />
+      <YandexMap location={location} />
+      <CultureBlock culture={culture} />
+      <ClimateBlock climate={climate} />
+      <ChartBlock chartData={categoryChart} />
+      <HousingBlock housing={housing} />
+      <CostOfLivingBlock costOfLiving={costOfLiving} />
     </div>
   );
 };

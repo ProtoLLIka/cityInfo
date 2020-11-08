@@ -1,6 +1,3 @@
-import View from './view';
-import Connect from './connector';
+import ConnectedView from './connector';
 
-const Map = Connect(View);
-
-export default Map;
+export default ConnectedView;

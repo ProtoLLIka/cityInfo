@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Provider } from 'react-redux';
 
+import NavigationBar from 'components/General/NavigationBar';
 import AllCities from 'pages/AllCities/';
 import Page404 from 'pages/NotFound/';
 import MainPage from 'pages/Main/';
@@ -12,6 +13,7 @@ import styles from './App.css';
 
 const App = () => (
   <div className={styles.appContainer}>
+    <NavigationBar />
     <Provider store={store}>
       <Router basename="/cityInfo">
         <Switch>

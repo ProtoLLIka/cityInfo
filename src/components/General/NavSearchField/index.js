@@ -1,6 +1,3 @@
-import View from './view';
-import Connect from './connect';
+import ConnectedView from './connect';
 
-const NavSearchField = Connect(View);
-
-export default NavSearchField;
+export default ConnectedView;

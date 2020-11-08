@@ -1,6 +1,3 @@
-import View from './view';
-import Connector from './connector';
+import ConnectedView from './connector';
 
-const NavigationBar = Connector(View);
-
-export default NavigationBar;
+export default ConnectedView;

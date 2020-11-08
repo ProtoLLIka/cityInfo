@@ -1,5 +1,5 @@
-const getCity = (state: { city }) => city;
-const getLoadingStatus = (state) => getCity(state).isLoading;
-const getStateCity = (state: { city }) => city;
+const getStateCity = (state) => state.city;
+const getCity = (state) => getStateCity(state).city;
+const getLoadingStatus = (state) => getStateCity(state).isLoading;
 
 export { getCity, getLoadingStatus, getStateCity };

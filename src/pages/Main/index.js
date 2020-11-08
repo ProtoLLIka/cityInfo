@@ -1,6 +1,5 @@
-import View from './view';
-import Connect from './connector';
+import ConnectedView from './connector';
 
-const MainPage = Connect(View);
+const MainPage = ConnectedView;
 
 export default MainPage;

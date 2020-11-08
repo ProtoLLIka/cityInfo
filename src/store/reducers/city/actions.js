@@ -28,23 +28,24 @@ const selectCity = (city) => ({
   city,
 });
 
-// const getCity = (cityName) => (dispatch) => {
-//   dispatch(searchStarted());
+const getCity = (cityName) => (dispatch) => {
+  dispatch(searchStarted());
 
-//   searchCity(cityName)
-//     .then(({ city }) => {
-//       dispatch(searchSuccessed());
-//       dispatch(selectCity(city));
-//     })
-//     .catch((err) => {
-//       dispatch(searchError(err));
-//     });
-// };
+  searchCity(cityName)
+    .then(({ city }) => {
+      dispatch(searchSuccessed());
+      dispatch(selectCity(city));
+    })
+    .catch((err) => {
+      dispatch(searchError(err));
+    });
+};
 
-const getCity = (cityName) => ({
-  request: {
-    requestHandler: searchCity,
-    actions: { init: SEARCH_STARTED, fullfield: SEARCH_SUCCESS, error: SEARCH_ERROR },
-  },
-});
+// const getCity = (cityName) => ({
+//   request: {
+//     requestHandler: searchCity,
+//     actions: { init: SEARCH_STARTED, fullfield: SEARCH_SUCCESS, error: SEARCH_ERROR },
+//   },
+// });
+
 export default getCity;

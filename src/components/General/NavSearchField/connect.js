@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 
 import getCity from 'store/reducers/city/actions';
 import { getCities } from 'store/reducers/cityList/selectors';
+import View from './view';
 
 const mapStateToProps = (state) => ({
   cities: getCities(state),
@@ -13,6 +14,6 @@ const mapDispatchToProps = (dispatch) => ({
   },
 });
 
-const Connect = (Component) => connect(mapStateToProps, mapDispatchToProps)(Component);
+const ConnectedView = connect(mapStateToProps, mapDispatchToProps)(View);
 
-export default Connect;
+export default ConnectedView;

@@ -10,4 +10,4 @@ const mapStateToProps = (state) => ({
 
 const ConnectedView = connect(mapStateToProps)(View);
 
-export default Connect;
+export default ConnectedView;

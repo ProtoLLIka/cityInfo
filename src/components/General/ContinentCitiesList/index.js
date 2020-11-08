@@ -1,6 +1,3 @@
-import View from './view';
-import Connector from './connect';
+import ConnectedView from './connect';
 
-const ContinentCitiesList = Connector(View);
-
-export default ContinentCitiesList;
+export default ConnectedView;

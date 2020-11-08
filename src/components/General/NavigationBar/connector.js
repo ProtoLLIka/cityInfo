@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
-
-import { changeFilter, generateCityList } from '../../../store/reducers/cityList/actions';
+import { changeFilter, generateCityList } from 'store/reducers/cityList/actions';
+import View from './view';
 
 const mapDispatchToProps = (dispatch) => ({
   generateCityList: () => {
@@ -11,6 +11,6 @@ const mapDispatchToProps = (dispatch) => ({
   },
 });
 
-const Connector = (Component) => connect(null, mapDispatchToProps)(Component);
+const ConnectedView = connect(null, mapDispatchToProps)(View);
 
-export default Connector;
+export default ConnectedView;
