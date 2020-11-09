@@ -1,11 +1,10 @@
 /* eslint-disable react/forbid-prop-types */
 import React, { useEffect, useState } from 'react';
-import { isMobile } from 'react-device-detect';
 
 import { ALL_ANCHORS } from 'consts/anchorsNames';
 import isArraysEquals from 'helpers/isArraysEquals';
 import { bool, object } from 'prop-types';
-import BrowserView from './browserView';
+import View from './view';
 
 const isElementOnDisplay = (elementId) => {
   const element = document.getElementById(elementId);
@@ -48,10 +47,7 @@ const Controller = ({ city, isLoading }) => {
     };
   });
 
-  if (isMobile) {
-    return <h1>Mobile page</h1>;
-  }
-  return <BrowserView city={city} isLoading={isLoading} activeElements={activeElements} />;
+  return <View city={city} isLoading={isLoading} activeElements={activeElements} />;
 };
 
 Controller.propTypes = {

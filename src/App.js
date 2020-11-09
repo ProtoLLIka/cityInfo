@@ -1,10 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import { BrowserView, MobileView } from 'react-device-detect';
 
-import MobileNavBar from 'components/General/MobileNavBar';
-import BrowserNavBar from 'components/General/BrowserNavBar';
+import NavBar from 'components/General/NavBar';
 import AllCities from 'pages/AllCities';
 import Page404 from 'pages/NotFound';
 import MainPage from 'pages/Main';
@@ -17,12 +15,7 @@ const App = () => (
   <div className={styles.appContainer}>
     <Provider store={store}>
       <Router basename="/cityInfo">
-        <BrowserView>
-          <BrowserNavBar />
-        </BrowserView>
-        <MobileView>
-          <MobileNavBar />
-        </MobileView>
+        <NavBar />
         <Switch>
           <Route exact path="/" component={MainPage} />
           <Route path="/about" component={CityPage} />
