@@ -1,10 +1,8 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
 import { func } from 'prop-types';
 
 import { ALL } from 'consts/continentNames';
-import View from './view'
-
+import View from './view';
 
 const handleClick = (generateCityList, changeFilter) => {
   changeFilter(ALL);
@@ -12,13 +10,12 @@ const handleClick = (generateCityList, changeFilter) => {
 };
 
 const Controller = ({ generateCityList, changeFilter }) => {
-    const handleLinkClick = () =>{
-        handleClick(generateCityList, changeFilter);
-    }
-    
-  return (
-    <View handleLinkClick={handleLinkClick}/>
-  );
+  const handleLinkClick = () => {
+    handleClick(generateCityList, changeFilter);
+  };
+  const [isOpen, setOpen] = useState(false);
+  console.log(isOpen);
+  return <View handleLinkClick={handleLinkClick} setOpen={setOpen} isOpen={isOpen} />;
 };
 
 Controller.propTypes = {

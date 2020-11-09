@@ -1,6 +1,7 @@
 /* eslint-disable react/forbid-prop-types */
 /* eslint-disable no-unused-vars */
 import React from 'react';
+import { isMobile } from 'react-device-detect';
 import { arrayOf, object } from 'prop-types';
 
 import ClimateInfo from 'components/AboutCity/Content/ClimateInfo';
@@ -32,7 +33,7 @@ const ClimateBlock = ({ climate: { data } }) => {
   );
 
   return (
-    <div className={styles.climateContainer} id={CLIMATE_ANCHOR}>
+    <div className={`${isMobile ? styles.mobileContainer : styles.container}`} id={CLIMATE_ANCHOR}>
       <span className={styles.blockTitle}>CLIMATE</span>
       <ClimateInfo
         label={climateData.dayLength.label}

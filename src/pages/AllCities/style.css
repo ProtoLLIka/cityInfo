@@ -28,6 +28,7 @@
 }
 
 .searchContainer {
+  position: relative;
   width: 400px;
   margin: 0 auto;
 }

@@ -1,4 +1,4 @@
-.climateContainer {
+.container {
   width: 400px;
   height: 400px;
   background-color: #0bcf6b;
@@ -7,6 +7,14 @@
   margin: 20px auto 0px auto;
 }
 
+.mobileContainer {
+  width: 90%;
+  height: 400px;
+  background-color: #0bcf6b;
+  box-shadow: 0 0 5px #00000030;
+  padding: 20px;
+  margin: 20px auto 0px auto;
+}
 .infoBlock {
   width: 200px;
   height: 150px;

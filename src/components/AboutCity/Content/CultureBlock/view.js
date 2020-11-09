@@ -3,6 +3,7 @@
 import React from 'react';
 import { any, arrayOf, object } from 'prop-types';
 import Slider from '@farbenmeer/react-spring-slider';
+import { isMobile } from 'react-device-detect';
 
 import artGalary from 'assets/cultureBlock/artGalary.jpg';
 import cinema from 'assets/cultureBlock/cinema.jpg';
@@ -31,7 +32,7 @@ const CultureBlock = ({ culture: { data } }) => {
   ));
 
   return (
-    <div className={styles.cultureContainer} id={CULTURE_ANCHOR}>
+    <div className={`${isMobile ? styles.mobileContainer : styles.container}`} id={CULTURE_ANCHOR}>
       <h1 className={styles.blockTitle}>CULTURE</h1>
       <Slider auto="3000">{cultureList}</Slider>
     </div>

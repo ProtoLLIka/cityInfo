@@ -1,28 +1,66 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { func } from 'prop-types';
-
-import logo from 'assets/logo.png';
+import { bool, func } from 'prop-types';
+import Burger from 'react-css-burger';
+import Sticky from 'react-sticky-el';
 
 import styles from './style.css';
 
-const NavBarMobile = ({ handleLinkClick }) => (
-  <div className={styles.container}>
-    <Link to="/all" className={`${styles.link} ${styles.allCitiesBtn}`} onClick={handleLinkClick}>
-      All cities
-    </Link>
-    <Link to="/" className={`${styles.link} ${styles.logo}`} onClick={handleLinkClick}>
-      <img className={styles.logo} src={logo} alt="MEDIASOFT" />
-    </Link>
-  </div>
-)
+const NavBarMobile = ({ handleLinkClick, setOpen, isOpen }) => (
+  <Sticky>
+    <div className={styles.container}>
+      <div className={styles.burgerButton}>
+        <Burger
+          onClick={() => setOpen(!isOpen)}
+          active={isOpen}
+          burger="elastic"
+          color={isOpen ? 'black' : '#0bcf6b'}
+          scale={2}
+        />
+      </div>
+      <div className={styles.menuList} style={{ display: isOpen ? 'block' : 'none' }}>
+        <ul>
+          <li>
+            <Link
+              to="/"
+              className={`${styles.listElement}`}
+              onClick={() => {
+                handleLinkClick();
+                setOpen(false);
+              }}
+            >
+              Main
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="/all"
+              className={`${styles.listElement}`}
+              onClick={() => {
+                handleLinkClick();
+                setOpen(false);
+              }}
+            >
+              All cities
+            </Link>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </Sticky>
+);
 
 NavBarMobile.propTypes = {
   handleLinkClick: func,
+  setOpen: func,
+  isOpen: bool,
 };
 
 NavBarMobile.defaultProps = {
   handleLinkClick: () => {},
+  setOpen: () => {},
+  isOpen: false,
 };
 
 export default NavBarMobile;

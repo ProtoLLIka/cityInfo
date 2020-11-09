@@ -1,4 +1,4 @@
-.costOfLivingContainer {
+.container {
   width: 400px;
   height: fit-content;
   background-color: #0bcf6b;
@@ -7,7 +7,15 @@
   margin: 20px auto 0px auto;
   font-weight: bold;
 }
-
+.mobileContainer {
+  width: 90%;
+  height: fit-content;
+  background-color: #0bcf6b;
+  box-shadow: 0 0 5px #00000030;
+  padding: 20px;
+  margin: 20px auto 0px auto;
+  font-weight: bold;
+}
 .blockTitle {
   padding: 0px 0 5px 0;
   width: 400px;

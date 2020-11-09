@@ -7,7 +7,19 @@
   margin: 0 auto;
   position: relative;
   top: -200px;
-  z-index: 10;
+  z-index: 2;
+}
+
+.cityNameMobile {
+  width: fit-content;
+  padding: 5px 10px 5px 10px;
+  font-size: 100px;
+  background-color: #111;
+  color: #0bcf6b;
+  margin: 0 auto;
+  position: relative;
+  top: -260px;
+  z-index: 2;
 }
 
 .titleImg {
