@@ -6,15 +6,19 @@ import {
   COST_OF_LIVING, HOUSING, CULTURE, CLIMATE,
 } from 'consts/categoryNames';
 
-// TODO
 const getCitySlug = async (cityName) => {
-  const { data } = await axios.get(process.env.REACT_APP_URBAN_AREAS).catch((err) => err);
+  try {
+    const { data } = await axios.get(process.env.REACT_APP_URBAN_AREAS).catch((err) => err);
 
-  const urbanAreasLinks = data._links['ua:item'];
-  const city = urbanAreasLinks.find(({ name }) => name.toLowerCase() === cityName.toLowerCase());
-  const citySlug = getParamFromHref(city.href, 'slug');
+    const urbanAreasLinks = data._links['ua:item'];
 
-  return citySlug;
+    const city = urbanAreasLinks.find(({ name }) => name.toLowerCase() === cityName.toLowerCase());
+    const citySlug = getParamFromHref(city.href, 'slug');
+
+    return citySlug;
+  } catch (error) {
+    throw new Error('Unable to get city geoname');
+  }
 };
 
 const getCityGeoname = async (cityName) => {
@@ -22,87 +26,104 @@ const getCityGeoname = async (cityName) => {
     const { data } = await axios.get(
       `${process.env.REACT_APP_CITIES}?search=${encodeURI(cityName)}`,
     );
+    const searchResults = data._embedded['city:search-results'];
+    const linkFirstOfResults = searchResults[0]._links['city:item'].href;
+    const geonameId = getParamFromHref(linkFirstOfResults, 'geonameid');
+
+    return geonameId;
   } catch (error) {
     throw new Error('Unable to get city geoname');
   }
-
-  const searchResults = data._embedded['city:search-results'];
-  const linkFirstOfResults = searchResults[0]._links['city:item'].href;
-  const geonameId = getParamFromHref(linkFirstOfResults, 'geonameid');
-
-  return geonameId;
 };
 
 const getBasicInfo = async (geonameId) => {
-  const {
-    data: {
-      name,
-      population,
-      location: {
-        latlon: { latitude, longitude },
+  try {
+    const {
+      data: {
+        name,
+        population,
+        location: {
+          latlon: { latitude, longitude },
+        },
       },
-    },
-  } = await axios.get(`${process.env.REACT_APP_CITIES}${geonameId}/`).catch((err) => err);
+    } = await axios.get(`${process.env.REACT_APP_CITIES}${geonameId}/`);
 
-  const basicInfo = {
-    name,
-    location: {
-      lat: latitude,
-      lng: longitude,
-    },
-    population,
-  };
+    const basicInfo = {
+      name,
+      location: {
+        lat: latitude,
+        lng: longitude,
+      },
+      population,
+    };
 
-  return basicInfo;
+    return basicInfo;
+  } catch (error) {
+    throw new Error('Unable to get basic info');
+  }
 };
 
 const getTitleImg = async (citySlug) => {
-  const {
-    data: {
-      photos: [
-        {
-          image: { web },
-        },
-      ],
-    },
-  } = await axios
-    .get(`${process.env.REACT_APP_URBAN_AREAS}${encodeURI(citySlug)}/images/`)
-    .catch((err) => err);
+  try {
+    const {
+      data: {
+        photos: [
+          {
+            image: { web },
+          },
+        ],
+      },
+    } = await axios.get(`${process.env.REACT_APP_URBAN_AREAS}${encodeURI(citySlug)}/images/`);
 
-  return web;
+    return web;
+  } catch (error) {
+    throw new Error('Unable to get title img');
+  }
 };
 
 const getChartAndSummary = async (citySlug) => {
-  const { data } = await axios
-    .get(`${process.env.REACT_APP_URBAN_AREAS}${encodeURI(citySlug)}/scores/`)
-    .catch((err) => err);
+  try {
+    const { data } = await axios.get(
+      `${process.env.REACT_APP_URBAN_AREAS}${encodeURI(citySlug)}/scores/`,
+    );
 
-  const { categories, summary } = data;
+    const { categories, summary } = data;
 
-  return { chart: categories, summary };
+    return { chart: categories, summary };
+  } catch (error) {
+    throw new Error('Unable to get chart and summary');
+  }
 };
 
 const getCostOfLiving = (categories) => {
-  const { data } = categories.find(({ id }) => id === COST_OF_LIVING);
-  const goodsListWithApiTitle = data.map(({ currency_dollar_value: value, label }) => ({
-    value,
-    label,
-  }));
-  const goodsList = goodsListWithApiTitle.filter(({ value }) => value);
+  try {
+    const { data: costOfLiving } = categories.find(({ id }) => id === COST_OF_LIVING);
+    const goodsList = costOfLiving.reduce((prev, costItem) => {
+      const { currency_dollar_value: value, label } = costItem;
+      if (!value) {
+        return [...prev];
+      }
+      return [...prev, { value, label }];
+    }, []);
 
-  return {
-    id: COST_OF_LIVING,
-    data: goodsList,
-  };
+    return {
+      id: COST_OF_LIVING,
+      data: goodsList,
+    };
+  } catch (error) {
+    throw new Error('Unable to get cost of living');
+  }
 };
 
 const getHousing = (categories) => {
-  const { data } = categories.find(({ id }) => id === HOUSING);
-  const houseCostListWithTeleScore = data.map(({ currency_dollar_value: value, label }) => ({
-    value,
-    label,
-  }));
-  const houseCostList = houseCostListWithTeleScore.filter(({ value }) => value);
+  const { data: housing } = categories.find(({ id }) => id === HOUSING);
+  const houseCostList = housing.reduce((prev, housingItem) => {
+    const { currency_dollar_value: value, label } = housingItem;
+    if (!value) {
+      return [...prev];
+    }
+    return [...prev, { value, label }];
+  }, []);
 
   return {
     id: HOUSING,
@@ -112,13 +133,7 @@ const getHousing = (categories) => {
 
 const getCulture = (categories) => {
   const { data: culture } = categories.find(({ id }) => id === CULTURE);
-  const houseCostListWithTeleScore = culture.map(({ int_value: count, label }) => ({
-    count,
-    label,
-  }));
-  const houseCostList = houseCostListWithTeleScore.filter(({ count }) => count);
-
-  const res = culture.reduce((prev, cultureItem) => {
+  const houseCostList = culture.reduce((prev, cultureItem) => {
     const { int_value: count, label } = cultureItem;
 
     if (count) {
@@ -134,15 +149,15 @@ const getCulture = (categories) => {
   };
 };
 
-const getWeather = (categories) => {
-  const { data } = categories.find(({ id }) => id === CLIMATE);
-  const climateParams = data.map((climateParam) => {
-    const param = climateParam;
-    // delete param.id;
-    // delete param.type;
-    const paramValue = param.float_value ? param.float_value : param.string_value;
-    return { label: param.label, value: paramValue };
-  });
+const getClimate = (categories) => {
+  const { data: climate } = categories.find(({ id }) => id === CLIMATE);
+  const climateParams = climate.reduce((prev, climateItem) => {
+    const climateValue = climateItem.float_value
+      ? climateItem.float_value
+      : climateItem.string_value;
+
+    return [...prev, { label: climateItem.label, value: climateValue }];
+  }, []);
 
   return {
     id: CLIMATE,
@@ -151,45 +166,52 @@ const getWeather = (categories) => {
 };
 
 const getCityDetails = async (citySlug) => {
-  const {
-    data: { categories },
-  } = await axios
-    .get(`${process.env.REACT_APP_URBAN_AREAS}${encodeURI(citySlug)}/details/`)
-    .catch((err) => err);
+  try {
+    const {
+      data: { categories },
+    } = await axios.get(`${process.env.REACT_APP_URBAN_AREAS}${encodeURI(citySlug)}/details/`);
 
-  const costOfLiving = getCostOfLiving(categories);
-  const housing = getHousing(categories);
-  const culture = getCulture(categories);
-  const weather = getWeather(categories);
+    const costOfLiving = getCostOfLiving(categories);
+    const housing = getHousing(categories);
+    const culture = getCulture(categories);
+    const climate = getClimate(categories);
+    const res = {
+      costOfLiving,
+      housing,
+      culture,
+      climate,
+    };
 
-  return {
-    costOfLiving,
-    housing,
-    culture,
-    weather,
-  };
+    return res;
+  } catch (error) {
+    throw new Error('Unable to get city details');
+  }
 };
 
 const searchCity = async (cityName) => {
-  const citySlug = await getCitySlug(cityName);
-  const geonameId = await getCityGeoname(cityName);
-  const { name, location, population } = await getBasicInfo(geonameId);
-  const titleImg = await getTitleImg(citySlug);
-  const { summary, chart } = await getChartAndSummary(citySlug);
-  const details = await getCityDetails(citySlug);
+  try {
+    const citySlug = await getCitySlug(cityName);
+    const geonameId = await getCityGeoname(cityName);
+    const { name, location, population } = await getBasicInfo(geonameId);
+    const titleImg = await getTitleImg(citySlug);
+    const { summary, chart } = await getChartAndSummary(citySlug);
+    const details = await getCityDetails(citySlug);
 
-  return {
-    city: {
-      name,
-      summary,
-      location,
-      titleImg,
-      population,
-      id: geonameId,
-      categoryChart: chart,
-      details,
-    },
-  };
+    return {
+      city: {
+        name,
+        summary,
+        location,
+        titleImg,
+        population,
+        id: geonameId,
+        categoryChart: chart,
+        details,
+      },
+    };
+  } catch (error) {
+    throw new Error('City not found');
+  }
 };
 
 export default searchCity;

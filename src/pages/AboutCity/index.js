@@ -1,5 +1,5 @@
-import ConnectedView from './connect';
+import ConnectedController from './connect';
 
-const AboutCity = ConnectedView;
+const AboutCity = ConnectedController;
 
 export default AboutCity;

@@ -5,7 +5,7 @@ import {
   CITY_DOWLOADING_START,
   CITY_DOWLOADING_SUCCESSED,
   CITY_DOWLOADING_ERROR,
-} from './types';
+} from './actionsTypes';
 
 const searchStarted = () => ({
   type: CITY_DOWLOADING_START,

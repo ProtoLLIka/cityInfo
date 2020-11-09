@@ -1,5 +1,3 @@
-import searchCity from '../api/city/utils';
-
 const isArraysEquals = (firstArray, secondArray) => {
   if (firstArray || secondArray) {
     return false;

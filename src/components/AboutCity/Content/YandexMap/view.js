@@ -2,12 +2,12 @@ import React from 'react';
 import { number, objectOf } from 'prop-types';
 import { Map, YMaps } from 'react-yandex-maps';
 
-import { locationAnchor } from 'consts/anchorsNames';
+import { LOCATION_ANCHOR } from 'consts/anchorsNames';
 
 import styles from './style.css';
 
 const YandexMap = ({ location: { lat, lng } }) => (
-  <div className={styles.yandexMap} id={locationAnchor}>
+  <div className={styles.yandexMap} id={LOCATION_ANCHOR}>
     <span className={styles.blockTitle}>LOCATION</span>
     <YMaps>
       <Map

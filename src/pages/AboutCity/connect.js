@@ -1,13 +1,13 @@
 import { connect } from 'react-redux';
 import { getCity, getLoadingStatus } from 'store/reducers/city/selector';
 
-import View from './view';
+import Controller from './controller';
 
 const mapStateToProps = (state) => ({
   city: getCity(state),
   isLoading: getLoadingStatus(state),
 });
 
-const ConnectedView = connect(mapStateToProps)(View);
+const ConnectedController = connect(mapStateToProps)(Controller);
 
-export default ConnectedView;
+export default ConnectedController;

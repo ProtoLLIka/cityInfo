@@ -1,19 +1,12 @@
 import { connect } from 'react-redux';
 
-import getCity from 'store/reducers/city/actions';
 import { getCities } from 'store/reducers/cityList/selectors';
-import View from './view';
+import Controller from './controller';
 
 const mapStateToProps = (state) => ({
   cities: getCities(state),
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  getCity: (name) => {
-    dispatch(getCity(name));
-  },
-});
+const ConnectedController = connect(mapStateToProps)(Controller);
 
-const ConnectedView = connect(mapStateToProps, mapDispatchToProps)(View);
-
-export default ConnectedView;
+export default ConnectedController;

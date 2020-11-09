@@ -18,19 +18,15 @@ const setActivityStyle = (anchorName, activeElements) => {
   return style;
 };
 
-const generateLinks = (activeElements) => {
-  const linksArray = ALL_ANCHORS.map((anchor, index) => (
-    <AnchorLink href={`#${anchor}`} key={index}>
-      <span className={setActivityStyle(anchor, activeElements)}>{anchor.toUpperCase()}</span>
-    </AnchorLink>
-  ));
-
-  return linksArray;
-};
-
 const NavMenu = ({ activeElements }) => (
   <Sticky>
-    <div className={styles.navMenu}>{generateLinks(activeElements)}</div>
+    <div className={styles.navMenu}>
+      {ALL_ANCHORS.map((anchor, index) => (
+        <AnchorLink href={`#${anchor}`} key={index}>
+          <span className={setActivityStyle(anchor, activeElements)}>{anchor.toUpperCase()}</span>
+        </AnchorLink>
+      ))}
+    </div>
   </Sticky>
 );
 

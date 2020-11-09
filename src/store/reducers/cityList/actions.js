@@ -1,4 +1,4 @@
-import { getAllCities } from 'api/cityList';
+import { getAllCities } from 'api/cityList/utils';
 
 import {
   CITY_LIST_ADD_CITIES,
@@ -6,7 +6,7 @@ import {
   CITY_LIST_LOADING_ERROR,
   CITY_LIST_LOADING_START,
   CITY_LIST_LOADING_SUCCESSED,
-} from './types';
+} from './actionsTypes';
 
 const changeFilter = (type) => ({
   type: CITY_LIST_CHANGE_FILTER_TYPE,

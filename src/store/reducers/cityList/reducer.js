@@ -6,7 +6,7 @@ import {
   CITY_LIST_ADD_CITIES,
   CITY_LIST_CHANGE_FILTER_TYPE,
   CITY_LIST_LOADING_ERROR,
-} from './types';
+} from './actionsTypes';
 
 const INITIAL_STATE_CITY_LIST = {
   cities: [],

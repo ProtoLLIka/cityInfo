@@ -3,7 +3,7 @@ import {
   CITY_DOWLOADING_START,
   CITY_DOWLOADING_SUCCESSED,
   CITY_DOWLOADING_ERROR,
-} from './types';
+} from './actionsTypes';
 
 const INITIAL_STATE_CITY = {
   city: null,

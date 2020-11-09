@@ -1,3 +1,4 @@
+/* eslint-disable react/forbid-prop-types */
 /* eslint-disable no-unused-vars */
 import React from 'react';
 import { arrayOf, object } from 'prop-types';
@@ -8,7 +9,7 @@ import snowflake from 'assets/snowflake.svg';
 import radiation from 'assets/radiation.svg';
 import fire from 'assets/fire.svg';
 
-import { climateAnchor } from 'consts/anchorsNames';
+import { CLIMATE_ANCHOR } from 'consts/anchorsNames';
 
 import styles from './style.css';
 
@@ -21,8 +22,8 @@ const labels = {
   'Weather type': 'weatherType',
 };
 
-const ClimateBlock = ({ climate }) => {
-  const data = climate.reduce(
+const ClimateBlock = ({ climate: { data } }) => {
+  const climateData = data.reduce(
     (prev, currentItem) => ({
       ...prev,
       [labels[currentItem.label]]: currentItem,
@@ -31,36 +32,40 @@ const ClimateBlock = ({ climate }) => {
   );
 
   return (
-    <div className={styles.climateContainer} id={climateAnchor}>
+    <div className={styles.climateContainer} id={CLIMATE_ANCHOR}>
       <span className={styles.blockTitle}>CLIMATE</span>
       <ClimateInfo
-        label={data.dayLength.label}
-        value={data.dayLength.value.toString()}
+        label={climateData.dayLength.label}
+        value={climateData.dayLength.value.toString()}
         icon={sun}
       />
       <ClimateInfo
-        label={data.solarRad.label}
-        value={data.solarRad.value.toString()}
+        label={climateData.solarRad.label}
+        value={climateData.solarRad.value.toString()}
         icon={radiation}
       />
-      <ClimateInfo label={data.highTemp.label} value={data.highTemp.value.toString()} icon={fire} />
       <ClimateInfo
-        label={data.lowTemp.label}
-        value={data.lowTemp.value.toString()}
+        label={climateData.highTemp.label}
+        value={climateData.highTemp.value.toString()}
+        icon={fire}
+      />
+      <ClimateInfo
+        label={climateData.lowTemp.label}
+        value={climateData.lowTemp.value.toString()}
         icon={snowflake}
       />
-      <h1 className={styles.infoName}>{data.weatherType.label}</h1>
-      <span>{data.weatherType.value}</span>
+      <h1 className={styles.infoName}>{climateData.weatherType.label}</h1>
+      <span>{climateData.weatherType.value}</span>
     </div>
   );
 };
 
 ClimateBlock.propTypes = {
-  climate: arrayOf(object),
+  climate: object,
 };
 
 ClimateBlock.defaultProps = {
-  climate: [],
+  climate: {},
 };
 
 export default ClimateBlock;

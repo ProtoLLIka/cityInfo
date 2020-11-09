@@ -1,17 +1,18 @@
+/* eslint-disable react/forbid-prop-types */
 /* eslint-disable react/no-array-index-key */
 import React from 'react';
-import { arrayOf, object } from 'prop-types';
+import { object } from 'prop-types';
 
-import { costOfLivingAnchor } from 'consts/anchorsNames';
+import { COST_OF_LIVING_ANCHOR } from 'consts/anchorsNames';
 
 import styles from './style.css';
 
-const CostOfLivingBlock = ({ costOfLiving }) => (
-  <div className={styles.costOfLivingContainer} id={costOfLivingAnchor}>
+const CostOfLivingBlock = ({ costOfLiving: { data } }) => (
+  <div className={styles.costOfLivingContainer} id={COST_OF_LIVING_ANCHOR}>
     <h1 className={styles.blockTitle}>COST OF LIVING</h1>
     <table>
       <tbody>
-        {costOfLiving.map(({ label, value }, index) => (
+        {data.map(({ label, value }, index) => (
           <tr key={index}>
             <td className={styles.label}>{label}</td>
             <td className={styles.value}>{`${value}$`}</td>
@@ -23,11 +24,11 @@ const CostOfLivingBlock = ({ costOfLiving }) => (
 );
 
 CostOfLivingBlock.propTypes = {
-  costOfLiving: arrayOf(object),
+  costOfLiving: object,
 };
 
 CostOfLivingBlock.defaultProps = {
-  costOfLiving: [],
+  costOfLiving: {},
 };
 
 export default CostOfLivingBlock;

@@ -3,35 +3,14 @@ import React, { useEffect, useState } from 'react';
 import { arrayOf, any, func } from 'prop-types';
 import Sticky from 'react-sticky-el';
 
-import ContinentCitiesList from 'components/General/ContinentCitiesList';
+import ContinentCitiesBlock from 'components/General/ContinentCitiesBlock';
 
 import styles from './style.css';
-
-// TODO
-const generateLinksBlocks = (cities, nameFilter) => {
-  const citiesBlocks = cities.map((cititesOnContinent, index) => {
-    const [firstCity] = cititesOnContinent;
-    const cityBlock = (
-      <ContinentCitiesList
-        cities={cititesOnContinent}
-        continentName={firstCity.continent}
-        key={index}
-        nameFilter={nameFilter}
-      />
-    );
-
-    return cityBlock;
-  });
-
-  return citiesBlocks;
-};
 
 const AllCities = ({ cities, generateCityList }) => {
   useEffect(() => generateCityList(), []);
 
   const [nameFilter, setNameFilter] = useState('');
-
-  const listBlocks = generateLinksBlocks(cities, nameFilter);
 
   return (
     <div className={styles.allCitiesPage}>
@@ -47,7 +26,19 @@ const AllCities = ({ cities, generateCityList }) => {
           />
         </div>
       </Sticky>
-      <div className={styles.citiesList}>{listBlocks}</div>
+      <div className={styles.citiesList}>
+        {cities.map((cititesOnContinent, index) => {
+          const [firstCity] = cititesOnContinent;
+          return (
+            <ContinentCitiesBlock
+              cities={cititesOnContinent}
+              continentName={firstCity.continent}
+              key={index}
+              nameFilter={nameFilter}
+            />
+          );
+        })}
+      </div>
     </div>
   );
 };
