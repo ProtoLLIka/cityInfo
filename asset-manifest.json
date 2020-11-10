@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.js": "/cityInfo/static/js/main.4d79468a.chunk.js",
-    "main.js.map": "/cityInfo/static/js/main.4d79468a.chunk.js.map",
+    "main.js": "/cityInfo/static/js/main.3794d4e9.chunk.js",
+    "main.js.map": "/cityInfo/static/js/main.3794d4e9.chunk.js.map",
     "runtime-main.js": "/cityInfo/static/js/runtime-main.098a7657.js",
     "runtime-main.js.map": "/cityInfo/static/js/runtime-main.098a7657.js.map",
-    "static/js/2.23b7017f.chunk.js": "/cityInfo/static/js/2.23b7017f.chunk.js",
-    "static/js/2.23b7017f.chunk.js.map": "/cityInfo/static/js/2.23b7017f.chunk.js.map",
+    "static/js/2.79ce5e01.chunk.js": "/cityInfo/static/js/2.79ce5e01.chunk.js",
+    "static/js/2.79ce5e01.chunk.js.map": "/cityInfo/static/js/2.79ce5e01.chunk.js.map",
     "index.html": "/cityInfo/index.html",
-    "precache-manifest.46585487a4fbdf3337cec5c3efbd1ef7.js": "/cityInfo/precache-manifest.46585487a4fbdf3337cec5c3efbd1ef7.js",
+    "precache-manifest.71f0668bea2c619dfedee7f5c18d622c.js": "/cityInfo/precache-manifest.71f0668bea2c619dfedee7f5c18d622c.js",
     "service-worker.js": "/cityInfo/service-worker.js",
-    "static/js/2.23b7017f.chunk.js.LICENSE.txt": "/cityInfo/static/js/2.23b7017f.chunk.js.LICENSE.txt",
+    "static/js/2.79ce5e01.chunk.js.LICENSE.txt": "/cityInfo/static/js/2.79ce5e01.chunk.js.LICENSE.txt",
     "static/media/artGalary.jpg": "/cityInfo/static/media/artGalary.c229caf7.jpg",
     "static/media/cinema.jpg": "/cityInfo/static/media/cinema.24715a8e.jpg",
     "static/media/comedyClub.jpg": "/cityInfo/static/media/comedyClub.e25a4a6e.jpg",
@@ -24,7 +24,7 @@
   },
   "entrypoints": [
     "static/js/runtime-main.098a7657.js",
-    "static/js/2.23b7017f.chunk.js",
-    "static/js/main.4d79468a.chunk.js"
+    "static/js/2.79ce5e01.chunk.js",
+    "static/js/main.3794d4e9.chunk.js"
   ]
 }

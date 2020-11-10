@@ -1,19 +1,19 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "25bfa9521fe5b3354c3e43a6e77ee387",
+    "revision": "17144933fb5b0766cd736911401112da",
     "url": "/cityInfo/index.html"
   },
   {
-    "revision": "fee169789de7253a2e7a",
-    "url": "/cityInfo/static/js/2.23b7017f.chunk.js"
+    "revision": "45418349a2401e233a2d",
+    "url": "/cityInfo/static/js/2.79ce5e01.chunk.js"
   },
   {
     "revision": "f0b8611a708d416901dfd2e53eebeb02",
-    "url": "/cityInfo/static/js/2.23b7017f.chunk.js.LICENSE.txt"
+    "url": "/cityInfo/static/js/2.79ce5e01.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "7ec6954f3902e1e899e4",
-    "url": "/cityInfo/static/js/main.4d79468a.chunk.js"
+    "revision": "b61d7dd6572c6d5807dd",
+    "url": "/cityInfo/static/js/main.3794d4e9.chunk.js"
   },
   {
     "revision": "7721c8209a4c8fc2f14c",
