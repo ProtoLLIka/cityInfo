@@ -8,19 +8,13 @@
   font-weight: bold;
 }
 
-.mobileContainer {
-  width: 90%;
-  height: fit-content;
-  background-color: #0bcf6b;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.188);
-  padding: 20px;
-  margin: 20px auto 0px auto;
-  font-weight: bold;
+.container > canvas {
+  max-height: 400px;
 }
 
 .blockTitle {
   padding: 0px 0 5px 0;
-  width: 400px;
+  width: 100%;
   float: left;
   font-size: 30px;
   color: white;
@@ -38,4 +32,18 @@
   text-align: left;
   margin: -15px 0 10px 0;
   font-weight: normal;
+}
+
+@media screen and (max-width: 995px), screen and (max-height: 700px) {
+  .container {
+    width: 90%;
+    font-size: 30px;
+  }
+
+  .blockTitle {
+    font-size: 40px;
+  }
+  .underTitleText {
+    font-size: 25px;
+  }
 }

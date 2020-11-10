@@ -32,3 +32,6 @@
   width: 400px;
   margin: 0 auto;
 }
+
+@media screen and (max-width: 995px), screen and (max-height: 700px) {
+}

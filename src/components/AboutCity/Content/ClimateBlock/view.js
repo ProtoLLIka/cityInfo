@@ -33,7 +33,7 @@ const ClimateBlock = ({ climate: { data } }) => {
   );
 
   return (
-    <div className={`${isMobile ? styles.mobileContainer : styles.container}`} id={CLIMATE_ANCHOR}>
+    <div className={styles.container} id={CLIMATE_ANCHOR}>
       <span className={styles.blockTitle}>CLIMATE</span>
       <ClimateInfo
         label={climateData.dayLength.label}
@@ -55,8 +55,8 @@ const ClimateBlock = ({ climate: { data } }) => {
         value={climateData.lowTemp.value.toString()}
         icon={snowflake}
       />
-      <h1 className={styles.infoName}>{climateData.weatherType.label}</h1>
-      <span>{climateData.weatherType.value}</span>
+      {/* <h1 className={styles.infoName}>{climateData.weatherType.label}</h1>
+      <span>{climateData.weatherType.value}</span> */}
     </div>
   );
 };

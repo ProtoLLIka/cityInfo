@@ -22,3 +22,9 @@
   border-left: 3px solid #00000000;
   padding: 5px 0 5px 5px;
 }
+
+@media screen and (max-width: 995px), screen and (max-height: 700px) {
+  .navMenu {
+    display: none;
+  }
+}

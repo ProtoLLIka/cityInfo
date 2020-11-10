@@ -1,9 +1,9 @@
 .link {
-    font-size      : 20px;
-    font-weight    : bold;
-    padding        : 10px 10px 0 0px;
-    text-decoration: none;
-    color          : #fffdfd;
-    flex-basis     : 30px;
-    overflow       : hidden;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 10px 10px 0 0px;
+  text-decoration: none;
+  color: #fffdfd;
+  flex-basis: 30px;
+  overflow: hidden;
 }

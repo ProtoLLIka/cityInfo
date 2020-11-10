@@ -37,8 +37,8 @@ const AboutCity = ({ city, isLoading, activeElements }) => {
       <CultureBlock culture={details.culture} />
       <ClimateBlock climate={details.climate} />
       <ChartBlock chartData={categoryChart} />
-      <HousingBlock housing={details.housing} />
       <CostOfLivingBlock costOfLiving={details.costOfLiving} />
+      <HousingBlock housing={details.housing} />
     </div>
   );
 };

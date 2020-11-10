@@ -5,7 +5,7 @@
 
 .mainPageContainer {
   font-family: 'Roboto';
-  height: 2000px;
+  min-height: 100vh;
 }
 
 .citiesBlock {

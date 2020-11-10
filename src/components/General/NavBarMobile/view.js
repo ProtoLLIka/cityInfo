@@ -47,6 +47,13 @@ const NavBarMobile = ({ handleLinkClick, setOpen, isOpen }) => (
           </li>
         </ul>
       </div>
+      <button
+        className={styles.filled}
+        onClick={() => setOpen(false)}
+        type="button"
+        aria-label="close menu"
+        style={{ display: isOpen ? 'block' : 'none' }}
+      />
     </div>
   </Sticky>
 );

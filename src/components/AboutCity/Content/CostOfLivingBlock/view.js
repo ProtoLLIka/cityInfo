@@ -1,7 +1,6 @@
 /* eslint-disable react/forbid-prop-types */
 /* eslint-disable react/no-array-index-key */
 import React from 'react';
-import { isMobile } from 'react-device-detect';
 import { object } from 'prop-types';
 
 import { COST_OF_LIVING_ANCHOR } from 'consts/anchorsNames';
@@ -9,10 +8,7 @@ import { COST_OF_LIVING_ANCHOR } from 'consts/anchorsNames';
 import styles from './style.css';
 
 const CostOfLivingBlock = ({ costOfLiving: { data } }) => (
-  <div
-    className={`${isMobile ? styles.mobileContainer : styles.container}`}
-    id={COST_OF_LIVING_ANCHOR}
-  >
+  <div className={styles.container} id={COST_OF_LIVING_ANCHOR}>
     <h1 className={styles.blockTitle}>COST OF LIVING</h1>
     <table>
       <tbody>

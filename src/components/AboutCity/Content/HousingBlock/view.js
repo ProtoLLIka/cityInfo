@@ -2,7 +2,6 @@
 import React from 'react';
 import { Bar } from 'react-chartjs-2';
 import { object } from 'prop-types';
-import { isMobile } from 'react-device-detect';
 
 import { HOUSING_ANCHOR } from 'consts/anchorsNames';
 
@@ -50,7 +49,7 @@ const HousingBlock = ({ housing: { data } }) => {
     { labels: [], value: [] },
   );
   return (
-    <div className={`${isMobile ? styles.mobileContainer : styles.container}`} id={HOUSING_ANCHOR}>
+    <div className={styles.container} id={HOUSING_ANCHOR}>
       <h1 className={styles.blockTitle}>HOUSING</h1>
       <span className={styles.underTitleText}>(in dollars)</span>
       <Bar data={chartData(housingData)} {...chartOptions} />

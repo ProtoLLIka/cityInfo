@@ -6,8 +6,10 @@ import styles from './style.css';
 const ClimatInfo = ({ label, value, icon }) => (
   <div className={styles.infoBlock}>
     <h1 className={styles.infoName}>{label}</h1>
-    <img className={styles.icon} src={icon} alt={icon} />
-    <span className={styles.value}>{value}</span>
+    <div className={styles.valueBlock}>
+      <img className={styles.icon} src={icon} alt={icon} />
+      <span className={styles.value}>{value}</span>
+    </div>
   </div>
 );
 

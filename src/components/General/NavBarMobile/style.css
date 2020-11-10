@@ -32,11 +32,11 @@
 }
 
 .menuList {
-  position: absolute;
   background-color: #0bcf6b;
   width: 70vw;
   z-index: 102;
   height: 100vh;
+  float: left;
 }
 .menuList > ul {
   list-style-type: none;
@@ -46,8 +46,16 @@
   margin: 60px 100px 0 0px;
   text-align: left;
 }
+
 .listElement {
   font-size: 60px;
   text-decoration: none;
   color: black;
+}
+
+.filled {
+  position: relative;
+  width: 300px;
+  background-color: #000000bb;
+  height: 100vh;
 }
