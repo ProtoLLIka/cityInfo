@@ -1,25 +1,18 @@
-.cultureContainer {
+.container {
   width: 400px;
-  height: 350px;
+  height: 360px;
   background-color: #0bcf6b;
   box-shadow: 0 0 5px #00000030;
   padding: 20px;
   margin: 20px auto 0px auto;
 }
-
 .blockTitle {
   padding: 0px 0 5px 0;
   width: 400px;
-  float: left;
   font-size: 30px;
   color: white;
-  text-align: left;
-  margin: 0 0 10px 0;
+  margin: 0 0 0 0;
   font-weight: normal;
-}
-
-.culturePlace {
-  padding-bottom: 10px;
 }
 
 .cultureLabel {
@@ -49,4 +42,24 @@
 .cultureImg {
   height: 240px;
   width: 400px;
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 995px), screen and (max-height: 700px) {
+  .container {
+    width: 90%;
+    font-size: 30px;
+  }
+
+  .blockTitle {
+    font-size: 40px;
+  }
+
+  .cultureLabel {
+    font-size: 40px;
+  }
+
+  .cultureCount {
+    font-size: 70px;
+  }
 }

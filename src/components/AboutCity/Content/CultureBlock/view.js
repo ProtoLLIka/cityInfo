@@ -31,7 +31,7 @@ const CultureBlock = ({ culture: { data } }) => {
   ));
 
   return (
-    <div className={styles.cultureContainer} id={CULTURE_ANCHOR}>
+    <div className={styles.container} id={CULTURE_ANCHOR}>
       <h1 className={styles.blockTitle}>CULTURE</h1>
       <Slider auto="3000">{cultureList}</Slider>
     </div>

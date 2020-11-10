@@ -1,42 +1,33 @@
-.climateContainer {
+.container {
   width: 400px;
-  height: 400px;
+  height: fit-content;
   background-color: #0bcf6b;
   box-shadow: 0 0 5px #00000030;
   padding: 20px;
   margin: 20px auto 0px auto;
 }
 
-.infoBlock {
-  width: 200px;
-  height: 150px;
-  float: left;
-}
-
 .infoName {
   font-size: 20px;
 }
 
-.value {
-  width: 50px;
-  text-align: center;
-  font-size: 50px;
-  margin-left: 10px;
-  padding-top: 10px;
-}
-
-.icon {
-  width: 65px;
-  height: 65px;
-  float: left;
-}
-
 .blockTitle {
-  padding: 5px 0 5px 0;
+  padding: 5px 0 0 0;
   width: 400px;
   float: left;
   font-size: 30px;
   color: white;
   text-align: left;
-  margin-bottom: 10px;
+  width: 100%;
+}
+
+@media screen and (max-width: 995px), screen and (max-height: 700px) {
+  .container {
+    width: 90%;
+    font-size: 30px;
+  }
+
+  .blockTitle {
+    font-size: 40px;
+  }
 }

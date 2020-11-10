@@ -1,4 +1,4 @@
-.housingBlock {
+.container {
   width: 400px;
   height: fit-content;
   background-color: #0bcf6b;
@@ -7,9 +7,14 @@
   margin: 20px auto 0px auto;
   font-weight: bold;
 }
+
+.container > canvas {
+  max-height: 400px;
+}
+
 .blockTitle {
   padding: 0px 0 5px 0;
-  width: 400px;
+  width: 100%;
   float: left;
   font-size: 30px;
   color: white;
@@ -17,6 +22,7 @@
   margin: 0 0 10px 0;
   font-weight: normal;
 }
+
 .underTitleText {
   padding: 0px 0 5px 0;
   width: 400px;
@@ -26,4 +32,18 @@
   text-align: left;
   margin: -15px 0 10px 0;
   font-weight: normal;
+}
+
+@media screen and (max-width: 995px), screen and (max-height: 700px) {
+  .container {
+    width: 90%;
+    font-size: 30px;
+  }
+
+  .blockTitle {
+    font-size: 40px;
+  }
+  .underTitleText {
+    font-size: 25px;
+  }
 }

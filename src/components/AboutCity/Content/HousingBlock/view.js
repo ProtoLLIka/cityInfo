@@ -49,7 +49,7 @@ const HousingBlock = ({ housing: { data } }) => {
     { labels: [], value: [] },
   );
   return (
-    <div className={styles.housingBlock} id={HOUSING_ANCHOR}>
+    <div className={styles.container} id={HOUSING_ANCHOR}>
       <h1 className={styles.blockTitle}>HOUSING</h1>
       <span className={styles.underTitleText}>(in dollars)</span>
       <Bar data={chartData(housingData)} {...chartOptions} />

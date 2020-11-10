@@ -1,29 +1,44 @@
 .cititesBlock {
-  width           : 900px;
-  height          : fit-content;
-  margin          : 10px auto 0 auto;
-  padding-bottom  : 10px;
-  display         : flex;
-  flex-direction  : column;
+  width: 700px;
+  height: fit-content;
+  margin: 10px auto 0 auto;
+  padding-bottom: 10px;
+  display: flex;
+  flex-direction: column;
   background-color: #00000000;
 }
 
-.cititesBlock>h1 {
-  color     : #0bcf6b;
-  padding   : 10px;
-  width     : fit-content;
-  height    : fit-content;
+.cititesBlock > h1 {
+  color: #0bcf6b;
+  padding: 10px;
+  height: fit-content;
   text-align: center;
-  float     : left;
-  margin    : 20px auto;
+  float: left;
+  margin: 20px auto;
 }
 
 .cititesList {
-  min-height    : fit-content;
-  padding       : 0 20px 0 20px;
-  max-height    : 800px;
-  text-align    : center;
+  min-height: fit-content;
+  padding: 0 20px 0 20px;
+  max-height: 800px;
+  text-align: center;
   flex-direction: column;
-  display       : flex;
-  flex-wrap     : wrap;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+@media screen and (max-width: 995px), screen and (max-height: 700px) {
+  .cititesList {
+    max-height: fit-content;
+  }
+
+  .cititesBlock {
+    width: 80vw;
+    margin: 10px 10vw 0 10vw;
+  }
+
+  .cititesBlock > h1 {
+    margin: 20px 10vw;
+    font-size: 60px;
+  }
 }

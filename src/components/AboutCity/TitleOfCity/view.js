@@ -5,9 +5,10 @@ import styles from './style.css';
 
 const TitleOfCity = ({ name, titleImg }) => (
   <>
-    <div className={styles.titleImg} style={{ backgroundImage: `url(${titleImg})` }} />
-    <div className={styles.cityName}>
-      <span>{name.toUpperCase()}</span>
+    <div className={styles.titleImg} style={{ backgroundImage: `url(${titleImg})` }}>
+      <div className={styles.cityName}>
+        <span>{name.toUpperCase()}</span>
+      </div>
     </div>
   </>
 );

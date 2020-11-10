@@ -5,7 +5,6 @@
 
 .continent:hover {
   opacity: 1;
-  /* fill: #0bcf6b; */
   fill: #0bcf6b;
 }
 
@@ -18,4 +17,10 @@
 .svg {
   width: 1000px;
   height: 1200px;
+}
+
+@media screen and (max-width: 995px), screen and (max-height: 700px) {
+  .map {
+    margin-top: 120px;
+  }
 }

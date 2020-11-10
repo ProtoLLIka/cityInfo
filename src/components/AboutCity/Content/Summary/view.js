@@ -4,11 +4,11 @@ import React from 'react';
 
 import { QUALITY_ANCHOR } from 'consts/anchorsNames';
 
-import styles from './style.css';
+import style from './style.css';
 
 const Summary = ({ name, summary }) => (
-  <div className={styles.container} id={QUALITY_ANCHOR}>
-    <span className={styles.blockTitle}>{`QUALITY OF LIFE IN ${name.toUpperCase()}`}</span>
+  <div className={style.container} id={QUALITY_ANCHOR}>
+    <span className={style.blockTitle}>{`QUALITY OF LIFE IN ${name.toUpperCase()}`}</span>
     <span dangerouslySetInnerHTML={{ __html: summary }} />
   </div>
 );

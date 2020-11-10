@@ -8,7 +8,7 @@ import { LIFE_QUALITY_ANCHOR } from 'consts/anchorsNames';
 import styles from './style.css';
 
 const ChartBlock = ({ chartData }) => (
-  <div className={styles.chartBlock} id={LIFE_QUALITY_ANCHOR}>
+  <div className={styles.container} id={LIFE_QUALITY_ANCHOR}>
     <span className={styles.blockTitle}>LIFE QUALITY SCORE</span>
     {chartData.map(({ score_out_of_10: scoreOutOfTen, ...restProps }, index) => (
       <ChartLine {...restProps} value={scoreOutOfTen} key={index} />

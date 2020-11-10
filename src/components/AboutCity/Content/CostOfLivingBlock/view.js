@@ -8,7 +8,7 @@ import { COST_OF_LIVING_ANCHOR } from 'consts/anchorsNames';
 import styles from './style.css';
 
 const CostOfLivingBlock = ({ costOfLiving: { data } }) => (
-  <div className={styles.costOfLivingContainer} id={COST_OF_LIVING_ANCHOR}>
+  <div className={styles.container} id={COST_OF_LIVING_ANCHOR}>
     <h1 className={styles.blockTitle}>COST OF LIVING</h1>
     <table>
       <tbody>
