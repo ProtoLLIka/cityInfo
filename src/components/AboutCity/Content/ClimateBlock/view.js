@@ -1,8 +1,6 @@
 /* eslint-disable react/forbid-prop-types */
-/* eslint-disable no-unused-vars */
 import React from 'react';
-import { isMobile } from 'react-device-detect';
-import { arrayOf, object } from 'prop-types';
+import { object } from 'prop-types';
 
 import ClimateInfo from 'components/AboutCity/Content/ClimateInfo';
 import sun from 'assets/sun.svg';
@@ -55,8 +53,6 @@ const ClimateBlock = ({ climate: { data } }) => {
         value={climateData.lowTemp.value.toString()}
         icon={snowflake}
       />
-      {/* <h1 className={styles.infoName}>{climateData.weatherType.label}</h1>
-      <span>{climateData.weatherType.value}</span> */}
     </div>
   );
 };
