@@ -14,7 +14,6 @@ const Controller = ({ generateCityList, changeFilter }) => {
     handleClick(generateCityList, changeFilter);
   };
   const [isOpen, setOpen] = useState(false);
-  console.log(isOpen);
   return <View handleLinkClick={handleLinkClick} setOpen={setOpen} isOpen={isOpen} />;
 };
 
