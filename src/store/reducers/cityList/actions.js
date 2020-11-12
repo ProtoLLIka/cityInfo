@@ -1,5 +1,3 @@
-import { getAllCities } from 'api/cityList/utils';
-
 import {
   CITY_LIST_ADD_CITIES,
   CITY_LIST_CHANGE_FILTER_TYPE,
@@ -31,17 +29,30 @@ const setCities = (cities) => ({
   cities,
 });
 
-const generateCityList = () => (dispatch) => {
-  dispatch(loadingStarted());
+// const generateCityList = () => (dispatch) => {
+//   dispatch(loadingStarted());
 
-  getAllCities()
-    .then((res) => {
-      dispatch(loadingSuccessful());
-      dispatch(setCities(res));
-    })
-    .catch((err) => {
-      dispatch(loadingError(err));
-    });
+//   getAllCities()
+//     .then((res) => {
+//       dispatch(loadingSuccessful());
+//       dispatch(setCities(res));
+//     })
+//     .catch((err) => {
+//       dispatch(loadingError(err));
+//     });
+// };
+
+const generateCityList = () => ({
+  request: {
+    type: 'cityList',
+  },
+});
+
+export {
+  generateCityList,
+  changeFilter,
+  loadingStarted,
+  loadingSuccessful,
+  loadingError,
+  setCities,
 };
-
-export { generateCityList, changeFilter };

@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import searchCity from 'api/city/utils';
 
 import {
@@ -9,17 +10,14 @@ import {
 
 const searchStarted = () => ({
   type: CITY_DOWLOADING_START,
-  isLoading: true,
 });
 
 const searchSuccessed = () => ({
   type: CITY_DOWLOADING_SUCCESSED,
-  isLoading: false,
 });
 
 const searchError = (err) => ({
   type: CITY_DOWLOADING_ERROR,
-  isLoading: false,
   error: err,
 });
 
@@ -28,24 +26,22 @@ const selectCity = (city) => ({
   city,
 });
 
-const getCity = (cityName) => (dispatch) => {
-  dispatch(searchStarted());
+const getCity = (cityName) => ({
+  request: {
+    type: 'city',
+    requestHandler: searchCity,
+    requestParams: {
+      cityName,
+    },
+    actions: {
+      init: CITY_DOWLOADING_START,
+      succeessed: CITY_DOWLOADING_SUCCESSED,
+      city: SELECT_CITY,
+      error: CITY_DOWLOADING_ERROR,
+    },
+  },
+});
 
-  searchCity(cityName)
-    .then(({ city }) => {
-      dispatch(searchSuccessed());
-      dispatch(selectCity(city));
-    })
-    .catch((err) => {
-      dispatch(searchError(err));
-    });
+export {
+  getCity, searchStarted, searchSuccessed, searchError, selectCity,
 };
-
-// const getCity = (cityName) => ({
-//   request: {
-//     requestHandler: searchCity,
-//     actions: { init: SEARCH_STARTED, fullfield: SEARCH_SUCCESS, error: SEARCH_ERROR },
-//   },
-// });
-
-export default getCity;

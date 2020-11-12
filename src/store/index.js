@@ -1,27 +1,57 @@
 import { createStore, applyMiddleware, combineReducers } from 'redux';
 import logger from 'redux-logger';
 import thunk from 'redux-thunk';
-// import axios from 'axios';
 
 import cityList from 'store/reducers/cityList/reducer';
-import city from 'store/reducers/city/reducer';
+import {
+  searchStarted,
+  searchSuccessed,
+  searchError,
+  selectCity,
+} from 'store/reducers/city/actions';
 
-// const middleware = (store) => (next) => (action) => {
-//   if (action.request) {
-//     store.dispatch(action[0]);
-//     try {
-//       axios.get();
-//       store.dispatch(action[1]);
-//     } catch (error) {
-//       store.dispatch(action[2]);
-//     }
-//     return next();
-//   }
+import {
+  loadingStarted,
+  loadingSuccessful,
+  loadingError,
+  setCities,
+} from 'store/reducers/cityList/actions';
+import { getAllCities } from 'api/cityList/utils';
+import searchCity from 'api/city/utils';
+import cityReducer from 'store/reducers/city/reducer';
 
-//   return next();
-// };
+const middleware = (store) => (next) => (action) => {
+  if (action.request) {
+    if (action.request.type === 'cityList') {
+      store.dispatch(loadingStarted());
+      try {
+        getAllCities().then((cities) => {
+          store.dispatch(loadingSuccessful());
+          store.dispatch(setCities(cities));
+        });
+      } catch (error) {
+        store.dispatch(loadingError(error));
+      }
+    }
 
-const reducers = combineReducers({ cityList, city });
-const store = createStore(reducers, applyMiddleware(thunk, logger));
+    if (action.request.type === 'city') {
+      const { cityName } = action.request.requestParams;
+      store.dispatch(searchStarted());
+      try {
+        searchCity(cityName).then(({ city }) => {
+          store.dispatch(searchSuccessed());
+          store.dispatch(selectCity(city));
+        });
+      } catch (error) {
+        store.dispatch(searchError(error));
+      }
+    }
+    return null;
+  }
+  return next(action);
+};
+
+const reducers = combineReducers({ cityList, city: cityReducer });
+const store = createStore(reducers, applyMiddleware(thunk, logger, middleware));
 
 export default store;
