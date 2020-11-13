@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/no-array-index-key */
 import React from 'react';
 import AnchorLink from 'react-anchor-link-smooth-scroll';

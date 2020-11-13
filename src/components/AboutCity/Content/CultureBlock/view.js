@@ -1,7 +1,10 @@
 /* eslint-disable react/forbid-prop-types */
 /* eslint-disable react/no-array-index-key */
 import React from 'react';
-import { any, arrayOf, object } from 'prop-types';
+import {
+  any, arrayOf, func, object,
+} from 'prop-types';
+import { InView } from 'react-intersection-observer';
 import Slider from '@farbenmeer/react-spring-slider';
 
 import artGalary from 'assets/cultureBlock/artGalary.jpg';
@@ -17,7 +20,7 @@ import styles from './style.css';
 
 const images = [artGalary, cinema, comedyClub, concertVenue, historicalSite, museum];
 
-const CultureBlock = ({ culture: { data } }) => {
+const CultureBlock = ({ culture: { data }, setVisibles, visibles }) => {
   const cultureList = data.map(({ label: culurePlaceLabel, count: culurePlacecount }, index) => (
     <div className={styles.culturePlace} key={index}>
       <div className={styles.cultureLabel}>
@@ -31,21 +34,35 @@ const CultureBlock = ({ culture: { data } }) => {
   ));
 
   return (
-    <div className={styles.cultureContainer} id={CULTURE_ANCHOR}>
-      <h1 className={styles.blockTitle}>CULTURE</h1>
-      <Slider auto="3000">{cultureList}</Slider>
-    </div>
+    <InView
+      onChange={(inView) => {
+        if (inView) {
+          setVisibles([...visibles, CULTURE_ANCHOR]);
+        } else {
+          setVisibles(visibles.filter((anchor) => anchor !== CULTURE_ANCHOR));
+        }
+      }}
+    >
+      <div className={styles.cultureContainer} id={CULTURE_ANCHOR}>
+        <h1 className={styles.blockTitle}>CULTURE</h1>
+        <Slider auto="3000">{cultureList}</Slider>
+      </div>
+    </InView>
   );
 };
 
 CultureBlock.propTypes = {
   culture: object,
   data: arrayOf(any),
+  setVisibles: func,
+  visibles: arrayOf(any),
 };
 
 CultureBlock.defaultProps = {
   culture: {},
   data: [],
+  setVisibles: () => {},
+  visibles: [],
 };
 
 export default CultureBlock;
