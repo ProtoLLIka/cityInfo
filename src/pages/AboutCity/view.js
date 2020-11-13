@@ -26,7 +26,6 @@ const AboutCity = ({
   const {
     titleImg, categoryChart, location, name, summary, details,
   } = city;
-  console.log(activeElements);
   return (
     <div className={styles.cityPageContainer}>
       <Preloader isLoading={isLoading} />
