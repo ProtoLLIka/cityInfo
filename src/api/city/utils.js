@@ -188,7 +188,7 @@ const getCityDetails = async (citySlug) => {
   }
 };
 
-const searchCity = async (cityName) => {
+const searchCity = async ({ cityName }) => {
   try {
     const citySlug = await getCitySlug(cityName);
     const geonameId = await getCityGeoname(cityName);
@@ -198,16 +198,14 @@ const searchCity = async (cityName) => {
     const details = await getCityDetails(citySlug);
 
     return {
-      city: {
-        name,
-        summary,
-        location,
-        titleImg,
-        population,
-        id: geonameId,
-        categoryChart: chart,
-        details,
-      },
+      name,
+      summary,
+      location,
+      titleImg,
+      population,
+      id: geonameId,
+      categoryChart: chart,
+      details,
     };
   } catch (error) {
     throw new Error('City not found');

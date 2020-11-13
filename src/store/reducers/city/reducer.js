@@ -1,5 +1,5 @@
 import {
-  SELECT_CITY,
+  // SELECT_CITY,
   CITY_DOWLOADING_START,
   CITY_DOWLOADING_SUCCESSED,
   CITY_DOWLOADING_ERROR,
@@ -11,9 +11,13 @@ const INITIAL_STATE_CITY = {
 };
 
 const handlers = {
-  [SELECT_CITY]: (state, { city }) => ({ ...state, city }),
+  // [SELECT_CITY]: (state, { city }) => ({ ...state, city }),
   [CITY_DOWLOADING_START]: (state) => ({ ...state, isLoading: true }),
-  [CITY_DOWLOADING_SUCCESSED]: (state) => ({ ...state, isLoading: false }),
+  [CITY_DOWLOADING_SUCCESSED]: (state, { response }) => ({
+    ...state,
+    isLoading: false,
+    city: response,
+  }),
   [CITY_DOWLOADING_ERROR]: (state) => ({ ...state, isLoading: false }),
 };
 

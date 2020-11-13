@@ -34,11 +34,13 @@ const ClimateBlock = ({ climate: { data } }) => {
   return (
     <div className={styles.climateContainer} id={CLIMATE_ANCHOR}>
       <span className={styles.blockTitle}>CLIMATE</span>
-      <ClimateInfo
-        label={climateData.dayLength.label}
-        value={climateData.dayLength.value.toString()}
-        icon={sun}
-      />
+      {climateData.dayLength ? (
+        <ClimateInfo
+          label={climateData.dayLength.label}
+          value={climateData.dayLength.value.toString()}
+          icon={sun}
+        />
+      ) : null}
       <ClimateInfo
         label={climateData.solarRad.label}
         value={climateData.solarRad.value.toString()}
@@ -54,8 +56,12 @@ const ClimateBlock = ({ climate: { data } }) => {
         value={climateData.lowTemp.value.toString()}
         icon={snowflake}
       />
-      <h1 className={styles.infoName}>{climateData.weatherType.label}</h1>
-      <span>{climateData.weatherType.value}</span>
+      {climateData.weatherType ? (
+        <>
+          <h1 className={styles.infoName}>{climateData.weatherType.label}</h1>
+          <span>{climateData.weatherType.value}</span>
+        </>
+      ) : null}
     </div>
   );
 };

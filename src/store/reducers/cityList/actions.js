@@ -1,3 +1,4 @@
+import { getAllCities } from 'api/cityList/utils';
 import {
   CITY_LIST_ADD_CITIES,
   CITY_LIST_CHANGE_FILTER_TYPE,
@@ -44,7 +45,13 @@ const setCities = (cities) => ({
 
 const generateCityList = () => ({
   request: {
-    type: 'cityList',
+    requestHandler: getAllCities,
+    requestParams: null,
+    actions: {
+      start: CITY_LIST_LOADING_START,
+      successed: CITY_LIST_LOADING_SUCCESSED,
+      error: CITY_LIST_LOADING_ERROR,
+    },
   },
 });
 
